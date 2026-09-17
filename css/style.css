@@ -613,6 +613,134 @@ footer {
   font-size: 0.85rem;
 }
 
+/* ===== Price line (service cards) ===== */
+.price-line {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-top: 16px;
+}
+
+.price-line span {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.82rem;
+  margin-left: 6px;
+}
+
+/* ===== Fingerprint pricing popup ===== */
+body.no-scroll { overflow: hidden; }
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-overlay.active { opacity: 1; visibility: visible; }
+
+.popup-card {
+  position: relative;
+  background: linear-gradient(160deg, var(--card), #131313);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px 36px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  transform: scale(0.92) translateY(12px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.popup-overlay.active .popup-card { transform: scale(1) translateY(0); }
+
+.popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.popup-close:hover { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+
+.popup-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 16px;
+  background: rgba(78, 185, 111, 0.12);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+}
+
+.popup-card .section-tag { display: block; margin-bottom: 10px; }
+.popup-card h3 { font-size: 1.3rem; margin-bottom: 18px; }
+
+.popup-price {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.popup-price .currency {
+  font-size: 1.4rem;
+  vertical-align: top;
+  margin-right: 4px;
+}
+
+.popup-card > p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 14px 0 28px;
+}
+
+.popup-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.popup-actions .btn { width: 100%; justify-content: center; }
+
+.popup-dismiss {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.popup-dismiss:hover { color: var(--text); }
+
 /* ===== WhatsApp floating button ===== */
 .whatsapp-float {
   position: fixed;
