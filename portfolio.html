@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us | Web Graphs Technologies</title>
-<meta name="description" content="Get in touch with Web Graphs Technologies via WhatsApp, email or visit us at 8 Jill Street, Langlaagte North, Johannesburg, South Africa.">
+<title>Our Work | Web Graphs Technologies</title>
+<meta name="description" content="A showcase of recent graphic design projects by Web Graphs Technologies — brand identity, logo design and marketing materials.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,9 +22,9 @@
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="courses.html">Courses</a>
-      <a href="portfolio.html">Portfolio</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
       <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-cta">
       <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
@@ -39,101 +39,57 @@
 
   <section class="page-hero">
     <div class="container">
-      <div class="breadcrumb">Home <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <span class="accent-text">Contact</span></div>
-      <h1>Get In Touch</h1>
-      <p>Have a question, need a quote, or want to book a service or course? Reach out — we'd love to help.</p>
+      <div class="breadcrumb">Home <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <span class="accent-text">Portfolio</span></div>
+      <h1>Our Work</h1>
+      <p>A look at recent brand identity, logo design and marketing projects we've created for clients.</p>
     </div>
   </section>
 
   <section>
-    <div class="container contact-grid">
+    <div class="container">
 
-      <div class="reveal">
-        <span class="section-tag">Contact Info</span>
-        <h2 class="section-title">We're Here To Help</h2>
-
-        <div class="contact-info-card">
-          <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
-          <div>
-            <h4>WhatsApp</h4>
-            <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
-          </div>
-        </div>
-
-        <div class="contact-info-card">
-          <div class="icon"><i class="fa-solid fa-envelope"></i></div>
-          <div>
-            <h4>Email</h4>
-            <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
-          </div>
-        </div>
-
-        <div class="contact-info-card">
-          <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
-          <div>
-            <h4>Address</h4>
-            <p>8 Jill Street, Langlaagte North, Johannesburg, 2092, South Africa</p>
-          </div>
-        </div>
-
-        <div class="contact-info-card">
-          <div class="icon"><i class="fa-solid fa-clock"></i></div>
-          <div>
-            <h4>Working Hours</h4>
-            <p>Mon – Fri: 8:00 – 17:00 &nbsp;|&nbsp; Sat: 8:00 – 13:00</p>
-          </div>
-        </div>
-
-        <div class="map-wrap reveal">
-          <iframe
-            src="https://www.google.com/maps?q=8+Jill+Street,+Langlaagte+North,+Johannesburg,+2092,+South+Africa&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Web Graphs Technologies location map">
-          </iframe>
-        </div>
+      <div class="filter-bar reveal" id="portfolio-filters" hidden>
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="branding">Brand Identity</button>
+        <button type="button" class="filter-btn" data-filter="logo">Logo Design</button>
+        <button type="button" class="filter-btn" data-filter="marketing">Marketing</button>
       </div>
 
-      <div class="panel reveal">
-        <span class="section-tag">Send A Message</span>
-        <h3 style="font-size:1.4rem;margin:10px 0 26px;">Fill in the form below</h3>
-        <form id="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="e.g. 078 000 0000">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="service">Service You're Interested In</label>
-            <select id="service" name="service">
-              <option>Uber &amp; Bolt Fingerprint Capture (R300)</option>
-              <option>Web &amp; App Development</option>
-              <option>Graphic Design</option>
-              <option>Graphic Design Courses</option>
-              <option>Office Printing</option>
-              <option>Computer Software Installation</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us more about what you need..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-            <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
-          </button>
-        </form>
+      <div class="portfolio-grid reveal" id="portfolio-grid">
+        <div class="portfolio-empty">
+          <div class="icon"><i class="fa-solid fa-images"></i></div>
+          <h3>New work coming soon</h3>
+          <p>We're adding photos of our recent projects here shortly. In the meantime, get in touch to see more of our design work.</p>
+          <a href="https://wa.me/27787347867?text=Hi%2C%20I%27d%20like%20to%20see%20some%20of%20your%20recent%20design%20work." target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp</a>
+        </div>
       </div>
 
     </div>
   </section>
 
+  <section class="bg-alt">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2>Like what you see?</h2>
+        <p>Let's create something great for your brand too — logos, brand identity or marketing materials.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Start a Project</a>
+          <a href="services.html#design" class="btn btn-outline"><i class="fa-solid fa-palette"></i> Design Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
+
+<!-- Lightbox -->
+<div class="popup-overlay lightbox-overlay" id="lightbox">
+  <div class="lightbox-content">
+    <button type="button" class="popup-close" aria-label="Close">&times;</button>
+    <img src="" alt="" id="lightbox-img">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+</div>
 
 <footer>
   <div class="container">

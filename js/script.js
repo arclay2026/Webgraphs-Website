@@ -62,6 +62,57 @@ function initFingerprintPopup() {
   setTimeout(trigger, firstWait);
 }
 
+function initPortfolio() {
+  const grid = document.getElementById('portfolio-grid');
+  const lightbox = document.getElementById('lightbox');
+  if (!grid || !lightbox) return;
+
+  const filterBar = document.getElementById('portfolio-filters');
+  const items = Array.from(grid.querySelectorAll('.portfolio-item'));
+
+  if (filterBar && items.length) {
+    filterBar.hidden = false;
+    filterBar.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      filterBar.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      items.forEach((item) => {
+        item.style.display = filter === 'all' || item.dataset.category === filter ? '' : 'none';
+      });
+    });
+  }
+
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const closeBtn = lightbox.querySelector('.popup-close');
+
+  const openLightbox = (item) => {
+    const img = item.querySelector('img');
+    if (!img) return;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCaption.textContent = img.alt || '';
+    lightbox.classList.add('active');
+    document.body.classList.add('no-scroll');
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+  };
+
+  items.forEach((item) => item.addEventListener('click', () => openLightbox(item)));
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
   const toggle = document.querySelector('.nav-toggle');
@@ -99,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   initFingerprintPopup();
+  initPortfolio();
 
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
