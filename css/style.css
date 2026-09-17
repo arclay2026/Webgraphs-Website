@@ -458,6 +458,88 @@ footer .logo-img { height: 60px; }
   font-weight: 700;
 }
 
+.course-sublist { margin-top: 20px; }
+.course-sublist:first-of-type { margin-top: 22px; }
+
+.course-sublist h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== Course price table ===== */
+.price-table {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.price-row:last-child { border-bottom: none; }
+
+.price-row .combo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mini-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.92rem;
+  flex-shrink: 0;
+}
+
+.price-row .plus { color: var(--text-muted); font-weight: 700; }
+
+.price-row .connector {
+  flex: 1;
+  min-width: 50px;
+  height: 1px;
+  background: var(--border);
+}
+
+.price-row .price {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.price-row .price strong {
+  display: block;
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.price-row .price span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .price-row { flex-direction: column; align-items: flex-start; }
+  .price-row .connector { display: none; }
+  .price-row .price { text-align: left; }
+}
+
 /* ===== Process / steps ===== */
 .steps {
   display: grid;
