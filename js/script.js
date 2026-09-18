@@ -286,6 +286,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initCoursesFilter();
 
+  const quickQuoteForm = document.getElementById('quick-quote-form');
+  if (quickQuoteForm) {
+    quickQuoteForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('qq-name').value.trim();
+      const service = document.getElementById('qq-service').value;
+      const text = `Hi Web Graphs Technologies, my name is ${name}. I'd like a quote for: ${service}.`;
+      window.open(`https://wa.me/27787347867?text=${encodeURIComponent(text)}`, '_blank');
+    });
+  }
+
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
