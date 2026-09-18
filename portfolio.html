@@ -48,11 +48,17 @@
   <section>
     <div class="container">
 
-      <div class="filter-bar reveal" id="portfolio-filters" hidden>
-        <button type="button" class="filter-btn active" data-filter="all">All</button>
-        <button type="button" class="filter-btn" data-filter="branding">Brand Identity</button>
-        <button type="button" class="filter-btn" data-filter="logo">Logo Design</button>
-        <button type="button" class="filter-btn" data-filter="marketing">Marketing</button>
+      <div class="filter-row reveal" id="portfolio-controls" hidden>
+        <div class="filter-bar" id="portfolio-filters">
+          <button type="button" class="filter-btn active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="branding">Brand Identity</button>
+          <button type="button" class="filter-btn" data-filter="logo">Logo Design</button>
+          <button type="button" class="filter-btn" data-filter="marketing">Marketing</button>
+        </div>
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="portfolio-search" placeholder="Search projects...">
+        </div>
       </div>
 
       <div class="portfolio-grid reveal" id="portfolio-grid">

@@ -47,176 +47,191 @@
 
   <section>
     <div class="container">
-      <div class="grid grid-2">
 
-        <div class="course-card reveal">
-          <span class="badge">Available</span>
-          <div class="software-icon" style="background:#001e36;color:#31a8ff;">Ps</div>
-          <h3>Adobe Photoshop</h3>
-          <p>Master photo editing, retouching and mock-up creation.</p>
-          <div class="course-sublist">
-            <h4>Image Manipulation</h4>
-            <ul>
-              <li>Background Removal</li>
-              <li>Photo Compositing</li>
-              <li>Color Correction</li>
-              <li>Retouching</li>
-              <li>Lighting &amp; Shadows</li>
-            </ul>
-          </div>
-          <div class="course-sublist">
-            <h4>Mock-Ups</h4>
-            <ul>
-              <li>T-Shirt / Hoodie Mock-Ups</li>
-              <li>Product Mock-Ups</li>
-              <li>Packaging Mock-Ups</li>
-              <li>Billboard / Signage Mock-Ups</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="course-card reveal">
-          <span class="badge">Available</span>
-          <div class="software-icon" style="background:#330000;color:#ff7c00;">Ai</div>
-          <h3>Adobe Illustrator</h3>
-          <p>Master vector graphics, logo and ad design.</p>
-          <div class="course-sublist">
-            <h4>Logo Design</h4>
-            <ul>
-              <li>Logo Concepts</li>
-              <li>Typography Logos</li>
-              <li>Symbol / Icon Design</li>
-              <li>Pen Tool</li>
-              <li>Brand Guidelines</li>
-            </ul>
-          </div>
-          <div class="course-sublist">
-            <h4>Ad Design</h4>
-            <ul>
-              <li>Social Media Ads</li>
-              <li>Flyer Designs</li>
-              <li>Outdoor Designs</li>
-              <li>Business Advertisements</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="course-card reveal">
-          <span class="badge">Available</span>
-          <div class="software-icon" style="background:#001b2e;color:#3ec8ff;">Lr</div>
-          <h3>Adobe Lightroom</h3>
-          <p>Organize, edit and grade your photography like a pro.</p>
-          <div class="course-sublist">
-            <h4>Basics</h4>
-            <ul>
-              <li>Photo Import &amp; Organization</li>
-              <li>Basic Photo Editing</li>
-              <li>Exposure &amp; Color Correction</li>
-              <li>Presets</li>
-              <li>Portrait Editing</li>
-              <li>Professional Color Grading</li>
-              <li>Exporting for Social Media &amp; Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="course-card reveal">
-          <span class="badge">Available</span>
-          <div class="software-icon" style="background:#00005a;color:#9999ff;">Pr</div>
-          <h3>Adobe Premiere Pro</h3>
-          <p>Edit professional-quality videos from raw footage to final export.</p>
-          <div class="course-sublist">
-            <h4>Basics</h4>
-            <ul>
-              <li>Cutting &amp; Trimming</li>
-              <li>Transitions</li>
-              <li>Text &amp; Titles</li>
-              <li>Audio Editing</li>
-              <li>Color Correction</li>
-              <li>Basic Effects</li>
-              <li>Video Export</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- COURSE PRICES -->
-  <section class="bg-alt">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-tag">Pricing</span>
-        <h2 class="section-title">Course Prices</h2>
-        <p class="section-desc">Mix and match software to build the bundle that suits you — every package runs over 1&ndash;2 months.</p>
+      <div class="tab-bar reveal" id="courses-tabs">
+        <button type="button" class="tab-btn active" data-tab="curriculum">Curriculum</button>
+        <button type="button" class="tab-btn" data-tab="pricing">Pricing &amp; Bundles</button>
       </div>
 
-      <div class="price-table reveal">
-        <div class="price-row">
-          <div class="combo">
-            <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
-            <span class="plus">+</span>
-            <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
-            <span class="plus">+</span>
-            <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
-          </div>
-          <div class="connector"></div>
-          <div class="price"><strong>R4500</strong><span>1&ndash;2 Month(s)</span></div>
+      <div class="tab-panel" data-panel="curriculum">
+        <div class="filter-bar reveal" id="course-filters">
+          <button type="button" class="filter-btn active" data-filter="all">All Software</button>
+          <button type="button" class="filter-btn" data-filter="ps">Photoshop</button>
+          <button type="button" class="filter-btn" data-filter="ai">Illustrator</button>
+          <button type="button" class="filter-btn" data-filter="lr">Lightroom</button>
+          <button type="button" class="filter-btn" data-filter="pr">Premiere Pro</button>
         </div>
 
-        <div class="price-row">
-          <div class="combo">
-            <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
-            <span class="plus">+</span>
-            <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
-            <span class="plus">+</span>
-            <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
-            <span class="plus">+</span>
-            <span class="mini-badge" style="background:#00005a;color:#9999ff;">Pr</span>
-          </div>
-          <div class="connector"></div>
-          <div class="price"><strong>R7500</strong><span>1&ndash;2 Month(s)</span></div>
-        </div>
+        <div class="grid grid-2" id="course-grid">
 
-        <div class="price-row">
-          <div class="combo">
-            <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
-            <span class="plus">+</span>
-            <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+          <div class="course-card reveal" data-software="ps">
+            <span class="badge">Available</span>
+            <div class="software-icon" style="background:#001e36;color:#31a8ff;">Ps</div>
+            <h3>Adobe Photoshop</h3>
+            <p>Master photo editing, retouching and mock-up creation.</p>
+            <div class="course-sublist">
+              <h4>Image Manipulation</h4>
+              <ul>
+                <li>Background Removal</li>
+                <li>Photo Compositing</li>
+                <li>Color Correction</li>
+                <li>Retouching</li>
+                <li>Lighting &amp; Shadows</li>
+              </ul>
+            </div>
+            <div class="course-sublist">
+              <h4>Mock-Ups</h4>
+              <ul>
+                <li>T-Shirt / Hoodie Mock-Ups</li>
+                <li>Product Mock-Ups</li>
+                <li>Packaging Mock-Ups</li>
+                <li>Billboard / Signage Mock-Ups</li>
+              </ul>
+            </div>
           </div>
-          <div class="connector"></div>
-          <div class="price"><strong>R4500</strong><span>1&ndash;2 Month(s)</span></div>
-        </div>
 
-        <div class="price-row">
-          <div class="combo">
-            <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+          <div class="course-card reveal" data-software="ai">
+            <span class="badge">Available</span>
+            <div class="software-icon" style="background:#330000;color:#ff7c00;">Ai</div>
+            <h3>Adobe Illustrator</h3>
+            <p>Master vector graphics, logo and ad design.</p>
+            <div class="course-sublist">
+              <h4>Logo Design</h4>
+              <ul>
+                <li>Logo Concepts</li>
+                <li>Typography Logos</li>
+                <li>Symbol / Icon Design</li>
+                <li>Pen Tool</li>
+                <li>Brand Guidelines</li>
+              </ul>
+            </div>
+            <div class="course-sublist">
+              <h4>Ad Design</h4>
+              <ul>
+                <li>Social Media Ads</li>
+                <li>Flyer Designs</li>
+                <li>Outdoor Designs</li>
+                <li>Business Advertisements</li>
+              </ul>
+            </div>
           </div>
-          <div class="connector"></div>
-          <div class="price"><strong>R2000</strong><span>1&ndash;2 Month(s)</span></div>
-        </div>
 
-        <div class="price-row">
-          <div class="combo">
-            <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
-            <span class="plus">+</span>
-            <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+          <div class="course-card reveal" data-software="lr">
+            <span class="badge">Available</span>
+            <div class="software-icon" style="background:#001b2e;color:#3ec8ff;">Lr</div>
+            <h3>Adobe Lightroom</h3>
+            <p>Organize, edit and grade your photography like a pro.</p>
+            <div class="course-sublist">
+              <h4>Basics</h4>
+              <ul>
+                <li>Photo Import &amp; Organization</li>
+                <li>Basic Photo Editing</li>
+                <li>Exposure &amp; Color Correction</li>
+                <li>Presets</li>
+                <li>Portrait Editing</li>
+                <li>Professional Color Grading</li>
+                <li>Exporting for Social Media &amp; Web</li>
+              </ul>
+            </div>
           </div>
-          <div class="connector"></div>
-          <div class="price"><strong>R2500</strong><span>1&ndash;2 Month(s)</span></div>
-        </div>
 
-        <div class="price-row">
-          <div class="combo">
-            <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
-            <span class="plus">+</span>
-            <span class="mini-badge" style="background:#00005a;color:#9999ff;">Pr</span>
+          <div class="course-card reveal" data-software="pr">
+            <span class="badge">Available</span>
+            <div class="software-icon" style="background:#00005a;color:#9999ff;">Pr</div>
+            <h3>Adobe Premiere Pro</h3>
+            <p>Edit professional-quality videos from raw footage to final export.</p>
+            <div class="course-sublist">
+              <h4>Basics</h4>
+              <ul>
+                <li>Cutting &amp; Trimming</li>
+                <li>Transitions</li>
+                <li>Text &amp; Titles</li>
+                <li>Audio Editing</li>
+                <li>Color Correction</li>
+                <li>Basic Effects</li>
+                <li>Video Export</li>
+              </ul>
+            </div>
           </div>
-          <div class="connector"></div>
-          <div class="price"><strong>R5000</strong><span>1&ndash;2 Month(s)</span></div>
+
         </div>
       </div>
+
+      <!-- COURSE PRICES -->
+      <div class="tab-panel" data-panel="pricing" hidden>
+        <div class="section-head reveal">
+          <span class="section-tag">Pricing</span>
+          <h2 class="section-title">Course Prices</h2>
+          <p class="section-desc">Mix and match software to build the bundle that suits you — every package runs over 1&ndash;2 months.</p>
+        </div>
+
+        <div class="price-table reveal">
+          <div class="price-row">
+            <div class="combo">
+              <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
+              <span class="plus">+</span>
+              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="plus">+</span>
+              <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+            </div>
+            <div class="connector"></div>
+            <div class="price"><strong>R4500</strong><span>1&ndash;2 Month(s)</span></div>
+          </div>
+
+          <div class="price-row">
+            <div class="combo">
+              <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
+              <span class="plus">+</span>
+              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="plus">+</span>
+              <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+              <span class="plus">+</span>
+              <span class="mini-badge" style="background:#00005a;color:#9999ff;">Pr</span>
+            </div>
+            <div class="connector"></div>
+            <div class="price"><strong>R7500</strong><span>1&ndash;2 Month(s)</span></div>
+          </div>
+
+          <div class="price-row">
+            <div class="combo">
+              <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
+              <span class="plus">+</span>
+              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+            </div>
+            <div class="connector"></div>
+            <div class="price"><strong>R4500</strong><span>1&ndash;2 Month(s)</span></div>
+          </div>
+
+          <div class="price-row">
+            <div class="combo">
+              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+            </div>
+            <div class="connector"></div>
+            <div class="price"><strong>R2000</strong><span>1&ndash;2 Month(s)</span></div>
+          </div>
+
+          <div class="price-row">
+            <div class="combo">
+              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="plus">+</span>
+              <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+            </div>
+            <div class="connector"></div>
+            <div class="price"><strong>R2500</strong><span>1&ndash;2 Month(s)</span></div>
+          </div>
+
+          <div class="price-row">
+            <div class="combo">
+              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="plus">+</span>
+              <span class="mini-badge" style="background:#00005a;color:#9999ff;">Pr</span>
+            </div>
+            <div class="connector"></div>
+            <div class="price"><strong>R5000</strong><span>1&ndash;2 Month(s)</span></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

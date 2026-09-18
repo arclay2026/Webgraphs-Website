@@ -65,6 +65,53 @@ function initParticles() {
   draw(0);
 }
 
+function setupFilterBar(barEl, items, getCategory) {
+  if (!barEl || !items.length) return;
+  barEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    barEl.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    items.forEach((item) => {
+      item.style.display = filter === 'all' || getCategory(item) === filter ? '' : 'none';
+    });
+  });
+}
+
+function initTabs() {
+  document.querySelectorAll('.tab-bar').forEach((bar) => {
+    const panels = Array.from(bar.parentElement.querySelectorAll(':scope > .tab-panel'));
+    if (!panels.length) return;
+    bar.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      bar.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.tab;
+      panels.forEach((panel) => {
+        const active = panel.dataset.panel === target;
+        panel.hidden = !active;
+        if (active) panel.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+      });
+    });
+  });
+}
+
+function initServicesFilter() {
+  const bar = document.getElementById('services-filters');
+  const grid = document.getElementById('services-grid');
+  if (!bar || !grid) return;
+  setupFilterBar(bar, Array.from(grid.querySelectorAll('.card')), (item) => item.dataset.category);
+}
+
+function initCoursesFilter() {
+  const bar = document.getElementById('course-filters');
+  const grid = document.getElementById('course-grid');
+  if (!bar || !grid) return;
+  setupFilterBar(bar, Array.from(grid.querySelectorAll('.course-card')), (item) => item.dataset.software);
+}
+
 function initFingerprintPopup() {
   const overlay = document.createElement('div');
   overlay.className = 'popup-overlay';
@@ -134,21 +181,37 @@ function initPortfolio() {
   const lightbox = document.getElementById('lightbox');
   if (!grid || !lightbox) return;
 
+  const controls = document.getElementById('portfolio-controls');
   const filterBar = document.getElementById('portfolio-filters');
+  const searchInput = document.getElementById('portfolio-search');
   const items = Array.from(grid.querySelectorAll('.portfolio-item'));
 
-  if (filterBar && items.length) {
-    filterBar.hidden = false;
-    filterBar.addEventListener('click', (e) => {
-      const btn = e.target.closest('.filter-btn');
-      if (!btn) return;
-      filterBar.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
+  if (controls && items.length) {
+    controls.hidden = false;
+    let activeFilter = 'all';
+
+    const applyFilters = () => {
+      const query = (searchInput?.value || '').trim().toLowerCase();
       items.forEach((item) => {
-        item.style.display = filter === 'all' || item.dataset.category === filter ? '' : 'none';
+        const matchesCategory = activeFilter === 'all' || item.dataset.category === activeFilter;
+        const title = (item.querySelector('img')?.alt || '').toLowerCase();
+        const matchesQuery = !query || title.includes(query);
+        item.style.display = matchesCategory && matchesQuery ? '' : 'none';
       });
-    });
+    };
+
+    if (filterBar) {
+      filterBar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        filterBar.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        applyFilters();
+      });
+    }
+
+    if (searchInput) searchInput.addEventListener('input', applyFilters);
   }
 
   const lightboxImg = document.getElementById('lightbox-img');
@@ -219,6 +282,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   initFingerprintPopup();
   initPortfolio();
+  initServicesFilter();
+  initTabs();
+  initCoursesFilter();
 
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
