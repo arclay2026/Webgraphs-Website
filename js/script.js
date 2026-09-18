@@ -1,3 +1,70 @@
+function initParticles() {
+  const canvas = document.createElement('canvas');
+  canvas.id = 'bg-particles';
+  canvas.setAttribute('aria-hidden', 'true');
+  document.body.prepend(canvas);
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const colors = ['255,255,255', '240,198,116', '77,124,255'];
+  let particles = [];
+  let width = 0;
+  let height = 0;
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  const resize = () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const createParticles = () => {
+    const count = Math.min(80, Math.round((width * height) / 18000));
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.6 + 0.6,
+      vx: (Math.random() - 0.5) * 0.15,
+      vy: (Math.random() - 0.5) * 0.15,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      phase: Math.random() * Math.PI * 2,
+    }));
+  };
+
+  const draw = (time) => {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach((p) => {
+      if (!reduceMotion) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+      }
+      const twinkle = reduceMotion ? 0.5 : 0.35 + 0.25 * Math.sin(time / 1200 + p.phase);
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${p.color}, ${twinkle})`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    if (!reduceMotion) requestAnimationFrame(draw);
+  };
+
+  resize();
+  createParticles();
+  window.addEventListener('resize', () => {
+    resize();
+    createParticles();
+  });
+  draw(0);
+}
+
 function initFingerprintPopup() {
   const overlay = document.createElement('div');
   overlay.className = 'popup-overlay';
@@ -149,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  initParticles();
   initFingerprintPopup();
   initPortfolio();
 
