@@ -273,28 +273,6 @@ footer .logo-img { height: 60px; }
   position: relative;
   padding: 210px 0 130px;
   overflow: hidden;
-  /* The hero always sits on a photo + dark overlay, regardless of the
-     site-wide theme, so it needs its own fixed "dark zone" palette. */
-  --bg: #07080b;
-  --text: #ffffff;
-  --text-muted: rgba(255, 255, 255, 0.75);
-  --accent-text: var(--accent);
-  --card: rgba(255, 255, 255, 0.035);
-  --border: rgba(255, 255, 255, 0.09);
-  --glass: rgba(255, 255, 255, 0.045);
-  --glass-strong: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  background-image: url('../assets/images/hero-home.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(115deg, rgba(7, 8, 11, 0.94) 0%, rgba(7, 8, 11, 0.86) 40%, rgba(7, 8, 11, 0.68) 100%);
 }
 
 .hero-grid {
