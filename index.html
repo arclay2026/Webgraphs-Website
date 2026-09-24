@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem("wg_theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Web Graphs Technologies | Digital, Design &amp; Print Solutions in Johannesburg</title>
 <meta name="description" content="Web Graphs Technologies offers Uber &amp; Bolt fingerprint capture, web &amp; app development, graphic design, brand identity, graphic design courses, office printing and computer software installation in Johannesburg, South Africa.">
@@ -27,6 +28,10 @@
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-cta">
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme">
+        <i class="fa-solid fa-moon icon-moon"></i>
+        <i class="fa-solid fa-sun icon-sun"></i>
+      </button>
       <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
       <button class="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -51,6 +56,7 @@
       </div>
       <div class="hero-visual">
         <div class="hero-blob"></div>
+        <canvas id="hero-network" class="hero-network" aria-hidden="true"></canvas>
         <div class="floating-card fc-1">
           <div class="fc-icon"><i class="fa-solid fa-layer-group"></i></div>
           <div><strong>6+</strong><span>Core Services</span></div>
@@ -61,7 +67,7 @@
         </div>
         <div class="floating-card fc-3">
           <div class="fc-icon"><i class="fa-solid fa-fingerprint"></i></div>
-          <div><strong>R300</strong><span>Fingerprint Capture</span></div>
+          <div><strong>R350</strong><span>Fingerprint Capture</span></div>
         </div>
       </div>
     </div>
@@ -161,7 +167,7 @@
           <div class="icon"><i class="fa-solid fa-fingerprint"></i></div>
           <h3>Uber &amp; Bolt Fingerprint Capture</h3>
           <p>Fast, hassle-free biometric fingerprint capture for Uber and Bolt driver-partner registration and compliance.</p>
-          <p class="price-line">R300 <span>per capture</span></p>
+          <p class="price-line">R350 <span>per capture</span></p>
           <a href="services.html#fingerprint" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
