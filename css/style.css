@@ -273,6 +273,28 @@ footer .logo-img { height: 60px; }
   position: relative;
   padding: 210px 0 130px;
   overflow: hidden;
+  /* The hero always sits on a photo + dark overlay, regardless of the
+     site-wide theme, so it needs its own fixed "dark zone" palette. */
+  --bg: #07080b;
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --accent-text: var(--accent);
+  --card: rgba(255, 255, 255, 0.035);
+  --border: rgba(255, 255, 255, 0.09);
+  --glass: rgba(255, 255, 255, 0.045);
+  --glass-strong: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  background-image: url('../assets/images/hero-home.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(115deg, rgba(7, 8, 11, 0.94) 0%, rgba(7, 8, 11, 0.86) 40%, rgba(7, 8, 11, 0.68) 100%);
 }
 
 .hero-grid {
@@ -604,9 +626,22 @@ footer .logo-img { height: 60px; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 36px 30px;
+  overflow: hidden;
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.card-image {
+  margin: -36px -30px 24px;
+  aspect-ratio: 16 / 9;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ===== Tilt + cursor glow (JS-driven on .card, .course-card, .portfolio-item) ===== */
