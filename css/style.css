@@ -612,13 +612,14 @@ footer .logo-img { height: 60px; }
 
 .card-image {
   margin: -36px -30px 24px;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
+  background: var(--bg-alt);
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
