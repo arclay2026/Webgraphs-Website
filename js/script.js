@@ -1,54 +1,40 @@
-function initChrome() {
-  const frag = document.createDocumentFragment();
-
-  const progress = document.createElement('div');
-  progress.className = 'wg-progress';
-  progress.innerHTML = '<div class="wg-progress-fill"></div>';
-  frag.appendChild(progress);
-
-  const spine = document.createElement('div');
-  spine.className = 'wg-spine';
-  spine.innerHTML = '<span>Web Graphs Technologies — Johannesburg, ZA</span>';
-  frag.appendChild(spine);
-
-  document.body.appendChild(frag);
-
-  const readout = document.createElement('div');
-  readout.className = 'wg-readout';
-  readout.innerHTML = '<span class="wg-readout-dot"></span><span class="wg-readout-time">--:--:--</span><span>Johannesburg Local Time</span>';
-  const navInner = document.querySelector('.nav-inner');
-  if (navInner) {
-    const cta = navInner.querySelector('.nav-cta');
-    navInner.insertBefore(readout, cta || null);
-  }
-
-  const fill = progress.querySelector('.wg-progress-fill');
-  const updateProgress = () => {
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - doc.clientHeight;
-    const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
-    fill.style.width = `${pct}%`;
+function initNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  const update = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 8);
   };
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  updateProgress();
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
 
-  const timeEl = readout.querySelector('.wg-readout-time');
-  const updateClock = () => {
-    try {
-      timeEl.textContent = new Intl.DateTimeFormat('en-ZA', {
-        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
-        timeZone: 'Africa/Johannesburg',
-      }).format(new Date());
-    } catch (e) {
-      timeEl.textContent = new Date().toLocaleTimeString();
-    }
+function initMobileMenu() {
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (!toggle || !menu) return;
+
+  const close = () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
   };
-  updateClock();
-  setInterval(updateClock, 1000);
+  const open = () => {
+    menu.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  };
+
+  toggle.addEventListener('click', () => {
+    if (menu.classList.contains('open')) close(); else open();
+  });
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
 }
 
 function initHeroParallax() {
-  const visual = document.querySelector('.hero-visual .plate-grid');
+  const visual = document.querySelector('.hero-visual .showcase-grid');
   if (!visual || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   const section = document.querySelector('.hero');
   if (!section) return;
@@ -56,7 +42,7 @@ function initHeroParallax() {
     const rect = section.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    visual.style.transform = `translate(${x * -8}px, ${y * -8}px)`;
+    visual.style.transform = `translate(${x * -6}px, ${y * -6}px)`;
   });
   section.addEventListener('mouseleave', () => {
     visual.style.transform = 'translate(0, 0)';
@@ -404,16 +390,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initCoursesFilter();
   initContactForm();
-  initChrome();
+  initNavbarScroll();
+  initMobileMenu();
   initHeroParallax();
-
-  const footerBottom = document.querySelector('.footer-bottom');
-  if (footerBottom) {
-    const geo = document.createElement('span');
-    geo.className = 'footer-geo';
-    geo.textContent = '26.2041° S, 28.0473° E — Johannesburg, South Africa';
-    footerBottom.appendChild(geo);
-  }
 
   const quickQuoteForm = document.getElementById('quick-quote-form');
   if (quickQuoteForm) {

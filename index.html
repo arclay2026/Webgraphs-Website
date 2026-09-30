@@ -14,58 +14,70 @@
 </head>
 <body>
 
-<header class="navbar">
+<header class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="logo">
       <img src="assets/logo-ink.svg" alt="Web Graphs Technologies" class="logo-img logo-light-img">
       <img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img logo-dark-img">
     </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="courses.html">Courses</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
     <div class="nav-cta">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline whatsapp-nav-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline whatsapp-nav-btn">WhatsApp</a>
       <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme">
         <i class="fa-solid fa-moon icon-moon"></i>
         <i class="fa-solid fa-sun icon-sun"></i>
       </button>
+      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
-<nav class="dock" aria-label="Primary">
-  <a href="index.html" class="dock-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
-  <a href="services.html" class="dock-item"><i class="fa-solid fa-list"></i><span>Services</span></a>
-  <a href="courses.html" class="dock-item"><i class="fa-solid fa-graduation-cap"></i><span>Courses</span></a>
-  <a href="portfolio.html" class="dock-item"><i class="fa-solid fa-images"></i><span>Portfolio</span></a>
-  <a href="about.html" class="dock-item"><i class="fa-solid fa-user"></i><span>About</span></a>
-  <a href="contact.html" class="dock-item"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
-</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="Mobile">
+    <a href="index.html" class="active">Home</a>
+    <a href="services.html">Services</a>
+    <a href="courses.html">Courses</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary mobile-menu-cta"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+</div>
 
 <main>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="eyebrow"><span class="dot"></span> Based in Johannesburg, South Africa</div>
-        <h1>Digital, Design &amp; Print Solutions for <span class="accent-text">Growing Businesses</span></h1>
-        <p>From driver fingerprint capture and website builds to brand identity and graphic design training, Web Graphs Technologies is your one-stop technology and creative partner.</p>
-        <div class="hero-actions">
-          <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
-          <a href="services.html" class="btn btn-outline"><i class="fa-solid fa-list"></i> Explore Services</a>
-        </div>
+    <div class="container">
+      <div class="eyebrow"><span class="dot"></span> Based in Johannesburg, South Africa</div>
+      <h1>Digital, Design &amp; Print Solutions for <span class="accent-text">Growing Businesses</span></h1>
+      <p>From driver fingerprint capture and website builds to brand identity and graphic design training, Web Graphs Technologies is your one-stop technology and creative partner.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+        <a href="services.html" class="btn btn-outline">Explore Services</a>
       </div>
       <div class="hero-visual">
-        <div class="plate-grid">
-          <figure class="plate"><img src="assets/images/service-fingerprint.jpg" alt="Finger scanning a glowing blue biometric fingerprint reader" loading="lazy"><figcaption><span>01</span> Fingerprint Capture</figcaption></figure>
-          <figure class="plate"><img src="assets/images/service-development.jpg" alt="Close-up of colorful HTML and CSS code on a screen" loading="lazy"><figcaption><span>02</span> Web &amp; App Dev</figcaption></figure>
-          <figure class="plate"><img src="assets/images/service-design.jpg" alt="Laptop on a desk displaying a colorful landing page design template" loading="lazy"><figcaption><span>03</span> Graphic Design</figcaption></figure>
-          <figure class="plate"><img src="assets/images/service-courses.jpg" alt="Two students working on laptops during a design class" loading="lazy"><figcaption><span>04</span> Design Courses</figcaption></figure>
-          <figure class="plate"><img src="assets/images/service-printing.jpg" alt="Hands loading paper into an office laser printer" loading="lazy"><figcaption><span>05</span> Office Printing</figcaption></figure>
-          <figure class="plate"><img src="assets/images/service-software-installation.jpg" alt="Man at a desk watching a software installation progress screen" loading="lazy"><figcaption><span>06</span> Software Installation</figcaption></figure>
+        <div class="showcase-grid">
+          <figure class="showcase-tile"><img src="assets/images/service-fingerprint.jpg" alt="Finger scanning a glowing blue biometric fingerprint reader" loading="lazy"><figcaption>Fingerprint Capture</figcaption></figure>
+          <figure class="showcase-tile"><img src="assets/images/service-development.jpg" alt="Close-up of colorful HTML and CSS code on a screen" loading="lazy"><figcaption>Web &amp; App Dev</figcaption></figure>
+          <figure class="showcase-tile"><img src="assets/images/service-design.jpg" alt="Laptop on a desk displaying a colorful landing page design template" loading="lazy"><figcaption>Graphic Design</figcaption></figure>
+          <figure class="showcase-tile"><img src="assets/images/service-courses.jpg" alt="Two students working on laptops during a design class" loading="lazy"><figcaption>Design Courses</figcaption></figure>
+          <figure class="showcase-tile"><img src="assets/images/service-printing.jpg" alt="Hands loading paper into an office laser printer" loading="lazy"><figcaption>Office Printing</figcaption></figure>
+          <figure class="showcase-tile"><img src="assets/images/service-software-installation.jpg" alt="Man at a desk watching a software installation progress screen" loading="lazy"><figcaption>Software Installation</figcaption></figure>
         </div>
-        <div class="hero-specs">
-          <div class="spec"><strong>6+</strong><span>Core Services</span></div>
-          <div class="spec"><strong>5</strong><span>Design Courses</span></div>
-          <div class="spec"><strong>R350</strong><span>Fingerprint Capture</span></div>
-        </div>
+      </div>
+      <div class="hero-specs">
+        <div class="spec"><strong>6+</strong><span>Core Services</span></div>
+        <div class="spec"><strong>5</strong><span>Design Courses</span></div>
+        <div class="spec"><strong>R350</strong><span>Fingerprint Capture</span></div>
       </div>
     </div>
   </section>
@@ -325,10 +337,17 @@
 
 <footer>
   <div class="container">
+    <div class="footer-statement reveal">
+
+      <p>Digital, design and print solutions for individuals and businesses in Johannesburg and beyond.</p>
+
+      <a href="contact.html" class="btn btn-primary">Start a Project</a>
+
+    </div>
+
     <div class="footer-grid">
       <div>
         <a href="index.html" class="logo"><img src="assets/logo-ink.svg" alt="Web Graphs Technologies" class="logo-img logo-light-img"><img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img logo-dark-img"></a>
-        <p>Digital, design and print solutions for individuals and businesses in Johannesburg and beyond.</p>
         <div class="social-row">
           <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
           <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
