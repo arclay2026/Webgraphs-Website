@@ -50,7 +50,7 @@ function initHeroParallax() {
 }
 
 function getCurrentTheme() {
-  return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
 }
 
 function initThemeToggle() {
@@ -60,8 +60,8 @@ function initThemeToggle() {
 
   const setTheme = (theme, persist) => {
     root.classList.add('theme-transitioning');
-    if (theme === 'dark') {
-      root.setAttribute('data-theme', 'dark');
+    if (theme === 'light') {
+      root.setAttribute('data-theme', 'light');
     } else {
       root.removeAttribute('data-theme');
     }
