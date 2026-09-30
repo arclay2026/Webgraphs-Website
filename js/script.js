@@ -1,82 +1,5 @@
-const PARTICLE_PALETTES = {
-  dark: ['255,255,255', '240,198,116', '77,124,255'],
-  light: ['30,32,40', '176,128,20', '43,75,189'],
-};
-
 function getCurrentTheme() {
-  return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-}
-
-function initParticles() {
-  const canvas = document.createElement('canvas');
-  canvas.id = 'bg-particles';
-  canvas.setAttribute('aria-hidden', 'true');
-  document.body.prepend(canvas);
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let paletteName = getCurrentTheme();
-  window.addEventListener('wg-theme-change', () => {
-    paletteName = getCurrentTheme();
-    if (reduceMotion) draw(0);
-  });
-  let particles = [];
-  let width = 0;
-  let height = 0;
-  let dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-  const resize = () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
-
-  const createParticles = () => {
-    const count = Math.min(80, Math.round((width * height) / 18000));
-    particles = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 1.6 + 0.6,
-      vx: (Math.random() - 0.5) * 0.15,
-      vy: (Math.random() - 0.5) * 0.15,
-      colorIdx: Math.floor(Math.random() * 3),
-      phase: Math.random() * Math.PI * 2,
-    }));
-  };
-
-  const draw = (time) => {
-    ctx.clearRect(0, 0, width, height);
-    const colors = PARTICLE_PALETTES[paletteName];
-    particles.forEach((p) => {
-      if (!reduceMotion) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
-      }
-      const twinkle = reduceMotion ? 0.5 : 0.35 + 0.25 * Math.sin(time / 1200 + p.phase);
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(${colors[p.colorIdx]}, ${twinkle})`;
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
-    if (!reduceMotion) requestAnimationFrame(draw);
-  };
-
-  resize();
-  createParticles();
-  window.addEventListener('resize', () => {
-    resize();
-    createParticles();
-  });
-  draw(0);
+  return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
 }
 
 function initThemeToggle() {
@@ -86,8 +9,11 @@ function initThemeToggle() {
 
   const setTheme = (theme, persist) => {
     root.classList.add('theme-transitioning');
-    root.setAttribute('data-theme', theme);
-    window.dispatchEvent(new Event('wg-theme-change'));
+    if (theme === 'dark') {
+      root.setAttribute('data-theme', 'dark');
+    } else {
+      root.removeAttribute('data-theme');
+    }
     if (persist) {
       try {
         localStorage.setItem('wg_theme', theme);
@@ -95,12 +21,12 @@ function initThemeToggle() {
         /* ignore storage errors (private browsing, etc.) */
       }
     }
-    setTimeout(() => root.classList.remove('theme-transitioning'), 450);
+    setTimeout(() => root.classList.remove('theme-transitioning'), 350);
   };
 
   toggle.addEventListener('click', () => {
     const current = getCurrentTheme();
-    setTheme(current === 'light' ? 'dark' : 'light', true);
+    setTheme(current === 'dark' ? 'light' : 'dark', true);
   });
 }
 
@@ -257,165 +183,6 @@ function initContactForm() {
   });
 }
 
-function initHeroNetwork() {
-  const canvas = document.getElementById('hero-network');
-  if (!canvas) return;
-  const container = canvas.parentElement;
-  const ctx = canvas.getContext('2d');
-  if (!ctx || !container) return;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const LINK_DIST = 130;
-  const MOUSE_DIST = 160;
-  let width = 0;
-  let height = 0;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  let nodes = [];
-  const mouse = { x: 0, y: 0, active: false };
-
-  const resize = () => {
-    const rect = container.getBoundingClientRect();
-    width = rect.width;
-    height = rect.height;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
-
-  const createNodes = () => {
-    const count = Math.min(46, Math.max(18, Math.round((width * height) / 9000)));
-    nodes = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 1.8 + 1.4,
-    }));
-  };
-
-  const step = () => {
-    if (reduceMotion) return;
-    nodes.forEach((n) => {
-      if (mouse.active) {
-        const dx = n.x - mouse.x;
-        const dy = n.y - mouse.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < MOUSE_DIST && dist > 0.01) {
-          const force = (1 - dist / MOUSE_DIST) * 0.06;
-          n.vx += (dx / dist) * force;
-          n.vy += (dy / dist) * force;
-        }
-      }
-      n.vx *= 0.98;
-      n.vy *= 0.98;
-      const speed = Math.hypot(n.vx, n.vy);
-      const maxSpeed = 0.9;
-      if (speed > maxSpeed) {
-        n.vx = (n.vx / speed) * maxSpeed;
-        n.vy = (n.vy / speed) * maxSpeed;
-      }
-      n.x += n.vx;
-      n.y += n.vy;
-      if (n.x < 0 || n.x > width) n.vx *= -1;
-      if (n.y < 0 || n.y > height) n.vy *= -1;
-      n.x = Math.max(0, Math.min(width, n.x));
-      n.y = Math.max(0, Math.min(height, n.y));
-    });
-  };
-
-  const draw = () => {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i];
-        const b = nodes[j];
-        const dist = Math.hypot(a.x - b.x, a.y - b.y);
-        if (dist < LINK_DIST) {
-          ctx.strokeStyle = `rgba(78, 185, 111, ${0.35 * (1 - dist / LINK_DIST)})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    if (mouse.active) {
-      nodes.forEach((n) => {
-        const dist = Math.hypot(n.x - mouse.x, n.y - mouse.y);
-        if (dist < MOUSE_DIST) {
-          ctx.strokeStyle = `rgba(240, 198, 116, ${0.55 * (1 - dist / MOUSE_DIST)})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(n.x, n.y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.stroke();
-        }
-      });
-      ctx.beginPath();
-      ctx.fillStyle = 'rgba(240, 198, 116, 0.9)';
-      ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    nodes.forEach((n) => {
-      ctx.beginPath();
-      ctx.fillStyle = 'rgba(78, 185, 111, 0.9)';
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
-  };
-
-  const loop = () => {
-    step();
-    draw();
-    if (!reduceMotion) requestAnimationFrame(loop);
-  };
-
-  canvas.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-    mouse.active = true;
-  });
-  canvas.addEventListener('mouseleave', () => {
-    mouse.active = false;
-  });
-
-  resize();
-  createNodes();
-  window.addEventListener('resize', () => {
-    resize();
-    createNodes();
-  });
-  loop();
-}
-
-function initTiltCards() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const cards = document.querySelectorAll('.card, .course-card, .portfolio-item');
-  cards.forEach((card) => {
-    card.classList.add('tilt-card');
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      const rotateX = (0.5 - y) * 7;
-      const rotateY = (x - 0.5) * 7;
-      card.style.setProperty('--mx', `${x * 100}%`);
-      card.style.setProperty('--my', `${y * 100}%`);
-      card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-}
-
 function initFingerprintPopup() {
   const overlay = document.createElement('div');
   overlay.className = 'popup-overlay';
@@ -548,24 +315,6 @@ function initPortfolio() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const navbar = document.querySelector('.navbar');
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 10);
-  });
-
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-
-    navLinks.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
-  }
-
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(
     (entries) => {
@@ -584,9 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   initThemeToggle();
-  initParticles();
-  initHeroNetwork();
-  initTiltCards();
   initFingerprintPopup();
   initPortfolio();
   initServicesFilter();
