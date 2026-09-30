@@ -104,38 +104,6 @@ function initHeroParallax() {
   });
 }
 
-function getCurrentTheme() {
-  return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-}
-
-function initThemeToggle() {
-  const root = document.documentElement;
-  const toggle = document.getElementById('theme-toggle');
-  if (!toggle) return;
-
-  const setTheme = (theme, persist) => {
-    root.classList.add('theme-transitioning');
-    if (theme === 'light') {
-      root.setAttribute('data-theme', 'light');
-    } else {
-      root.removeAttribute('data-theme');
-    }
-    if (persist) {
-      try {
-        localStorage.setItem('wg_theme', theme);
-      } catch (e) {
-        /* ignore storage errors (private browsing, etc.) */
-      }
-    }
-    setTimeout(() => root.classList.remove('theme-transitioning'), 350);
-  };
-
-  toggle.addEventListener('click', () => {
-    const current = getCurrentTheme();
-    setTheme(current === 'dark' ? 'light' : 'dark', true);
-  });
-}
-
 function setupFilterBar(barEl, items, getCategory) {
   if (!barEl || !items.length) return;
   barEl.addEventListener('click', (e) => {
@@ -535,7 +503,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPreloader();
   initCustomSelects();
-  initThemeToggle();
   initFingerprintPopup();
   initPortfolio();
   initServicesFilter();
