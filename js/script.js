@@ -1,3 +1,34 @@
+function initPreloader() {
+  const el = document.getElementById('wg-preloader');
+  if (!el) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('wg-loading');
+
+  const minDisplay = reduceMotion ? 0 : 700;
+  const start = Date.now();
+  let hidden = false;
+
+  const hide = () => {
+    if (hidden) return;
+    hidden = true;
+    const wait = Math.max(0, minDisplay - (Date.now() - start));
+    setTimeout(() => {
+      el.classList.add('wg-preloader-hidden');
+      document.body.classList.remove('wg-loading');
+      setTimeout(() => el.remove(), 650);
+    }, wait);
+  };
+
+  if (document.readyState === 'complete') {
+    hide();
+  } else {
+    window.addEventListener('load', hide);
+  }
+  // Safety net: never let the preloader block the site if 'load' is slow/odd.
+  setTimeout(hide, 3000);
+}
+
 function initNavbarScroll() {
   const navbar = document.querySelector('.navbar');
   if (!navbar) return;
@@ -407,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  initPreloader();
   initThemeToggle();
   initFingerprintPopup();
   initPortfolio();

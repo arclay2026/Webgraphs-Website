@@ -105,11 +105,69 @@ body {
   overflow-x: clip;
   overflow-wrap: break-word;
   padding-top: var(--masthead-h);
-  animation: wg-fade-in .5s var(--ease-soft) both;
 }
-@keyframes wg-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+body.wg-loading { overflow: hidden; }
+
+/* ---------- Preloader — logo intro / loading screen ---------- */
+.wg-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s6);
+  background: var(--bg);
+  transition: opacity .6s var(--ease-soft), visibility .6s;
+  /* CSS-only safety net: dismiss on its own even if JS never runs */
+  animation: wg-preloader-autohide .01s linear 3.2s forwards;
+}
+.wg-preloader.wg-preloader-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes wg-preloader-autohide {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+.wg-preloader-logo { position: relative; display: flex; align-items: center; justify-content: center; }
+.wg-preloader-logo .logo-img { height: 60px; width: auto; position: relative; z-index: 1; animation: wg-preloader-pop .8s var(--ease) both; }
+
+.wg-preloader-glow {
+  position: absolute;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--signal) 55%, transparent) 0%, transparent 70%);
+  filter: blur(28px);
+  animation: wg-preloader-pulse 1.8s ease-in-out infinite;
+}
+
+.wg-preloader-bar {
+  width: 140px; height: 2px;
+  background: var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.wg-preloader-bar span {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, var(--signal), transparent);
+  animation: wg-preloader-sweep 1.3s ease-in-out infinite;
+}
+
+@keyframes wg-preloader-pop {
+  from { opacity: 0; transform: scale(.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes wg-preloader-pulse {
+  0%, 100% { opacity: .45; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes wg-preloader-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wg-preloader-logo .logo-img { animation: none; opacity: 1; transform: none; }
+  .wg-preloader-glow, .wg-preloader-bar span { animation: none; opacity: .7; }
 }
 
 img, svg { display: block; max-width: 100%; }
