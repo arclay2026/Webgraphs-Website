@@ -192,6 +192,101 @@ function isValidSAPhone(value) {
   return /^(\+27|0)[1-8][0-9]{8}$/.test(digits);
 }
 
+function initCustomSelects() {
+  document.querySelectorAll('select').forEach((select) => {
+    if (select.dataset.wgEnhanced) return;
+    select.dataset.wgEnhanced = 'true';
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'wg-select';
+    select.parentNode.insertBefore(wrapper, select);
+    wrapper.appendChild(select);
+    select.classList.add('wg-select-native');
+    select.tabIndex = -1;
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'wg-select-trigger';
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.innerHTML = '<span class="wg-select-value"></span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>';
+    wrapper.appendChild(trigger);
+
+    const listbox = document.createElement('ul');
+    listbox.className = 'wg-select-list';
+    listbox.setAttribute('role', 'listbox');
+    listbox.hidden = true;
+    wrapper.appendChild(listbox);
+
+    const valueEl = trigger.querySelector('.wg-select-value');
+    const optionEls = Array.from(select.options).map((opt, i) => {
+      const li = document.createElement('li');
+      li.className = 'wg-select-option';
+      li.setAttribute('role', 'option');
+      li.dataset.index = String(i);
+      li.textContent = opt.textContent;
+      listbox.appendChild(li);
+      return li;
+    });
+
+    function syncFromSelect() {
+      const opt = select.options[select.selectedIndex];
+      valueEl.textContent = opt ? opt.textContent : '';
+      optionEls.forEach((li, i) => li.classList.toggle('is-selected', i === select.selectedIndex));
+    }
+    syncFromSelect();
+
+    function closeList() {
+      listbox.hidden = true;
+      wrapper.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+      document.removeEventListener('click', onOutsideClick);
+    }
+    function onOutsideClick(e) {
+      if (!wrapper.contains(e.target)) closeList();
+    }
+    function openList() {
+      listbox.hidden = false;
+      wrapper.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+      const active = listbox.querySelector('.is-selected') || optionEls[0];
+      active?.scrollIntoView({ block: 'nearest' });
+      document.addEventListener('click', onOutsideClick);
+    }
+
+    trigger.addEventListener('click', () => {
+      if (listbox.hidden) openList(); else closeList();
+    });
+
+    listbox.addEventListener('click', (e) => {
+      const li = e.target.closest('.wg-select-option');
+      if (!li) return;
+      select.selectedIndex = Number(li.dataset.index);
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      syncFromSelect();
+      closeList();
+      trigger.focus();
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (listbox.hidden) { openList(); return; }
+        const dir = e.key === 'ArrowDown' ? 1 : -1;
+        const next = Math.min(Math.max(select.selectedIndex + dir, 0), optionEls.length - 1);
+        select.selectedIndex = next;
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        syncFromSelect();
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (listbox.hidden) openList(); else closeList();
+      } else if (e.key === 'Escape') {
+        closeList();
+      }
+    });
+  });
+}
+
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -439,6 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   initPreloader();
+  initCustomSelects();
   initThemeToggle();
   initFingerprintPopup();
   initPortfolio();

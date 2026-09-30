@@ -445,7 +445,8 @@ body.menu-open { overflow: hidden; }
 .form-error { display: block; min-height: 18px; margin-top: 6px; color: #ff8080; font: 500 13px/1.3 var(--f-sans); }
 .form-group.has-error input,
 .form-group.has-error select,
-.form-group.has-error textarea { border-color: #e05a5a; }
+.form-group.has-error textarea,
+.form-group.has-error .wg-select-trigger { border-color: #e05a5a; }
 
 .form-success {
   display: flex; align-items: flex-start; gap: var(--s3);
@@ -466,6 +467,71 @@ body.menu-open { overflow: hidden; }
   background: var(--plate); border: 1px solid var(--rule-strong); border-radius: 999px; color: var(--fg); font: 500 var(--fs-small)/1.3 var(--f-sans);
 }
 .search-input-wrap input:focus { outline: none; border-color: var(--signal-ink); }
+
+/* ---------- Custom select dropdown (progressive enhancement over <select>) ---------- */
+.wg-select { position: relative; }
+.qf-row .wg-select { flex: 1; min-width: 140px; }
+.form-group .wg-select { width: 100%; }
+
+.wg-select-native { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; overflow: hidden; }
+
+.wg-select-trigger {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s3);
+  width: 100%; min-height: var(--touch);
+  padding: 12px 18px;
+  background: var(--plate);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  color: var(--fg);
+  font: 500 var(--fs-body)/1.4 var(--f-sans);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+.wg-select-trigger .wg-select-value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wg-select-trigger i { color: var(--signal-ink); font-size: .75rem; flex-shrink: 0; transition: transform .25s var(--ease-soft); }
+.wg-select-trigger:hover { border-color: color-mix(in srgb, var(--signal) 45%, var(--rule-strong)); }
+.wg-select-trigger:focus-visible { outline: none; border-color: var(--signal-ink); box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 16%, transparent); }
+.wg-select.open .wg-select-trigger { border-color: var(--signal-ink); box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 16%, transparent); }
+.wg-select.open .wg-select-trigger i { transform: rotate(180deg); }
+
+.qf-row .wg-select-trigger { border-radius: 999px; padding: 12px 16px; background: var(--bg); font-size: var(--fs-small); }
+
+.wg-select-list {
+  position: absolute; left: 0; right: 0; top: calc(100% + 8px);
+  margin: 0; padding: 6px;
+  list-style: none;
+  background: color-mix(in srgb, var(--plate) 92%, transparent);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg), var(--glow-sm);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 60;
+  opacity: 0; transform: translateY(-6px) scale(.98);
+  pointer-events: none;
+  transition: opacity .18s var(--ease-soft), transform .18s var(--ease-soft);
+}
+.wg-select.open .wg-select-list { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+.wg-select-option {
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  font: 500 var(--fs-small)/1.4 var(--f-sans);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background-color .15s, color .15s;
+}
+.wg-select-option:hover,
+.wg-select-option.is-active { background: color-mix(in srgb, var(--signal) 14%, var(--plate-2)); }
+.wg-select-option.is-selected { background: var(--signal); color: #08170d; font-weight: 700; }
+.wg-select-option.is-selected:hover, .wg-select-option.is-selected.is-active { background: var(--signal); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wg-select-list, .wg-select-trigger i { transition: none; }
+}
 
 /* ---------- 07 · Icon tiles — colored rounded-square badges ---------- */
 .icon-tile {
