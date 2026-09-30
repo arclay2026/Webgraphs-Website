@@ -88,6 +88,21 @@ function initClock() {
   setInterval(update, 1000);
 }
 
+function initHeroVideo() {
+  const video = document.querySelector('.hero-video-bg video');
+  if (!video) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.pause();
+    return;
+  }
+  video.muted = true;
+  const tryPlay = () => video.play().catch(() => {});
+  tryPlay();
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') tryPlay();
+  });
+}
+
 function initHeroParallax() {
   const visual = document.querySelector('.hero-visual .showcase-grid');
   if (!visual || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
@@ -449,6 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initMobileMenu();
   initHeroParallax();
+  initHeroVideo();
   initClock();
 
   const quickQuoteForm = document.getElementById('quick-quote-form');
