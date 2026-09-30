@@ -33,6 +33,30 @@ function initMobileMenu() {
   });
 }
 
+function initClock() {
+  const clock = document.createElement('div');
+  clock.className = 'wg-clock';
+  clock.setAttribute('aria-hidden', 'true');
+  clock.innerHTML = '<span class="wg-clock-dot"></span><span class="wg-clock-time">--:--:--</span><span class="wg-clock-label">SAST</span>';
+  document.body.appendChild(clock);
+
+  const timeEl = clock.querySelector('.wg-clock-time');
+  const update = () => {
+    let text;
+    try {
+      text = new Intl.DateTimeFormat('en-ZA', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+        timeZone: 'Africa/Johannesburg',
+      }).format(new Date());
+    } catch (e) {
+      text = new Date().toLocaleTimeString();
+    }
+    timeEl.textContent = text;
+  };
+  update();
+  setInterval(update, 1000);
+}
+
 function initHeroParallax() {
   const visual = document.querySelector('.hero-visual .showcase-grid');
   if (!visual || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
@@ -393,6 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initMobileMenu();
   initHeroParallax();
+  initClock();
 
   const quickQuoteForm = document.getElementById('quick-quote-form');
   if (quickQuoteForm) {
