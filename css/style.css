@@ -471,8 +471,13 @@ body.menu-open { overflow: hidden; }
   opacity: 0; transform: translateY(-6px) scale(.98);
   pointer-events: none;
   transition: opacity .18s var(--ease-soft), transform .18s var(--ease-soft);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--signal) 50%, var(--plate-2)) transparent;
 }
 .wg-select.open .wg-select-list { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.wg-select-list::-webkit-scrollbar { width: 6px; }
+.wg-select-list::-webkit-scrollbar-track { background: transparent; }
+.wg-select-list::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--signal) 50%, var(--plate-2)); border-radius: 999px; }
 
 .wg-select-option {
   padding: 11px 14px;
@@ -525,6 +530,16 @@ body.menu-open { overflow: hidden; }
   position: relative;
 }
 .card:hover, .course-card:hover { border-color: color-mix(in srgb, var(--signal) 55%, var(--rule-strong)); background: color-mix(in srgb, var(--plate-2) 82%, transparent); transform: translateY(-2px); box-shadow: var(--glow-sm); }
+
+/* backdrop-filter above makes each card its own stacking context, so an open
+   dropdown that overflows a card's edge would paint behind a later sibling
+   card — raise the whole card above its siblings while a select is open */
+.card:has(.wg-select.open),
+.course-card:has(.wg-select.open),
+.widget:has(.wg-select.open),
+.price-table:has(.wg-select.open),
+.popup-card:has(.wg-select.open),
+.panel:has(.wg-select.open) { z-index: 5; }
 
 .card-image {
   margin: calc(var(--s6) * -1) calc(var(--s6) * -1) var(--s5);
