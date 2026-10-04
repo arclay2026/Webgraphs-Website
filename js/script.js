@@ -118,6 +118,17 @@ function setupFilterBar(barEl, items, getCategory) {
   });
 }
 
+function initFaqAccordion() {
+  document.querySelectorAll('.faq-item').forEach((item) => {
+    const btn = item.querySelector('.faq-q');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+}
+
 function initTabs() {
   document.querySelectorAll('.tab-bar').forEach((bar) => {
     const panels = Array.from(bar.parentElement.querySelectorAll(':scope > .tab-panel'));
@@ -507,6 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolio();
   initServicesFilter();
   initTabs();
+  initFaqAccordion();
   initCoursesFilter();
   initContactForm();
   initNavbarScroll();

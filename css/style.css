@@ -660,6 +660,48 @@ body.menu-open { overflow: hidden; }
   .price-row .price { text-align: left; }
 }
 
+/* FAQ accordion */
+.faq-wrap { max-width: 780px; margin: 0 auto; }
+.faq-category { margin-bottom: var(--s8); }
+.faq-category:last-child { margin-bottom: 0; }
+.faq-category-title { display: flex; align-items: center; gap: var(--s3); font: 800 1.2rem/1 var(--f-sans); margin-bottom: var(--s5); }
+.faq-category-title i { color: var(--signal-ink); }
+
+.faq-item {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--plate) 78%, transparent);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  margin-bottom: var(--s3);
+  overflow: hidden;
+  transition: border-color .25s var(--ease-soft);
+}
+.faq-item.open { border-color: color-mix(in srgb, var(--signal) 45%, var(--rule-strong)); }
+
+.faq-q {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
+  padding: var(--s5) var(--s6);
+  background: none; border: none;
+  color: var(--fg);
+  font: 700 var(--fs-body)/1.4 var(--f-sans);
+  text-align: left;
+  cursor: pointer;
+}
+.faq-q i { color: var(--signal-ink); flex-shrink: 0; transition: transform .25s var(--ease-soft); }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+
+.faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s var(--ease-soft); }
+.faq-item.open .faq-a { grid-template-rows: 1fr; }
+.faq-a-inner { overflow: hidden; min-height: 0; }
+.faq-a-inner p { padding: 0 var(--s6) var(--s5); color: var(--mute); font-size: var(--fs-small); line-height: 1.6; }
+.faq-a-inner a { color: var(--signal-ink); font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-a, .faq-q i { transition: none; }
+}
+
 /* Steps */
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s5); }
 .step { position: relative; padding: var(--s5); background: var(--plate); border: 1px solid var(--rule); border-radius: var(--radius-md); }
