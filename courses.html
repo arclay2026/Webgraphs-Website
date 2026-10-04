@@ -182,8 +182,57 @@
       <div class="tab-panel" data-panel="pricing" hidden>
         <div class="section-head reveal">
           <span class="section-tag">Pricing</span>
-          <h2 class="section-title">Course Prices</h2>
-          <p class="section-desc">Mix and match software to build the bundle that suits you — course duration depends on the combination you choose.</p>
+          <h2 class="section-title">Build Your Bundle</h2>
+          <p class="section-desc">Tick the software you want to learn and see your price and course duration instantly.</p>
+        </div>
+
+        <div class="price-calc reveal">
+          <div class="price-calc-toggles">
+            <label class="calc-chip">
+              <input type="checkbox" value="Ps">
+              <span class="calc-chip-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
+              <span>Photoshop</span>
+            </label>
+            <label class="calc-chip">
+              <input type="checkbox" value="Ai">
+              <span class="calc-chip-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span>Illustrator</span>
+            </label>
+            <label class="calc-chip">
+              <input type="checkbox" value="Lr">
+              <span class="calc-chip-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+              <span>Lightroom</span>
+            </label>
+            <label class="calc-chip">
+              <input type="checkbox" value="Pr">
+              <span class="calc-chip-badge" style="background:#00005a;color:#9999ff;">Pr</span>
+              <span>Premiere Pro</span>
+            </label>
+          </div>
+
+          <div class="price-calc-result">
+            <div class="price-calc-placeholder" id="price-calc-placeholder">
+              <i class="fa-solid fa-hand-pointer"></i>
+              <p>Select the software above to see your price.</p>
+            </div>
+            <div class="price-calc-match" id="price-calc-match" hidden>
+              <div class="price-calc-amount">
+                <strong id="price-calc-amount">R0</strong>
+                <span id="price-calc-duration">0 Month(s)</span>
+              </div>
+              <a href="#" id="price-calc-enroll" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Enroll via WhatsApp</a>
+            </div>
+            <div class="price-calc-nomatch" id="price-calc-nomatch" hidden>
+              <i class="fa-solid fa-circle-info"></i>
+              <p>We don't currently offer this exact combination as a set bundle — message us for a custom quote.</p>
+              <a href="https://wa.me/27787347867?text=Hi%2C%20I'd%20like%20to%20ask%20about%20a%20custom%20course%20bundle." target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> Ask About a Custom Bundle</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top:var(--s9);">
+          <span class="section-tag">Reference</span>
+          <h3 style="font-size:1.4rem;">All Available Bundles</h3>
         </div>
 
         <div class="price-table reveal">

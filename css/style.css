@@ -643,6 +643,45 @@ body.menu-open { overflow: hidden; }
 .feature-list strong { display: block; margin-bottom: 3px; font-size: 1.02rem; }
 .feature-list span.desc { color: var(--mute); font-size: var(--fs-small); line-height: 1.55; }
 
+/* Course price calculator */
+.price-calc-toggles { display: flex; flex-wrap: wrap; gap: var(--s3); margin-bottom: var(--s5); }
+.calc-chip {
+  position: relative;
+  display: flex; align-items: center; gap: var(--s3);
+  flex: 1 1 200px;
+  padding: var(--s4) var(--s5);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  background: var(--plate);
+  cursor: pointer;
+  transition: border-color .2s, background-color .2s, box-shadow .2s;
+}
+.calc-chip input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.calc-chip-badge { width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font: 800 .8rem/1 var(--f-mono); flex-shrink: 0; }
+.calc-chip span:last-child { font-weight: 700; }
+.calc-chip:hover { border-color: color-mix(in srgb, var(--signal) 45%, var(--rule-strong)); }
+.calc-chip:has(input:checked) { border-color: var(--signal-ink); background: color-mix(in srgb, var(--signal) 12%, var(--plate)); }
+.calc-chip:has(input:focus-visible) { outline: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 16%, transparent); }
+
+.price-calc-result {
+  min-height: 140px;
+  padding: var(--s6);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--plate) 78%, transparent);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.price-calc-placeholder, .price-calc-nomatch { display: flex; flex-direction: column; align-items: center; gap: var(--s3); color: var(--mute); max-width: 420px; }
+.price-calc-placeholder i, .price-calc-nomatch i { font-size: 1.6rem; color: var(--signal-ink); }
+.price-calc-match { display: flex; flex-direction: column; align-items: center; gap: var(--s5); width: 100%; }
+.price-calc-amount strong { display: block; font: 800 3rem/1 var(--f-display-hud); color: var(--signal-ink); text-shadow: 0 0 16px color-mix(in srgb, var(--signal) 45%, transparent); }
+.price-calc-amount span { color: var(--mute); font-size: var(--fs-small); }
+
 /* Price table */
 .price-table { padding: var(--s3) var(--s5); }
 .price-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); padding: var(--s5) var(--s2); border-bottom: 1px solid var(--rule); flex-wrap: wrap; }

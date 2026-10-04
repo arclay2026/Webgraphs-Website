@@ -162,6 +162,62 @@ function initCoursesFilter() {
   setupFilterBar(bar, Array.from(grid.querySelectorAll('.course-card')), (item) => item.dataset.software);
 }
 
+function initPriceCalculator() {
+  const calc = document.querySelector('.price-calc');
+  if (!calc) return;
+
+  const BUNDLES = [
+    { combo: ['Ai'], price: 2000, duration: '1 Month(s)' },
+    { combo: ['Ai', 'Lr'], price: 2500, duration: '1/2 Month(s)' },
+    { combo: ['Ps', 'Ai'], price: 4500, duration: '2 Month(s)' },
+    { combo: ['Ps', 'Ai', 'Lr'], price: 4500, duration: '3 Month(s)' },
+    { combo: ['Ai', 'Pr'], price: 5000, duration: '2 Month(s)' },
+    { combo: ['Ps', 'Ai', 'Lr', 'Pr'], price: 7500, duration: '4 Month(s)' },
+  ];
+  const SOFTWARE_NAMES = { Ps: 'Photoshop', Ai: 'Illustrator', Lr: 'Lightroom', Pr: 'Premiere Pro' };
+
+  const checkboxes = Array.from(calc.querySelectorAll('.price-calc-toggles input[type="checkbox"]'));
+  const placeholder = document.getElementById('price-calc-placeholder');
+  const matchEl = document.getElementById('price-calc-match');
+  const nomatchEl = document.getElementById('price-calc-nomatch');
+  const amountEl = document.getElementById('price-calc-amount');
+  const durationEl = document.getElementById('price-calc-duration');
+  const enrollLink = document.getElementById('price-calc-enroll');
+
+  function update() {
+    const selected = checkboxes.filter((cb) => cb.checked).map((cb) => cb.value).sort();
+
+    if (selected.length === 0) {
+      placeholder.hidden = false;
+      matchEl.hidden = true;
+      nomatchEl.hidden = true;
+      return;
+    }
+    placeholder.hidden = true;
+
+    const match = BUNDLES.find((b) => {
+      const combo = [...b.combo].sort();
+      return combo.length === selected.length && combo.every((v, i) => v === selected[i]);
+    });
+
+    if (match) {
+      matchEl.hidden = false;
+      nomatchEl.hidden = true;
+      amountEl.textContent = `R${match.price}`;
+      durationEl.textContent = match.duration;
+      const comboText = match.combo.map((c) => SOFTWARE_NAMES[c]).join(' + ');
+      const message = `Hi, I'd like to enroll in the ${comboText} course bundle (R${match.price}).`;
+      enrollLink.href = `https://wa.me/27787347867?text=${encodeURIComponent(message)}`;
+    } else {
+      matchEl.hidden = true;
+      nomatchEl.hidden = false;
+    }
+  }
+
+  checkboxes.forEach((cb) => cb.addEventListener('change', update));
+  update();
+}
+
 function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 }
@@ -520,6 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initFaqAccordion();
   initCoursesFilter();
+  initPriceCalculator();
   initContactForm();
   initNavbarScroll();
   initMobileMenu();
