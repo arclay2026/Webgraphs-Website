@@ -583,8 +583,8 @@ body.menu-open { overflow: hidden; }
   overflow: hidden;
 }
 /* ad-design portfolio images (about.html) have mixed portrait/square ratios,
-   so they keep the taller box instead of the 3:2 service-photo ratio above */
-.card-image.contain { aspect-ratio: 4 / 3; }
+   so each gets its own aspect-ratio set inline to match its image exactly,
+   instead of the shared 3:2 service-photo ratio above */
 .card-image img {
   width: 100%; height: 100%;
   object-fit: contain;
