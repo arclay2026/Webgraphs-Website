@@ -352,143 +352,6 @@ function initContactForm() {
   });
 }
 
-function initFileInputs() {
-  document.querySelectorAll('.wg-file').forEach((wrap) => {
-    const input = wrap.querySelector('input[type="file"]');
-    const nameEl = wrap.querySelector('.wg-file-name');
-    if (!input || !nameEl) return;
-    const placeholder = nameEl.textContent;
-    input.addEventListener('change', () => {
-      if (input.files && input.files.length) {
-        nameEl.textContent = input.files.length > 1
-          ? `${input.files.length} files selected`
-          : input.files[0].name;
-      } else {
-        nameEl.textContent = placeholder;
-      }
-    });
-  });
-}
-
-function initFingerprintUploadForm() {
-  const form = document.getElementById('fingerprint-upload-form');
-  if (!form) return;
-
-  const WEB3FORMS_ACCESS_KEY = 'REPLACE-WITH-YOUR-WEB3FORMS-ACCESS-KEY';
-  const MAX_FILE_BYTES = 5 * 1024 * 1024;
-
-  const textFields = {
-    'fp-name': { validate: (v) => v.trim().length >= 2, message: 'Please enter your full name.' },
-    'fp-phone': { validate: (v) => isValidSAPhone(v), message: 'Enter a valid South African phone number.' },
-    'fp-email': { validate: (v) => isValidEmail(v), message: 'Enter a valid email address.' },
-  };
-  const fileFields = {
-    'fp-id-doc': { required: true, message: 'Please attach your ID or passport.' },
-    'fp-proof-residence': { required: true, message: 'Please attach your proof of residence.' },
-    'fp-drivers-license': { required: false, message: '' },
-  };
-
-  const showError = (id, message) => {
-    const el = document.getElementById(id);
-    el.closest('.form-group').classList.add('has-error');
-    const errEl = document.getElementById(`${id}-error`);
-    if (errEl) errEl.textContent = message;
-  };
-  const clearError = (id) => {
-    const el = document.getElementById(id);
-    el.closest('.form-group').classList.remove('has-error');
-    const errEl = document.getElementById(`${id}-error`);
-    if (errEl) errEl.textContent = '';
-  };
-
-  Object.keys(textFields).forEach((id) => {
-    document.getElementById(id).addEventListener('input', () => clearError(id));
-  });
-  Object.keys(fileFields).forEach((id) => {
-    document.getElementById(id).addEventListener('change', () => clearError(id));
-  });
-  const consentEl = document.getElementById('fp-consent');
-  consentEl.addEventListener('change', () => clearError('fp-consent'));
-
-  const successEl = document.getElementById('fingerprint-form-success');
-  const errorEl = document.getElementById('fingerprint-form-error');
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const submitBtnDefaultHTML = submitBtn.innerHTML;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (successEl) successEl.hidden = true;
-    if (errorEl) errorEl.hidden = true;
-
-    let valid = true;
-    Object.keys(textFields).forEach((id) => {
-      const { validate, message } = textFields[id];
-      if (!validate(document.getElementById(id).value)) {
-        showError(id, message);
-        valid = false;
-      } else {
-        clearError(id);
-      }
-    });
-    Object.keys(fileFields).forEach((id) => {
-      const { required, message } = fileFields[id];
-      const input = document.getElementById(id);
-      const file = input.files && input.files[0];
-      if (required && !file) {
-        showError(id, message);
-        valid = false;
-      } else if (file && file.size > MAX_FILE_BYTES) {
-        showError(id, 'That file is too large — max 5MB.');
-        valid = false;
-      } else {
-        clearError(id);
-      }
-    });
-    if (!consentEl.checked) {
-      showError('fp-consent', 'Please confirm you consent to share these documents with us.');
-      valid = false;
-    } else {
-      clearError('fp-consent');
-    }
-    if (!valid) return;
-
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
-
-    try {
-      const formData = new FormData(form);
-      formData.set('access_key', WEB3FORMS_ACCESS_KEY);
-      formData.set('subject', 'New Fingerprint Capture Document Submission');
-      formData.set('from_name', 'Web Graphs Technologies Website');
-
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
-      });
-      const result = await response.json();
-
-      if (!result.success) throw new Error(result.message || 'Submission failed');
-
-      if (successEl) {
-        successEl.hidden = false;
-        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-      form.reset();
-      form.querySelectorAll('.wg-file-name').forEach((el) => {
-        el.textContent = 'No file chosen';
-      });
-    } catch (err) {
-      if (errorEl) {
-        errorEl.hidden = false;
-        errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = submitBtnDefaultHTML;
-    }
-  });
-}
-
 function initFingerprintPopup() {
   const overlay = document.createElement('div');
   overlay.className = 'popup-overlay';
@@ -505,7 +368,6 @@ function initFingerprintPopup() {
       <p>Fast, professional biometric fingerprint capture for Uber and Bolt driver-partner registration — walk in, no long queues.</p>
       <div class="popup-actions">
         <a href="https://wa.me/27787347867?text=${encodeURIComponent("Hi, I'd like to book an Uber/Bolt fingerprint capture (R350).")}" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Book on WhatsApp</a>
-        <a href="book-fingerprint.html" class="btn btn-outline"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Documents</a>
         <button type="button" class="popup-dismiss">Not now</button>
       </div>
     </div>
@@ -641,14 +503,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPreloader();
   initCustomSelects();
-  initFileInputs();
   initFingerprintPopup();
   initPortfolio();
   initServicesFilter();
   initTabs();
   initCoursesFilter();
   initContactForm();
-  initFingerprintUploadForm();
   initNavbarScroll();
   initMobileMenu();
   initHeroParallax();
