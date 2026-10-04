@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Fingerprint Capture | Web Graphs Technologies</title>
+<meta name="description" content="Submit your ID, proof of residence and driver's documents online to book your Uber or Bolt fingerprint capture with Web Graphs Technologies in Johannesburg.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wg-preloader" id="wg-preloader" role="presentation" aria-hidden="true">
+  <div class="wg-preloader-glow"></div>
+  <div class="wg-preloader-logo">
+    <img src="assets/logo.svg" alt="" class="logo-img">
+  </div>
+  <div class="wg-preloader-bar"><span></span></div>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="courses.html">Courses</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline whatsapp-nav-btn">WhatsApp</a>
+      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="courses.html">Courses</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary mobile-menu-cta"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+</div>
+
+<main>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">Home <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <a href="services.html#fingerprint">Services</a> <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <span class="accent-text">Book Fingerprint Capture</span></div>
+      <h1>Book Your Fingerprint Capture</h1>
+      <p>Submit your documents securely online and we'll confirm your appointment — no need to email files back and forth.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container contact-grid">
+
+      <div class="reveal">
+        <span class="section-tag">Fingerprint Capture</span>
+        <h2 class="section-title">What You'll Need</h2>
+        <p style="color:var(--text-muted);margin-bottom:24px;">Have these ready before you submit — it helps us confirm your booking faster.</p>
+
+        <ul class="feature-list mt-0">
+          <li>
+            <span class="check"><i class="fa-solid fa-id-card"></i></span>
+            <div>
+              <strong>South African ID or Passport</strong>
+              <span class="desc">A clear photo or scanned copy of your ID book, smart ID card, or passport.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check"><i class="fa-solid fa-file-lines"></i></span>
+            <div>
+              <strong>Proof of Residence</strong>
+              <span class="desc">A utility bill, bank statement or affidavit no older than 3 months.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check"><i class="fa-solid fa-id-badge"></i></span>
+            <div>
+              <strong>Driver's License / PrDP <span class="form-optional">(optional)</span></strong>
+              <span class="desc">If you already have one, attach it to speed up your Uber/Bolt registration.</span>
+            </div>
+          </li>
+        </ul>
+
+        <p class="price-line">R350 <span>per capture</span></p>
+        <p style="color:var(--text-muted);margin-top:14px;">Once we receive your documents, we'll confirm your appointment slot via WhatsApp or email — usually within 24 hours.</p>
+
+        <div class="contact-info-card" style="margin-top:28px;">
+          <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <div>
+            <h4>Prefer WhatsApp?</h4>
+            <a href="https://wa.me/27787347867?text=Hi%2C%20I'd%20like%20to%20send%20my%20documents%20for%20an%20Uber%2FBolt%20fingerprint%20capture." target="_blank" rel="noopener">Send your documents via chat instead</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel reveal">
+        <span class="section-tag">Submit Your Documents</span>
+        <h3 style="font-size:1.4rem;margin:10px 0 26px;">Fill in the form below</h3>
+        <form id="fingerprint-upload-form" enctype="multipart/form-data" novalidate>
+          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fp-name">Full Name</label>
+              <input type="text" id="fp-name" name="name" placeholder="Your name" required>
+              <span class="form-error" id="fp-name-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="fp-phone">Phone Number</label>
+              <input type="tel" id="fp-phone" name="phone" placeholder="e.g. 078 734 7867" required>
+              <span class="form-error" id="fp-phone-error"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fp-email">Email Address</label>
+              <input type="email" id="fp-email" name="email" placeholder="you@example.com" required>
+              <span class="form-error" id="fp-email-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="fp-platform">Platform</label>
+              <select id="fp-platform" name="platform">
+                <option>Uber</option>
+                <option>Bolt</option>
+                <option>Both Uber &amp; Bolt</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fp-date">Preferred Date <span class="form-optional">(optional)</span></label>
+            <input type="date" id="fp-date" name="preferred_date">
+          </div>
+
+          <div class="form-group">
+            <label for="fp-id-doc">ID Document or Passport</label>
+            <div class="wg-file">
+              <input type="file" id="fp-id-doc" name="id_document" accept="image/*,.pdf" required>
+              <label for="fp-id-doc" class="wg-file-btn"><i class="fa-solid fa-cloud-arrow-up"></i> Choose file</label>
+              <span class="wg-file-name">No file chosen</span>
+            </div>
+            <span class="form-hint">Clear photo or scan. JPG, PNG or PDF, max 5MB.</span>
+            <span class="form-error" id="fp-id-doc-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="fp-proof-residence">Proof of Residence</label>
+            <div class="wg-file">
+              <input type="file" id="fp-proof-residence" name="proof_of_residence" accept="image/*,.pdf" required>
+              <label for="fp-proof-residence" class="wg-file-btn"><i class="fa-solid fa-cloud-arrow-up"></i> Choose file</label>
+              <span class="wg-file-name">No file chosen</span>
+            </div>
+            <span class="form-hint">Not older than 3 months. Max 5MB.</span>
+            <span class="form-error" id="fp-proof-residence-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="fp-drivers-license">Driver's License / PrDP <span class="form-optional">(optional)</span></label>
+            <div class="wg-file">
+              <input type="file" id="fp-drivers-license" name="drivers_license" accept="image/*,.pdf">
+              <label for="fp-drivers-license" class="wg-file-btn"><i class="fa-solid fa-cloud-arrow-up"></i> Choose file</label>
+              <span class="wg-file-name">No file chosen</span>
+            </div>
+            <span class="form-hint">Max 5MB.</span>
+            <span class="form-error" id="fp-drivers-license-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="fp-notes">Additional Notes <span class="form-optional">(optional)</span></label>
+            <textarea id="fp-notes" name="notes" rows="4" placeholder="Anything else we should know..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="wg-checkbox">
+              <input type="checkbox" id="fp-consent" name="consent" required>
+              <span class="wg-checkbox-box"><i class="fa-solid fa-check"></i></span>
+              <span class="wg-checkbox-label">I consent to Web Graphs Technologies processing these documents solely to arrange my Uber/Bolt fingerprint capture booking, in line with South Africa's POPIA.</span>
+            </label>
+            <span class="form-error" id="fp-consent-error"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Submit Documents
+          </button>
+
+          <div class="form-success" id="fingerprint-form-success" hidden>
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong>Documents received!</strong>
+              <span>We'll confirm your appointment via WhatsApp or email shortly.</span>
+            </div>
+          </div>
+
+          <div class="form-error-banner" id="fingerprint-form-error" hidden>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <div>
+              <strong>Something went wrong.</strong>
+              <span>Please try again, or send your documents via WhatsApp instead.</span>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-statement reveal">
+
+      <p>Digital, design and print solutions for individuals and businesses in Johannesburg and beyond.</p>
+
+      <a href="contact.html" class="btn btn-primary">Start a Project</a>
+
+    </div>
+
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo"><img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img"></a>
+        <div class="social-row">
+          <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#fingerprint">Fingerprint Capture</a></li>
+          <li><a href="book-fingerprint.html">Upload Fingerprint Docs</a></li>
+          <li><a href="services.html#webdev">Web &amp; App Dev</a></li>
+          <li><a href="services.html#design">Graphic Design</a></li>
+          <li><a href="services.html#printing">Office Printing</a></li>
+          <li><a href="services.html#software">Software Installation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="https://wa.me/27787347867" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +27 78 734 7867</a></li>
+          <li><a href="mailto:webgraphstechnologies@gmail.com"><i class="fa-solid fa-envelope"></i> webgraphstechnologies@gmail.com</a></li>
+          <li><i class="fa-solid fa-location-dot"></i> 9 Jill Street, Langlaagte North, Johannesburg, 2092, South Africa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Web Graphs Technologies. All rights reserved.</span>
+      <span>Designed &amp; built by Web Graphs Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -78,6 +78,10 @@
 
 /* ---------- 01 · Base ---------- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+/* a class setting display on the same element as the hidden attribute would otherwise
+   win over the browser's [hidden] default, since author rules beat UA rules regardless
+   of specificity — this keeps hidden working no matter what else targets the element */
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -495,6 +499,57 @@ body.menu-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .wg-select-list, .wg-select-trigger i { transition: none; }
 }
+
+/* ---------- Custom checkbox ---------- */
+.wg-checkbox { display: flex; align-items: flex-start; gap: var(--s3); cursor: pointer; }
+.wg-checkbox input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.wg-checkbox-box {
+  flex-shrink: 0; width: 22px; height: 22px; margin-top: 2px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  background: var(--plate);
+  display: flex; align-items: center; justify-content: center;
+  color: transparent;
+  font-size: 11px;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.wg-checkbox:hover .wg-checkbox-box { border-color: color-mix(in srgb, var(--signal) 45%, var(--rule-strong)); }
+.wg-checkbox input:checked + .wg-checkbox-box { background: var(--signal); border-color: var(--signal); color: #08170d; }
+.wg-checkbox input:focus-visible + .wg-checkbox-box { outline: none; border-color: var(--signal-ink); box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 16%, transparent); }
+.wg-checkbox-label { color: var(--mute); font-size: var(--fs-small); line-height: 1.5; }
+.form-group.has-error .wg-checkbox-box { border-color: #e05a5a; }
+
+/* ---------- Custom file upload ---------- */
+.wg-file { position: relative; display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; }
+.wg-file input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.wg-file-btn {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  padding: 11px 20px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  background: var(--plate);
+  color: var(--fg);
+  font: 600 var(--fs-small)/1 var(--f-sans);
+  cursor: pointer;
+  transition: border-color .2s, background-color .2s;
+  flex-shrink: 0;
+}
+.wg-file-btn i { color: var(--signal-ink); }
+.wg-file-btn:hover { border-color: color-mix(in srgb, var(--signal) 45%, var(--rule-strong)); background: var(--plate-2); }
+.wg-file input[type="file"]:focus-visible + .wg-file-btn { outline: none; border-color: var(--signal-ink); box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 16%, transparent); }
+.wg-file-name { color: var(--mute); font-size: var(--fs-small); overflow-wrap: anywhere; }
+.form-group.has-error .wg-file-btn { border-color: #e05a5a; }
+.form-hint { display: block; margin-top: 7px; color: var(--mute); font-size: 13px; line-height: 1.45; }
+
+.form-error-banner {
+  display: flex; align-items: flex-start; gap: var(--s3);
+  margin-top: var(--s5); padding: var(--s5);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, #e05a5a 14%, transparent);
+}
+.form-error-banner i { color: #ff8080; font-size: 1.2rem; margin-top: 2px; }
+.form-error-banner strong { display: block; margin-bottom: 2px; }
+.form-error-banner span { color: var(--mute); font-size: var(--fs-small); }
 
 /* ---------- 07 · Icon tiles — colored rounded-square badges ---------- */
 .icon-tile {
