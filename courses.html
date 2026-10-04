@@ -45,15 +45,24 @@
 </header>
 <div class="mobile-menu" id="mobile-menu">
   <nav aria-label="Mobile">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="courses.html" class="active">Courses</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html"><span class="mm-num">01</span><i class="fa-solid fa-house"></i><span class="mm-label">Home</span></a>
+    <a href="services.html"><span class="mm-num">02</span><i class="fa-solid fa-briefcase"></i><span class="mm-label">Services</span></a>
+    <a href="courses.html" class="active"><span class="mm-num">03</span><i class="fa-solid fa-graduation-cap"></i><span class="mm-label">Courses</span></a>
+    <a href="portfolio.html"><span class="mm-num">04</span><i class="fa-solid fa-images"></i><span class="mm-label">Portfolio</span></a>
+    <a href="about.html"><span class="mm-num">05</span><i class="fa-solid fa-circle-info"></i><span class="mm-label">About</span></a>
+    <a href="faq.html"><span class="mm-num">06</span><i class="fa-solid fa-circle-question"></i><span class="mm-label">FAQ</span></a>
+    <a href="contact.html"><span class="mm-num">07</span><i class="fa-solid fa-envelope"></i><span class="mm-label">Contact</span></a>
   </nav>
-  <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary mobile-menu-cta"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+  <div class="mobile-menu-bottom">
+    <div class="social-row">
+      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary mobile-menu-cta"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+  </div>
 </div>
 
 <main>
@@ -87,7 +96,7 @@
 
           <div class="course-card reveal" data-software="ps">
             <span class="badge">Available</span>
-            <div class="software-icon" style="background:#001e36;color:#31a8ff;">Ps</div>
+            <div class="software-icon"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></div>
             <h3>Adobe Photoshop</h3>
             <p>Master photo editing, retouching and mock-up creation.</p>
             <div class="course-sublist">
@@ -113,7 +122,7 @@
 
           <div class="course-card reveal" data-software="ai">
             <span class="badge">Available</span>
-            <div class="software-icon" style="background:#330000;color:#ff7c00;">Ai</div>
+            <div class="software-icon"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></div>
             <h3>Adobe Illustrator</h3>
             <p>Master vector graphics, logo and ad design.</p>
             <div class="course-sublist">
@@ -139,7 +148,7 @@
 
           <div class="course-card reveal" data-software="lr">
             <span class="badge">Available</span>
-            <div class="software-icon" style="background:#001b2e;color:#3ec8ff;">Lr</div>
+            <div class="software-icon"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></div>
             <h3>Adobe Lightroom</h3>
             <p>Organize, edit and grade your photography like a pro.</p>
             <div class="course-sublist">
@@ -158,7 +167,7 @@
 
           <div class="course-card reveal" data-software="pr">
             <span class="badge">Available</span>
-            <div class="software-icon" style="background:#00005a;color:#9999ff;">Pr</div>
+            <div class="software-icon"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></div>
             <h3>Adobe Premiere Pro</h3>
             <p>Edit professional-quality videos from raw footage to final export.</p>
             <div class="course-sublist">
@@ -190,22 +199,22 @@
           <div class="price-calc-toggles">
             <label class="calc-chip">
               <input type="checkbox" value="Ps">
-              <span class="calc-chip-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
+              <span class="calc-chip-badge"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></span>
               <span>Photoshop</span>
             </label>
             <label class="calc-chip">
               <input type="checkbox" value="Ai">
-              <span class="calc-chip-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="calc-chip-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
               <span>Illustrator</span>
             </label>
             <label class="calc-chip">
               <input type="checkbox" value="Lr">
-              <span class="calc-chip-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+              <span class="calc-chip-badge"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></span>
               <span>Lightroom</span>
             </label>
             <label class="calc-chip">
               <input type="checkbox" value="Pr">
-              <span class="calc-chip-badge" style="background:#00005a;color:#9999ff;">Pr</span>
+              <span class="calc-chip-badge"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></span>
               <span>Premiere Pro</span>
             </label>
           </div>
@@ -238,7 +247,7 @@
         <div class="price-table reveal">
           <div class="price-row">
             <div class="combo">
-              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R2000</strong><span>1 Month(s)</span></div>
@@ -246,9 +255,9 @@
 
           <div class="price-row">
             <div class="combo">
-              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+              <span class="mini-badge"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R2500</strong><span>1/2 Month(s)</span></div>
@@ -256,11 +265,11 @@
 
           <div class="price-row">
             <div class="combo">
-              <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
+              <span class="mini-badge"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+              <span class="mini-badge"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R4500</strong><span>3 Month(s)</span></div>
@@ -268,9 +277,9 @@
 
           <div class="price-row">
             <div class="combo">
-              <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
+              <span class="mini-badge"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R4500</strong><span>2 Month(s)</span></div>
@@ -278,9 +287,9 @@
 
           <div class="price-row">
             <div class="combo">
-              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge" style="background:#00005a;color:#9999ff;">Pr</span>
+              <span class="mini-badge"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R5000</strong><span>2 Month(s)</span></div>
@@ -288,13 +297,13 @@
 
           <div class="price-row">
             <div class="combo">
-              <span class="mini-badge" style="background:#001e36;color:#31a8ff;">Ps</span>
+              <span class="mini-badge"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge" style="background:#330000;color:#ff7c00;">Ai</span>
+              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge" style="background:#001b2e;color:#3ec8ff;">Lr</span>
+              <span class="mini-badge"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge" style="background:#00005a;color:#9999ff;">Pr</span>
+              <span class="mini-badge"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R7500</strong><span>4 Month(s)</span></div>
