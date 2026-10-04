@@ -493,6 +493,24 @@ function initPortfolio() {
   const searchInput = document.getElementById('portfolio-search');
   const items = Array.from(grid.querySelectorAll('.portfolio-item'));
 
+  const prevBtn = document.getElementById('portfolio-prev');
+  const nextBtn = document.getElementById('portfolio-next');
+  if (prevBtn && nextBtn) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const scrollStep = () => {
+      const item = grid.querySelector('.portfolio-item');
+      if (!item) return grid.clientWidth;
+      const gap = parseFloat(getComputedStyle(grid).columnGap || '0') || 0;
+      return item.getBoundingClientRect().width + gap;
+    };
+    prevBtn.addEventListener('click', () => {
+      grid.scrollBy({ left: -scrollStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      grid.scrollBy({ left: scrollStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
   if (controls && items.length) {
     controls.hidden = false;
     let activeFilter = 'all';

@@ -883,19 +883,57 @@ body.no-scroll { overflow: hidden; }
 .filter-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; margin-bottom: var(--s7); }
 .filter-row .filter-bar { margin-bottom: 0; }
 
-/* ---------- Portfolio ---------- */
-.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); }
-.portfolio-item { position: relative; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; border-radius: var(--radius-lg); background: var(--plate); border: 1px solid var(--rule); }
+/* ---------- Portfolio — large carousel with edge fade ---------- */
+.carousel-wrap { position: relative; }
+.portfolio-grid {
+  display: flex;
+  gap: var(--s5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: var(--s3) 0;
+  mask-image: linear-gradient(to right, transparent, black 64px, black calc(100% - 64px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 64px, black calc(100% - 64px), transparent);
+}
+.portfolio-grid::-webkit-scrollbar { display: none; }
+.portfolio-item {
+  position: relative; overflow: hidden; cursor: pointer;
+  border-radius: var(--radius-lg); background: var(--plate); border: 1px solid var(--rule);
+  flex: 0 0 auto;
+  width: min(680px, 82vw);
+  aspect-ratio: 4/3;
+  scroll-snap-align: center;
+}
 .portfolio-item img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform .6s var(--ease); }
 .portfolio-item:hover img { transform: scale(1.06); }
 .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.85) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: var(--s5); opacity: 0; transition: opacity .3s ease; }
 .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 .portfolio-overlay .cat { color: #9be3b0; font: 600 11px/1 var(--f-sans); letter-spacing: 0; margin-bottom: 4px; }
 .portfolio-overlay h4 { font-size: 1rem; color: #fff; font-weight: 800; }
-.portfolio-empty { grid-column: 1/-1; width: 100%; text-align: center; padding: var(--s9) var(--s4); background: var(--plate); border-radius: var(--radius-lg); border: 1px solid var(--rule); }
+.portfolio-empty { flex: 1 1 100%; width: 100%; text-align: center; padding: var(--s9) var(--s4); background: var(--plate); border-radius: var(--radius-lg); border: 1px solid var(--rule); }
 .portfolio-empty .icon { width: 56px; height: 56px; margin: 0 auto var(--s5); border-radius: 16px; background: color-mix(in srgb, var(--signal) 16%, var(--plate-2)); color: var(--signal-ink); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
 .portfolio-empty h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: var(--s3); }
 .portfolio-empty p { color: var(--mute); max-width: 480px; margin: 0 auto var(--s6); }
+
+.carousel-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--rule-strong);
+  background: color-mix(in srgb, var(--plate) 85%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--fg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color .2s, border-color .2s, transform .2s;
+}
+.carousel-nav:hover { background: var(--plate-2); border-color: color-mix(in srgb, var(--signal) 45%, var(--rule-strong)); }
+.carousel-nav.prev { left: -4px; }
+.carousel-nav.next { right: -4px; }
+@media (max-width: 760px) { .carousel-nav { display: none; } }
 
 /* Lightbox */
 .lightbox-content { position: relative; max-width: 90vw; max-height: 88vh; }
@@ -903,8 +941,7 @@ body.no-scroll { overflow: hidden; }
 .lightbox-content .popup-close { top: -46px; right: 0; background: var(--plate); }
 .lightbox-caption { text-align: center; color: var(--mute); margin-top: var(--s4); font-size: var(--fs-small); }
 
-@media (max-width: 980px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .portfolio-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .portfolio-item { width: 86vw; } }
 
 /* ---------- WhatsApp float ---------- */
 .whatsapp-float {
