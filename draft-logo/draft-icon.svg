@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="184 -43 190 190" width="512" height="512" style="color:#F5F3EE;--accent:#E4572E;--bg:#1B1F3B">
-<rect x="184" y="-43" width="190" height="190" fill="#1B1F3B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="184 -43 190 190" width="512" height="512" style="color:#F5F3EE;--accent:#E4572E;--bg:#86de4e">
+<rect x="184" y="-43" width="190" height="190" fill="#86de4e"/>
 <!-- Compass as the A -->
 <g>
   <rect x="274" y="-16" width="10" height="16" rx="3" fill="currentColor"/>

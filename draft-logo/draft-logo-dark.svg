@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -56 616 216" width="1232" height="432" style="color:#F5F3EE;--accent:#E4572E;--bg:#1B1F3B">
-<rect x="-40" y="-56" width="616" height="216" fill="#1B1F3B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -56 616 216" width="1232" height="432" style="color:#F5F3EE;--accent:#E4572E;--bg:#86de4e">
+<rect x="-40" y="-56" width="616" height="216" fill="#86de4e"/>
 <g fill="none" stroke="currentColor" stroke-width="14" stroke-linejoin="miter" stroke-linecap="butt">
   <!-- D -->
   <path d="M7 7 H44 A46 53 0 0 1 44 113 H7 Z"/>
