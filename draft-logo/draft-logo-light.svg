@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -56 616 216" width="1232" height="432" style="color:#1B1F3B;--accent:#E4572E;--bg:#FFFFFF">
+<rect x="-40" y="-56" width="616" height="216" fill="#FFFFFF"/>
+<g fill="none" stroke="currentColor" stroke-width="14" stroke-linejoin="miter" stroke-linecap="butt">
+  <!-- D -->
+  <path d="M7 7 H44 A46 53 0 0 1 44 113 H7 Z"/>
+  <!-- R -->
+  <path d="M128 120 V7 H162 A30 30 0 0 1 162 67 H128"/>
+  <path d="M158 67 L196 120"/>
+  <!-- F -->
+  <path d="M368 120 V7 H432"/>
+  <path d="M368 62 H420"/>
+  <!-- T -->
+  <path d="M452 7 H536"/>
+  <path d="M494 7 V120"/>
+</g>
+<!-- Compass as the A -->
+<g>
+  <rect x="274" y="-16" width="10" height="16" rx="3" fill="currentColor"/>
+  <!-- legs -->
+  <path d="M279 10 L238 98" stroke="currentColor" stroke-width="14" fill="none"/>
+  <path d="M279 10 L319 96" stroke="currentColor" stroke-width="14" fill="none"/>
+  <!-- needle -->
+  <path d="M238 98 L231 120" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- pencil tip -->
+  <path d="M312.6 98.9 L325.4 93.1 L330 120 Z" fill="var(--accent)"/>
+  <!-- hinge -->
+  <circle cx="279" cy="12" r="13" fill="currentColor"/>
+  <circle cx="279" cy="12" r="4.5" fill="var(--bg)"/>
+  <!-- drawn arc = crossbar -->
+  <path d="M236 86 Q279 58 324 86" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" fill="none"/>
+</g>
+
+</svg>

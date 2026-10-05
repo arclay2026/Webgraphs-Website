@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="184 -43 190 190" width="512" height="512" style="color:#F5F3EE;--accent:#E4572E;--bg:#1B1F3B">
+<rect x="184" y="-43" width="190" height="190" fill="#1B1F3B"/>
+<!-- Compass as the A -->
+<g>
+  <rect x="274" y="-16" width="10" height="16" rx="3" fill="currentColor"/>
+  <!-- legs -->
+  <path d="M279 10 L238 98" stroke="currentColor" stroke-width="14" fill="none"/>
+  <path d="M279 10 L319 96" stroke="currentColor" stroke-width="14" fill="none"/>
+  <!-- needle -->
+  <path d="M238 98 L231 120" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- pencil tip -->
+  <path d="M312.6 98.9 L325.4 93.1 L330 120 Z" fill="var(--accent)"/>
+  <!-- hinge -->
+  <circle cx="279" cy="12" r="13" fill="currentColor"/>
+  <circle cx="279" cy="12" r="4.5" fill="var(--bg)"/>
+  <!-- drawn arc = crossbar -->
+  <path d="M236 86 Q279 58 324 86" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" fill="none"/>
+</g>
+
+</svg>
