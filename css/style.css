@@ -170,7 +170,7 @@ body::before, body::after {
   z-index: -1;
   pointer-events: none;
   border-radius: 50%;
-  filter: blur(110px);
+  filter: blur(70px);
   width: 62vmax;
   height: 62vmax;
   opacity: .4;
@@ -189,14 +189,14 @@ body::after {
   animation: wg-drift-b 34s ease-in-out infinite alternate;
 }
 @keyframes wg-drift-a {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(16vw, 12vh) scale(1.18); }
-  100% { transform: translate(-6vw, 18vh) scale(.92); }
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(16vw, 12vh); }
+  100% { transform: translate(-6vw, 18vh); }
 }
 @keyframes wg-drift-b {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(-14vw, -10vh) scale(1.12); }
-  100% { transform: translate(10vw, -16vh) scale(.9); }
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(-14vw, -10vh); }
+  100% { transform: translate(10vw, -16vh); }
 }
 @media (prefers-reduced-motion: reduce) {
   body::before, body::after { animation: none; }

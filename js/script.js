@@ -93,12 +93,29 @@ function initHeroParallax() {
   if (!visual || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   const section = document.querySelector('.hero');
   if (!section) return;
+
+  let rect = section.getBoundingClientRect();
+  const refreshRect = () => { rect = section.getBoundingClientRect(); };
+  window.addEventListener('resize', refreshRect, { passive: true });
+  window.addEventListener('scroll', refreshRect, { passive: true });
+
+  let pendingX = 0;
+  let pendingY = 0;
+  let queued = false;
+  const apply = () => {
+    queued = false;
+    visual.style.transform = `translate(${pendingX * -6}px, ${pendingY * -6}px)`;
+  };
+
   section.addEventListener('mousemove', (e) => {
-    const rect = section.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    visual.style.transform = `translate(${x * -6}px, ${y * -6}px)`;
-  });
+    pendingX = (e.clientX - rect.left) / rect.width - 0.5;
+    pendingY = (e.clientY - rect.top) / rect.height - 0.5;
+    if (!queued) {
+      queued = true;
+      requestAnimationFrame(apply);
+    }
+  }, { passive: true });
+
   section.addEventListener('mouseleave', () => {
     visual.style.transform = 'translate(0, 0)';
   });
