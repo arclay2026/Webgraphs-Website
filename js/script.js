@@ -460,7 +460,8 @@ function initFingerprintPopup() {
     if (e.key === 'Escape') close();
   });
 
-  const INTERVAL = 3 * 60 * 1000;
+  const INTERVAL = 5 * 60 * 1000;
+  const FIRST_VISIT_WAIT = 10000;
   let last = 0;
   try {
     last = parseInt(localStorage.getItem('wg_fp_popup_last') || '0', 10);
@@ -468,7 +469,7 @@ function initFingerprintPopup() {
     last = 0;
   }
   const elapsed = Date.now() - last;
-  const firstWait = elapsed >= INTERVAL ? 2000 : INTERVAL - elapsed;
+  const firstWait = elapsed >= INTERVAL ? FIRST_VISIT_WAIT : INTERVAL - elapsed;
 
   const trigger = () => {
     open();
