@@ -339,6 +339,97 @@ function initCustomSelects() {
   });
 }
 
+function initChecklistLead() {
+  const form = document.getElementById('checklist-lead-form');
+  if (!form) return;
+
+  const WEB3FORMS_ACCESS_KEY = 'REPLACE-WITH-YOUR-WEB3FORMS-ACCESS-KEY';
+  const CHECKLIST_URL = 'assets/downloads/uber-bolt-registration-checklist.pdf';
+
+  const nameEl = document.getElementById('lead-name');
+  const phoneEl = document.getElementById('lead-phone');
+  const consentEl = document.getElementById('lead-consent');
+  const successEl = document.getElementById('checklist-form-success');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitBtnDefaultHTML = submitBtn.innerHTML;
+
+  const showError = (id, message) => {
+    const el = document.getElementById(id);
+    el.closest('.form-group').classList.add('has-error');
+    const errEl = document.getElementById(`${id}-error`);
+    if (errEl) errEl.textContent = message;
+  };
+  const clearError = (id) => {
+    const el = document.getElementById(id);
+    el.closest('.form-group').classList.remove('has-error');
+    const errEl = document.getElementById(`${id}-error`);
+    if (errEl) errEl.textContent = '';
+  };
+
+  nameEl.addEventListener('input', () => clearError('lead-name'));
+  phoneEl.addEventListener('input', () => clearError('lead-phone'));
+  consentEl.addEventListener('change', () => clearError('lead-consent'));
+
+  const triggerDownload = () => {
+    const a = document.createElement('a');
+    a.href = CHECKLIST_URL;
+    a.download = 'Web-Graphs-Uber-Bolt-Registration-Checklist.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (successEl) successEl.hidden = true;
+
+    let valid = true;
+    if (nameEl.value.trim().length < 2) {
+      showError('lead-name', 'Please enter your full name.');
+      valid = false;
+    } else {
+      clearError('lead-name');
+    }
+    if (!isValidSAPhone(phoneEl.value)) {
+      showError('lead-phone', 'Enter a valid South African phone number.');
+      valid = false;
+    } else {
+      clearError('lead-phone');
+    }
+    if (!consentEl.checked) {
+      showError('lead-consent', 'Please confirm you agree to be contacted.');
+      valid = false;
+    } else {
+      clearError('lead-consent');
+    }
+    if (!valid) return;
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Preparing...';
+
+    // The free download isn't held hostage by the lead-capture backend — it starts right away.
+    triggerDownload();
+
+    try {
+      const formData = new FormData(form);
+      formData.set('access_key', WEB3FORMS_ACCESS_KEY);
+      formData.set('subject', 'New Checklist Download Lead');
+      formData.set('from_name', 'Web Graphs Technologies Website');
+      await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+    } catch (err) {
+      /* best-effort lead capture; the visitor already has their download */
+    }
+
+    if (successEl) {
+      successEl.hidden = false;
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = submitBtnDefaultHTML;
+  });
+}
+
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -614,6 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCoursesFilter();
   initPriceCalculator();
   initContactForm();
+  initChecklistLead();
   initNavbarScroll();
   initMobileMenu();
   initHeroParallax();
