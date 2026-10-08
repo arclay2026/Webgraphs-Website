@@ -665,6 +665,45 @@ h1, h2, h3, h4 { font-family: var(--font-sans); font-weight: 800; letter-spacing
   .work-piece { margin-bottom: var(--sp-8); }
 }
 
+/* ---------- 11b · Inner-page intro + service dossiers ---------- */
+.page-intro { padding-top: calc(var(--masthead-h) + var(--sp-8)); padding-bottom: var(--sp-7); }
+.page-intro h1 { font-size: var(--fs-h1); max-width: 16ch; }
+.page-intro .lede { margin-top: var(--sp-5); max-width: 60ch; font-size: var(--fs-lede); color: var(--mute); line-height: 1.5; }
+
+.svc-index { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-7); }
+.svc-index a {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 16px 9px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  font: 600 13px/1 var(--font-mono);
+  color: var(--mute);
+  transition: border-color var(--dur-2) var(--ease-soft), color var(--dur-2) var(--ease-soft), background-color var(--dur-2) var(--ease-soft);
+}
+.svc-index a span { color: var(--signal-ink); font-weight: 700; }
+.svc-index a:hover, .svc-index a:focus-visible { border-color: var(--signal); color: var(--fg); background: color-mix(in srgb, var(--signal) 10%, transparent); }
+
+.svc-piece {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--sp-7);
+  align-items: center;
+  padding-block: var(--sp-9);
+  border-top: 1px solid var(--line);
+}
+.svc-piece:first-of-type { border-top: none; }
+.svc-piece.reverse { grid-template-columns: 5fr 7fr; }
+.svc-piece.reverse .svc-visual { order: 2; }
+.svc-piece.reverse .svc-copy { order: 1; }
+.svc-visual { aspect-ratio: 3 / 2; }
+.svc-piece.teaser { grid-template-columns: 1fr; padding-block: var(--sp-7); }
+.svc-piece.teaser .work-desc { max-width: 70ch; }
+
+@media (max-width: 900px) {
+  .svc-piece, .svc-piece.reverse { grid-template-columns: 1fr; padding-block: var(--sp-7); }
+  .svc-piece.reverse .svc-visual, .svc-piece.reverse .svc-copy { order: 0; }
+}
+
 /* ---------- 12 · Stats (dense technical rhythm) ---------- */
 .stats-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
