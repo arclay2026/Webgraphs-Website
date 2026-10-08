@@ -531,6 +531,97 @@
   }
 
   /* ---------------------------------------------------------------
+     14 · Full contact form → WhatsApp
+     --------------------------------------------------------------- */
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+  }
+  function isValidSAPhone(value) {
+    const digits = value.replace(/[\s-]/g, '');
+    return /^(\+27|0)[1-8][0-9]{8}$/.test(digits);
+  }
+
+  function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const fields = {
+      name: { el: document.getElementById('name'), validate: (v) => v.trim().length >= 2, message: 'Please enter your full name.' },
+      age: { el: document.getElementById('age'), validate: (v) => /^\d+$/.test(v.trim()) && Number(v) >= 1 && Number(v) <= 120, message: 'Enter a valid age (1-120).' },
+      email: { el: document.getElementById('email'), validate: (v) => isValidEmail(v), message: 'Enter a valid email address.' },
+      phone: { el: document.getElementById('phone'), validate: (v) => isValidSAPhone(v), message: 'Enter a valid South African phone number (e.g. 078 734 7867).' },
+      address: { el: document.getElementById('address'), validate: (v) => v.trim().length >= 5, message: 'Please enter your address.' },
+    };
+
+    const showError = (key, message) => {
+      const { el } = fields[key];
+      el.closest('.cform-group').classList.add('has-error');
+      const errEl = document.getElementById(`${key}-error`);
+      if (errEl) errEl.textContent = message;
+    };
+    const clearError = (key) => {
+      const { el } = fields[key];
+      el.closest('.cform-group').classList.remove('has-error');
+      const errEl = document.getElementById(`${key}-error`);
+      if (errEl) errEl.textContent = '';
+    };
+
+    Object.keys(fields).forEach((key) => {
+      fields[key].el.addEventListener('input', () => clearError(key));
+    });
+
+    const successEl = document.getElementById('form-success');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (successEl) successEl.hidden = true;
+
+      let valid = true;
+      Object.keys(fields).forEach((key) => {
+        const { el, validate, message } = fields[key];
+        if (!validate(el.value)) {
+          showError(key, message);
+          valid = false;
+        } else {
+          clearError(key);
+        }
+      });
+      if (!valid) {
+        const firstError = form.querySelector('.cform-group.has-error input, .cform-group.has-error select');
+        if (firstError) firstError.focus();
+        return;
+      }
+
+      const name = fields.name.el.value.trim();
+      const age = fields.age.el.value.trim();
+      const email = fields.email.el.value.trim();
+      const phone = fields.phone.el.value.trim();
+      const address = fields.address.el.value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+
+      const lines = [
+        "Hi Web Graphs Technologies, I'd like to get in touch.",
+        `Name: ${name}`,
+        `Age: ${age}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Address: ${address}`,
+        `Service: ${service}`,
+      ];
+      if (message) lines.push(`Message: ${message}`);
+
+      window.open(`https://wa.me/27787347867?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+
+      if (successEl) {
+        successEl.hidden = false;
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      form.reset();
+    });
+  }
+
+  /* ---------------------------------------------------------------
      Boot
      --------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
@@ -548,6 +639,7 @@
     initBundleCalculator();
     initLightbox();
     initFaqAccordion();
+    initContactForm();
 
     const yearEl = document.getElementById('wgs-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
