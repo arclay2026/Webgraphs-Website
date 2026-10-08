@@ -528,6 +528,26 @@
         btn.setAttribute('aria-expanded', String(!isOpen));
       });
     });
+
+    const navLinks = Array.from(document.querySelectorAll('.faq-nav a'));
+    const cats = Array.from(document.querySelectorAll('.faq-cat'));
+    if (!navLinks.length || !cats.length) return;
+
+    const setActive = (id) => {
+      navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+    };
+
+    try {
+      if (!('IntersectionObserver' in window)) throw new Error('no-io');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+      cats.forEach((cat) => io.observe(cat));
+    } catch (err) {
+      setActive(cats[0].id);
+    }
   }
 
   /* ---------------------------------------------------------------

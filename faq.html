@@ -98,11 +98,34 @@
 
   <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
 
+  <!-- ============ QUICK FACTS ============ -->
+  <section class="stats-strip edge" aria-label="Quick facts">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-cell"><strong>16</strong><span>Questions answered below</span></div>
+        <div class="stat-cell"><strong>R350</strong><span>Fingerprint capture, walk-in</span></div>
+        <div class="stat-cell"><strong>&lt;1 Day</strong><span>Typical WhatsApp reply time</span></div>
+        <div class="stat-cell"><strong>6</strong><span>Topics covered</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FAQ ACCORDION ============ -->
   <section class="section edge">
-    <div class="wrap" style="max-width: 880px;">
+    <div class="wrap faq-layout">
 
-      <div class="faq-cat">
+      <nav class="faq-nav" aria-label="Jump to a topic">
+        <a href="#general" class="active">General <span class="count mono">04</span></a>
+        <a href="#fingerprint">Fingerprint Capture <span class="count mono">03</span></a>
+        <a href="#webdev">Web &amp; App Dev <span class="count mono">03</span></a>
+        <a href="#design">Graphic Design <span class="count mono">01</span></a>
+        <a href="#courses">Design Courses <span class="count mono">03</span></a>
+        <a href="#printing">Printing &amp; Software <span class="count mono">02</span></a>
+      </nav>
+
+      <div>
+
+      <div class="faq-cat" id="general">
         <div class="faq-cat-head"><span class="idx mono">01</span><h2>General</h2></div>
 
         <div class="faq-row">
@@ -123,7 +146,7 @@
         </div>
       </div>
 
-      <div class="faq-cat">
+      <div class="faq-cat" id="fingerprint">
         <div class="faq-cat-head"><span class="idx mono">02</span><h2>Fingerprint Capture</h2></div>
 
         <div class="faq-row">
@@ -140,7 +163,7 @@
         </div>
       </div>
 
-      <div class="faq-cat">
+      <div class="faq-cat" id="webdev">
         <div class="faq-cat-head"><span class="idx mono">03</span><h2>Web &amp; App Development</h2></div>
 
         <div class="faq-row">
@@ -157,7 +180,7 @@
         </div>
       </div>
 
-      <div class="faq-cat">
+      <div class="faq-cat" id="design">
         <div class="faq-cat-head"><span class="idx mono">04</span><h2>Graphic Design</h2></div>
 
         <div class="faq-row">
@@ -166,7 +189,7 @@
         </div>
       </div>
 
-      <div class="faq-cat">
+      <div class="faq-cat" id="courses">
         <div class="faq-cat-head"><span class="idx mono">05</span><h2>Design Courses</h2></div>
 
         <div class="faq-row">
@@ -183,7 +206,7 @@
         </div>
       </div>
 
-      <div class="faq-cat">
+      <div class="faq-cat" id="printing">
         <div class="faq-cat-head"><span class="idx mono">06</span><h2>Printing &amp; Software Installation</h2></div>
 
         <div class="faq-row">
@@ -196,6 +219,7 @@
         </div>
       </div>
 
+      </div>
     </div>
   </section>
 
