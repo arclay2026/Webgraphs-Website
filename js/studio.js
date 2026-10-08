@@ -387,6 +387,84 @@
   }
 
   /* ---------------------------------------------------------------
+     10 · Studio tabs (e.g. Curriculum / Pricing on the courses page)
+     --------------------------------------------------------------- */
+  function initStudioTabs() {
+    const bar = document.getElementById('studio-tabs');
+    if (!bar) return;
+    const tabs = Array.from(bar.querySelectorAll('.studio-tab'));
+    const panels = Array.from(document.querySelectorAll('[data-tab-panel]'));
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.toggle('active', t === tab));
+        tab.setAttribute('aria-selected', 'true');
+        tabs.filter((t) => t !== tab).forEach((t) => t.setAttribute('aria-selected', 'false'));
+        panels.forEach((p) => { p.hidden = p.getAttribute('data-tab-panel') !== tab.dataset.tab; });
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------
+     11 · Build-your-bundle course calculator
+     --------------------------------------------------------------- */
+  function initBundleCalculator() {
+    const calc = document.getElementById('bundle-calc');
+    if (!calc) return;
+
+    const BUNDLES = [
+      { combo: ['Ai'], price: 2000, duration: '1 Month(s)' },
+      { combo: ['Ai', 'Lr'], price: 2500, duration: '1/2 Month(s)' },
+      { combo: ['Ps', 'Ai'], price: 4500, duration: '2 Month(s)' },
+      { combo: ['Ps', 'Ai', 'Lr'], price: 4500, duration: '3 Month(s)' },
+      { combo: ['Ai', 'Pr'], price: 5000, duration: '2 Month(s)' },
+      { combo: ['Ps', 'Ai', 'Lr', 'Pr'], price: 7500, duration: '4 Month(s)' },
+    ];
+    const SOFTWARE_NAMES = { Ps: 'Photoshop', Ai: 'Illustrator', Lr: 'Lightroom', Pr: 'Premiere Pro' };
+
+    const checkboxes = Array.from(calc.querySelectorAll('.bundle-toggles input[type="checkbox"]'));
+    const placeholder = document.getElementById('bundle-placeholder');
+    const matchEl = document.getElementById('bundle-match');
+    const nomatchEl = document.getElementById('bundle-nomatch');
+    const amountEl = document.getElementById('bundle-amount');
+    const durationEl = document.getElementById('bundle-duration');
+    const enrollLink = document.getElementById('bundle-enroll');
+
+    function update() {
+      const selected = checkboxes.filter((cb) => cb.checked).map((cb) => cb.value).sort();
+
+      if (selected.length === 0) {
+        placeholder.hidden = false;
+        matchEl.hidden = true;
+        nomatchEl.hidden = true;
+        return;
+      }
+      placeholder.hidden = true;
+
+      const match = BUNDLES.find((b) => {
+        const combo = [...b.combo].sort();
+        return combo.length === selected.length && combo.every((v, i) => v === selected[i]);
+      });
+
+      if (match) {
+        matchEl.hidden = false;
+        nomatchEl.hidden = true;
+        amountEl.textContent = `R${match.price}`;
+        durationEl.textContent = match.duration;
+        const comboText = match.combo.map((c) => SOFTWARE_NAMES[c]).join(' + ');
+        const message = `Hi, I'd like to enroll in the ${comboText} course bundle (R${match.price}).`;
+        enrollLink.href = `https://wa.me/27787347867?text=${encodeURIComponent(message)}`;
+      } else {
+        matchEl.hidden = true;
+        nomatchEl.hidden = false;
+      }
+    }
+
+    checkboxes.forEach((cb) => cb.addEventListener('change', update));
+    update();
+  }
+
+  /* ---------------------------------------------------------------
      Boot
      --------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
@@ -400,6 +478,8 @@
     initCapabilities();
     initQuickForm();
     initEasterEgg();
+    initStudioTabs();
+    initBundleCalculator();
 
     const yearEl = document.getElementById('wgs-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();

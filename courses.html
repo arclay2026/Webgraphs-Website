@@ -1,108 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Graphic Design &amp; Videography Courses | Web Graphs Technologies</title>
+<title>Courses | Web Graphs Technologies</title>
 <meta name="description" content="Learn Adobe Photoshop, Illustrator, Lightroom and Premiere Pro with Web Graphs Technologies. Hands-on graphic design and videography courses in Johannesburg, from R2000.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/studio.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
-<body>
+<body class="wgs">
 
-<div class="wg-preloader" id="wg-preloader" role="presentation" aria-hidden="true">
-  <div class="wg-preloader-glow"></div>
-  <div class="wg-preloader-logo">
-    <img src="assets/logo.svg" alt="" class="logo-img">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="wgs-cursor" id="wgs-cursor-dot" aria-hidden="true"></div>
+<div class="wgs-cursor-ring" id="wgs-cursor-ring" aria-hidden="true"><span></span></div>
+
+<div class="wgs-progress-bar" id="top-progress" aria-hidden="true"></div>
+
+<div class="wgs-thread" aria-hidden="true">
+  <span class="wgs-thread-label">SCROLL</span>
+  <div class="wgs-thread-track">
+    <div class="wgs-thread-fill" id="thread-fill"></div>
+    <div class="wgs-thread-dot" id="thread-dot"></div>
   </div>
-  <div class="wg-preloader-bar"><span></span></div>
+  <span class="wgs-thread-label mono" id="thread-pct">00%</span>
 </div>
 
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img">
+<header class="wgs-nav" id="wgs-nav">
+  <div class="wgs-nav-inner">
+    <a href="index.html" class="wgs-logo" id="wgs-logo-mark" aria-label="Web Graphs Technologies — home">
+      <img src="assets/logo.svg" alt="" width="30" height="30">
+      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="courses.html" class="active">Courses</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="qr-code.html">QR Code</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline whatsapp-nav-btn">WhatsApp</a>
-      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+    <div class="wgs-nav-right">
+      <span class="wgs-nav-time mono" data-clock>--:--:-- SAST</span>
+      <button type="button" class="wgs-menu-btn" id="wgs-menu-open" aria-expanded="false" aria-controls="wgs-menu">
+        <span class="wgs-menu-btn-box" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
       </button>
     </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobile-menu">
-  <nav aria-label="Mobile">
-    <a href="index.html"><span class="mm-num">01</span><i class="fa-solid fa-house"></i><span class="mm-label">Home</span></a>
-    <a href="services.html"><span class="mm-num">02</span><i class="fa-solid fa-briefcase"></i><span class="mm-label">Services</span></a>
-    <a href="courses.html" class="active"><span class="mm-num">03</span><i class="fa-solid fa-graduation-cap"></i><span class="mm-label">Courses</span></a>
-    <a href="portfolio.html"><span class="mm-num">04</span><i class="fa-solid fa-images"></i><span class="mm-label">Portfolio</span></a>
-    <a href="about.html"><span class="mm-num">05</span><i class="fa-solid fa-circle-info"></i><span class="mm-label">About</span></a>
-    <a href="faq.html"><span class="mm-num">06</span><i class="fa-solid fa-circle-question"></i><span class="mm-label">FAQ</span></a>
-    <a href="qr-code.html"><span class="mm-num">07</span><i class="fa-solid fa-qrcode"></i><span class="mm-label">QR Code</span></a>
-    <a href="contact.html"><span class="mm-num">08</span><i class="fa-solid fa-envelope"></i><span class="mm-label">Contact</span></a>
-  </nav>
-  <div class="mobile-menu-bottom">
-    <div class="social-row">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-    </div>
-    <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary mobile-menu-cta"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+<nav class="wgs-menu" id="wgs-menu" aria-label="Full site navigation">
+  <div class="wgs-menu-top">
+    <a href="index.html" class="wgs-logo">
+      <img src="assets/logo.svg" alt="" width="26" height="26">
+      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
+    </a>
+    <button type="button" class="wgs-menu-close" id="wgs-menu-close">
+      <span aria-hidden="true">&times;</span> Close
+    </button>
   </div>
-</div>
+  <ul class="wgs-menu-list">
+    <li class="wgs-menu-item"><span class="idx mono">01</span><a href="index.html">Home</a><span class="desc">Start here — an overview of the studio.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">02</span><a href="services.html">Services</a><span class="desc">Fingerprint capture, web &amp; app dev, design, printing, software.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">03</span><a href="portfolio.html">Portfolio</a><span class="desc">A closer look at work we've shipped.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">04</span><a href="about.html">About</a><span class="desc">Who we are and how we work.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">05</span><a href="faq.html">FAQ</a><span class="desc">Quick answers to the questions we hear most.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">06</span><a href="qr-code.html">QR Code</a><span class="desc">Free tool — turn any link into a scannable code.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">07</span><a href="contact.html">Contact</a><span class="desc">Start a conversation on WhatsApp, email or in person.</span></li>
+  </ul>
+  <div class="wgs-menu-bottom">
+    <div class="wgs-menu-bottom-block">
+      <span>WhatsApp &amp; Calls</span>
+      <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Email</span>
+      <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Studio</span>
+      <p>9 Jill Street, Langlaagte North, Johannesburg, 2092</p>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Hours</span>
+      <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
+    </div>
+  </div>
+</nav>
 
-<main>
+<main id="main">
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumb">Home <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <span class="accent-text">Courses</span></div>
-      <h1>Graphic Design &amp; Videography Courses</h1>
-      <p>Practical, project-based training in the industry's most-used creative software — for beginners and anyone looking to sharpen their skills.</p>
+  <!-- ============ PAGE INTRO ============ -->
+  <section class="page-intro edge">
+    <div class="wrap">
+      <span class="kicker">Courses</span>
+      <h1 class="reveal-line"><span>Graphic design &amp; videography courses.</span></h1>
+      <p class="lede">Practical, project-based training in the industry's most-used creative software — for beginners and anyone looking to sharpen their skills.</p>
+      <nav class="svc-index" aria-label="Jump to a course">
+        <a href="#ps"><span class="mono">01</span> Photoshop</a>
+        <a href="#ai"><span class="mono">02</span> Illustrator</a>
+        <a href="#lr"><span class="mono">03</span> Lightroom</a>
+        <a href="#pr"><span class="mono">04</span> Premiere Pro</a>
+      </nav>
     </div>
   </section>
 
-  <section>
-    <div class="container">
+  <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
 
-      <div class="tab-bar reveal" id="courses-tabs">
-        <button type="button" class="tab-btn active" data-tab="curriculum">Curriculum</button>
-        <button type="button" class="tab-btn" data-tab="pricing">Pricing &amp; Bundles</button>
+  <!-- ============ TABS ============ -->
+  <section class="section edge">
+    <div class="wrap">
+
+      <div class="studio-tabs" id="studio-tabs" role="tablist">
+        <button type="button" class="studio-tab active" data-tab="curriculum" role="tab" aria-selected="true">Curriculum</button>
+        <button type="button" class="studio-tab" data-tab="pricing" role="tab" aria-selected="false">Pricing &amp; Bundles</button>
       </div>
 
-      <div class="tab-panel" data-panel="curriculum">
-        <div class="filter-bar reveal" id="course-filters">
-          <button type="button" class="filter-btn active" data-filter="all">All Software</button>
-          <button type="button" class="filter-btn" data-filter="ps">Photoshop</button>
-          <button type="button" class="filter-btn" data-filter="ai">Illustrator</button>
-          <button type="button" class="filter-btn" data-filter="lr">Lightroom</button>
-          <button type="button" class="filter-btn" data-filter="pr">Premiere Pro</button>
-        </div>
+      <!-- CURRICULUM -->
+      <div data-tab-panel="curriculum">
 
-        <div class="grid grid-2" id="course-grid">
-
-          <div class="course-card reveal" data-software="ps">
-            <span class="badge">Available</span>
-            <div class="software-icon"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></div>
-            <h3>Adobe Photoshop</h3>
-            <p>Master photo editing, retouching and mock-up creation.</p>
-            <div class="course-sublist">
-              <h4>Image Manipulation</h4>
+        <article class="course-row" id="ps">
+          <div class="course-row-head">
+            <span class="idx mono">01</span>
+            <span class="course-icon"><img src="assets/icons/ps.svg" alt="" loading="lazy"></span>
+            <h2>Adobe Photoshop</h2>
+            <span class="avail">Available</span>
+          </div>
+          <p class="course-row-desc">Master photo editing, retouching and mock-up creation.</p>
+          <div class="course-row-groups">
+            <div class="course-group">
+              <h3>Image Manipulation</h3>
               <ul>
                 <li>Background Removal</li>
                 <li>Photo Compositing</li>
@@ -111,8 +135,8 @@
                 <li>Lighting &amp; Shadows</li>
               </ul>
             </div>
-            <div class="course-sublist">
-              <h4>Mock-Ups</h4>
+            <div class="course-group">
+              <h3>Mock-Ups</h3>
               <ul>
                 <li>T-Shirt / Hoodie Mock-Ups</li>
                 <li>Product Mock-Ups</li>
@@ -121,14 +145,19 @@
               </ul>
             </div>
           </div>
+        </article>
 
-          <div class="course-card reveal" data-software="ai">
-            <span class="badge">Available</span>
-            <div class="software-icon"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></div>
-            <h3>Adobe Illustrator</h3>
-            <p>Master vector graphics, logo and ad design.</p>
-            <div class="course-sublist">
-              <h4>Logo Design</h4>
+        <article class="course-row" id="ai">
+          <div class="course-row-head">
+            <span class="idx mono">02</span>
+            <span class="course-icon"><img src="assets/icons/ai.svg" alt="" loading="lazy"></span>
+            <h2>Adobe Illustrator</h2>
+            <span class="avail">Available</span>
+          </div>
+          <p class="course-row-desc">Master vector graphics, logo and ad design.</p>
+          <div class="course-row-groups">
+            <div class="course-group">
+              <h3>Logo Design</h3>
               <ul>
                 <li>Logo Concepts</li>
                 <li>Typography Logos</li>
@@ -137,8 +166,8 @@
                 <li>Brand Guidelines</li>
               </ul>
             </div>
-            <div class="course-sublist">
-              <h4>Ad Design</h4>
+            <div class="course-group">
+              <h3>Ad Design</h3>
               <ul>
                 <li>Social Media Ads</li>
                 <li>Flyer Designs</li>
@@ -147,14 +176,19 @@
               </ul>
             </div>
           </div>
+        </article>
 
-          <div class="course-card reveal" data-software="lr">
-            <span class="badge">Available</span>
-            <div class="software-icon"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></div>
-            <h3>Adobe Lightroom</h3>
-            <p>Organize, edit and grade your photography like a pro.</p>
-            <div class="course-sublist">
-              <h4>Basics</h4>
+        <article class="course-row" id="lr">
+          <div class="course-row-head">
+            <span class="idx mono">03</span>
+            <span class="course-icon"><img src="assets/icons/lr.svg" alt="" loading="lazy"></span>
+            <h2>Adobe Lightroom</h2>
+            <span class="avail">Available</span>
+          </div>
+          <p class="course-row-desc">Organize, edit and grade your photography like a pro.</p>
+          <div class="course-row-groups">
+            <div class="course-group">
+              <h3>Basics</h3>
               <ul>
                 <li>Photo Import &amp; Organization</li>
                 <li>Basic Photo Editing</li>
@@ -166,14 +200,19 @@
               </ul>
             </div>
           </div>
+        </article>
 
-          <div class="course-card reveal" data-software="pr">
-            <span class="badge">Available</span>
-            <div class="software-icon"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></div>
-            <h3>Adobe Premiere Pro</h3>
-            <p>Edit professional-quality videos from raw footage to final export.</p>
-            <div class="course-sublist">
-              <h4>Basics</h4>
+        <article class="course-row" id="pr">
+          <div class="course-row-head">
+            <span class="idx mono">04</span>
+            <span class="course-icon"><img src="assets/icons/pr.svg" alt="" loading="lazy"></span>
+            <h2>Adobe Premiere Pro</h2>
+            <span class="avail">Available</span>
+          </div>
+          <p class="course-row-desc">Edit professional-quality videos from raw footage to final export.</p>
+          <div class="course-row-groups">
+            <div class="course-group">
+              <h3>Basics</h3>
               <ul>
                 <li>Cutting &amp; Trimming</li>
                 <li>Transitions</li>
@@ -185,127 +224,119 @@
               </ul>
             </div>
           </div>
+        </article>
 
-        </div>
       </div>
 
-      <!-- COURSE PRICES -->
-      <div class="tab-panel" data-panel="pricing" hidden>
-        <div class="section-head reveal">
-          <span class="section-tag">Pricing</span>
-          <h2 class="section-title">Build Your Bundle</h2>
-          <p class="section-desc">Tick the software you want to learn and see your price and course duration instantly.</p>
-        </div>
+      <!-- PRICING -->
+      <div data-tab-panel="pricing" hidden>
+        <span class="kicker">Pricing</span>
+        <h2 style="font-size: var(--fs-h3); margin: var(--sp-4) 0 var(--sp-2);">Build your bundle.</h2>
+        <p style="color: var(--mute); max-width: 56ch;">Tick the software you want to learn and see your price and course duration instantly.</p>
 
-        <div class="price-calc reveal">
-          <div class="price-calc-toggles">
-            <label class="calc-chip">
+        <div id="bundle-calc">
+          <div class="bundle-toggles">
+            <label class="bundle-chip">
               <input type="checkbox" value="Ps">
-              <span class="calc-chip-badge"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></span>
+              <span class="bundle-chip-badge"><img src="assets/icons/ps.svg" alt="" loading="lazy"></span>
               <span>Photoshop</span>
             </label>
-            <label class="calc-chip">
+            <label class="bundle-chip">
               <input type="checkbox" value="Ai">
-              <span class="calc-chip-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
+              <span class="bundle-chip-badge"><img src="assets/icons/ai.svg" alt="" loading="lazy"></span>
               <span>Illustrator</span>
             </label>
-            <label class="calc-chip">
+            <label class="bundle-chip">
               <input type="checkbox" value="Lr">
-              <span class="calc-chip-badge"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></span>
+              <span class="bundle-chip-badge"><img src="assets/icons/lr.svg" alt="" loading="lazy"></span>
               <span>Lightroom</span>
             </label>
-            <label class="calc-chip">
+            <label class="bundle-chip">
               <input type="checkbox" value="Pr">
-              <span class="calc-chip-badge"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></span>
+              <span class="bundle-chip-badge"><img src="assets/icons/pr.svg" alt="" loading="lazy"></span>
               <span>Premiere Pro</span>
             </label>
           </div>
 
-          <div class="price-calc-result">
-            <div class="price-calc-placeholder" id="price-calc-placeholder">
-              <i class="fa-solid fa-hand-pointer"></i>
+          <div class="bundle-result">
+            <div class="bundle-placeholder" id="bundle-placeholder">
+              <i class="mono" style="font-size: 1.4rem;">?</i>
               <p>Select the software above to see your price.</p>
             </div>
-            <div class="price-calc-match" id="price-calc-match" hidden>
-              <div class="price-calc-amount">
-                <strong id="price-calc-amount">R0</strong>
-                <span id="price-calc-duration">0 Month(s)</span>
+            <div class="bundle-match" id="bundle-match" hidden>
+              <div class="bundle-amount">
+                <strong id="bundle-amount">R0</strong>
+                <span id="bundle-duration">0 Month(s)</span>
               </div>
-              <a href="#" id="price-calc-enroll" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Enroll via WhatsApp</a>
+              <a href="#" id="bundle-enroll" target="_blank" rel="noopener" class="btn-magnetic btn-solid" data-magnetic data-cursor="link">
+                <span class="btn-fill"></span>
+                <span>Enroll via WhatsApp</span>
+                <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+              </a>
             </div>
-            <div class="price-calc-nomatch" id="price-calc-nomatch" hidden>
-              <i class="fa-solid fa-circle-info"></i>
+            <div class="bundle-nomatch" id="bundle-nomatch" hidden>
               <p>We don't currently offer this exact combination as a set bundle — message us for a custom quote.</p>
-              <a href="https://wa.me/27787347867?text=Hi%2C%20I'd%20like%20to%20ask%20about%20a%20custom%20course%20bundle." target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> Ask About a Custom Bundle</a>
+              <a href="https://wa.me/27787347867?text=Hi%2C%20I'd%20like%20to%20ask%20about%20a%20custom%20course%20bundle." target="_blank" rel="noopener" class="link-arrow" data-cursor="link">Ask about a custom bundle <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H3M10 2V9" stroke="currentColor" stroke-width="1.5"/></svg></a>
             </div>
           </div>
         </div>
 
-        <div class="section-head reveal" style="margin-top:var(--s9);">
-          <span class="section-tag">Reference</span>
-          <h3 style="font-size:1.4rem;">All Available Bundles</h3>
-        </div>
+        <span class="kicker" style="margin-top: var(--sp-9); display: inline-flex;">Reference</span>
+        <h3 style="font-size: var(--fs-h4); margin: var(--sp-3) 0 var(--sp-2);">All available bundles</h3>
 
-        <div class="price-table reveal">
-          <div class="price-row">
-            <div class="combo">
-              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
-            </div>
+        <div class="bundle-table">
+          <div class="bundle-row">
+            <div class="combo"><span class="bundle-mini"><img src="assets/icons/ai.svg" alt="Illustrator" loading="lazy"></span></div>
             <div class="connector"></div>
             <div class="price"><strong>R2000</strong><span>1 Month(s)</span></div>
           </div>
-
-          <div class="price-row">
+          <div class="bundle-row">
             <div class="combo">
-              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/ai.svg" alt="Illustrator" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/lr.svg" alt="Lightroom" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R2500</strong><span>1/2 Month(s)</span></div>
           </div>
-
-          <div class="price-row">
+          <div class="bundle-row">
             <div class="combo">
-              <span class="mini-badge"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/ps.svg" alt="Photoshop" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
-              <span class="plus">+</span>
-              <span class="mini-badge"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></span>
-            </div>
-            <div class="connector"></div>
-            <div class="price"><strong>R4500</strong><span>3 Month(s)</span></div>
-          </div>
-
-          <div class="price-row">
-            <div class="combo">
-              <span class="mini-badge"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></span>
-              <span class="plus">+</span>
-              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/ai.svg" alt="Illustrator" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R4500</strong><span>2 Month(s)</span></div>
           </div>
-
-          <div class="price-row">
+          <div class="bundle-row">
             <div class="combo">
-              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/ps.svg" alt="Photoshop" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/ai.svg" alt="Illustrator" loading="lazy"></span>
+              <span class="plus">+</span>
+              <span class="bundle-mini"><img src="assets/icons/lr.svg" alt="Lightroom" loading="lazy"></span>
+            </div>
+            <div class="connector"></div>
+            <div class="price"><strong>R4500</strong><span>3 Month(s)</span></div>
+          </div>
+          <div class="bundle-row">
+            <div class="combo">
+              <span class="bundle-mini"><img src="assets/icons/ai.svg" alt="Illustrator" loading="lazy"></span>
+              <span class="plus">+</span>
+              <span class="bundle-mini"><img src="assets/icons/pr.svg" alt="Premiere Pro" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R5000</strong><span>2 Month(s)</span></div>
           </div>
-
-          <div class="price-row">
+          <div class="bundle-row">
             <div class="combo">
-              <span class="mini-badge"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/ps.svg" alt="Photoshop" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/ai.svg" alt="Illustrator" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/lr.svg" alt="Lightroom" loading="lazy"></span>
               <span class="plus">+</span>
-              <span class="mini-badge"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></span>
+              <span class="bundle-mini"><img src="assets/icons/pr.svg" alt="Premiere Pro" loading="lazy"></span>
             </div>
             <div class="connector"></div>
             <div class="price"><strong>R7500</strong><span>4 Month(s)</span></div>
@@ -316,119 +347,83 @@
     </div>
   </section>
 
-  <!-- WHY LEARN WITH US -->
-  <section>
-    <div class="container split">
-      <div class="reveal">
-        <span class="section-tag">Why Learn With Us</span>
-        <h2 class="section-title">Practical Skills, Real Results</h2>
-        <ul class="feature-list">
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Hands-on projects</strong>
-              <span class="desc">Work on real design briefs, not just tutorials — build a portfolio as you learn.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Beginner friendly</strong>
-              <span class="desc">No prior experience needed — we start from the basics and build up your confidence.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Flexible learning</strong>
-              <span class="desc">Sessions structured around your pace and schedule.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Career-ready skills</strong>
-              <span class="desc">Graduate with the tools to freelance, work in-house, or grow your own brand.</span>
-            </div>
-          </li>
+  <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
+
+  <!-- ============ WHY LEARN WITH US / ENROLL ============ -->
+  <section class="section section--loud edge">
+    <div class="wrap split-panel">
+      <div>
+        <span class="kicker">Why learn with us</span>
+        <h2>Practical skills, real results.</h2>
+        <ul class="feature-list-plain">
+          <li><strong>Hands-on projects</strong><span>Work on real design briefs, not just tutorials — build a portfolio as you learn.</span></li>
+          <li><strong>Beginner friendly</strong><span>No prior experience needed — we start from the basics and build up your confidence.</span></li>
+          <li><strong>Flexible learning</strong><span>Sessions structured around your pace and schedule.</span></li>
+          <li><strong>Career-ready skills</strong><span>Graduate with the tools to freelance, work in-house, or grow your own brand.</span></li>
         </ul>
       </div>
-      <div class="panel reveal">
-        <span class="section-tag">Get Started</span>
-        <h3 style="font-size:1.5rem;margin-bottom:14px;">Ready to enroll?</h3>
-        <p style="color:var(--text-muted);margin-bottom:28px;">Message us on WhatsApp or email to find out about upcoming intakes, pricing and class schedules.</p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="https://wa.me/27787347867?text=Hi%2C%20I%27m%20interested%20in%20a%20graphic%20design%20course." target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp</a>
-          <a href="contact.html" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Contact Form</a>
+      <div class="panel-box">
+        <span class="kicker">Get started</span>
+        <h3>Ready to enroll?</h3>
+        <p>Message us on WhatsApp or email to find out about upcoming intakes, pricing and class schedules.</p>
+        <div class="panel-actions">
+          <a href="https://wa.me/27787347867?text=Hi%2C%20I%27m%20interested%20in%20a%20graphic%20design%20course." target="_blank" rel="noopener" class="btn-magnetic btn-solid" data-magnetic data-cursor="link">
+            <span class="btn-fill"></span><span>Ask on WhatsApp</span>
+            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+          <a href="contact.html" class="btn-magnetic" data-magnetic data-cursor="link">
+            <span class="btn-fill"></span><span>Contact form</span>
+            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-</main>
-
-<footer>
-  <div class="container">
-    <div class="footer-statement reveal">
-
-      <p>Digital, design and print solutions for individuals and businesses in Johannesburg and beyond.</p>
-
-      <a href="contact.html" class="btn btn-primary">Start a Project</a>
-
-    </div>
-
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="logo"><img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img"></a>
-        <div class="social-row">
-          <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+  <footer class="wgs-footer edge">
+    <div class="wrap">
+      <div class="wgs-footer-grid">
+        <div class="wgs-footer-col">
+          <span class="h">Studio</span>
+          <p>Web Graphs Technologies<br>9 Jill Street, Langlaagte North<br>Johannesburg, 2092, South Africa</p>
+          <div class="wgs-footer-social">
+            <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp" class="mono">WA</a>
+            <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram" class="mono">IG</a>
+            <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook" class="mono">FB</a>
+            <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok" class="mono">TT</a>
+          </div>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">Navigate</span>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">More</span>
+          <a href="faq.html">FAQ</a>
+          <a href="qr-code.html">QR Code Generator</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">Get in touch</span>
+          <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
+          <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
+          <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
         </div>
       </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="qr-code.html">QR Code</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html#fingerprint">Fingerprint Capture</a></li>
-          <li><a href="services.html#webdev">Web &amp; App Dev</a></li>
-          <li><a href="services.html#design">Graphic Design</a></li>
-          <li><a href="services.html#printing">Office Printing</a></li>
-          <li><a href="services.html#software">Software Installation</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <ul>
-          <li><a href="https://wa.me/27787347867" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +27 78 734 7867</a></li>
-          <li><a href="mailto:webgraphstechnologies@gmail.com"><i class="fa-solid fa-envelope"></i> webgraphstechnologies@gmail.com</a></li>
-          <li><i class="fa-solid fa-location-dot"></i> 9 Jill Street, Langlaagte North, Johannesburg, 2092, South Africa</li>
-        </ul>
+      <div class="wgs-footer-bottom">
+        <span class="wgs-footer-mark"><span class="dot" aria-hidden="true"></span> Web Graphs Technologies &copy; <span id="wgs-year">2026</span></span>
+        <span>Designed &amp; built in Johannesburg</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="year"></span> Web Graphs Technologies. All rights reserved.</span>
-      <span>Designed &amp; built by Web Graphs Technologies</span>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</main>
 
-<script src="js/script.js"></script>
+<div class="easter-note" id="easter-note" role="status" aria-live="polite">YOU FOUND IT.<br>DESIGNED &amp; BUILT BY WEB GRAPHS TECHNOLOGIES.</div>
+
+<script src="js/studio.js"></script>
 </body>
 </html>
