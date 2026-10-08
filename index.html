@@ -1,496 +1,364 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Graphs Technologies | Digital, Design &amp; Print Solutions in Johannesburg</title>
-<meta name="description" content="Web Graphs Technologies offers Uber &amp; Bolt fingerprint capture, web &amp; app development, graphic design, brand identity, graphic design courses, office printing and computer software installation in Johannesburg, South Africa.">
+<title>Web Graphs Technologies — Technology &amp; Design Studio, Johannesburg</title>
+<meta name="description" content="Web Graphs Technologies is a Johannesburg-based technology and design studio — fingerprint &amp; compliance capture, web and app builds, brand identity, design training and print, under one roof.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/studio.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
-<body>
+<body class="wgs">
 
-<div class="wg-preloader" id="wg-preloader" role="presentation" aria-hidden="true">
-  <div class="wg-preloader-glow"></div>
-  <div class="wg-preloader-logo">
-    <img src="assets/logo.svg" alt="" class="logo-img">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- custom cursor (desktop only; JS adds has-fine-pointer to <body> to activate) -->
+<div class="wgs-cursor" id="wgs-cursor-dot" aria-hidden="true"></div>
+<div class="wgs-cursor-ring" id="wgs-cursor-ring" aria-hidden="true"><span></span></div>
+
+<!-- mobile scroll progress -->
+<div class="wgs-progress-bar" id="top-progress" aria-hidden="true"></div>
+
+<!-- desktop scroll thread — the recurring visual motif -->
+<div class="wgs-thread" aria-hidden="true">
+  <span class="wgs-thread-label">SCROLL</span>
+  <div class="wgs-thread-track">
+    <div class="wgs-thread-fill" id="thread-fill"></div>
+    <div class="wgs-thread-dot" id="thread-dot"></div>
   </div>
-  <div class="wg-preloader-bar"><span></span></div>
+  <span class="wgs-thread-label mono" id="thread-pct">00%</span>
 </div>
 
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img">
+<header class="wgs-nav" id="wgs-nav">
+  <div class="wgs-nav-inner">
+    <a href="#top" class="wgs-logo" id="wgs-logo-mark" aria-label="Web Graphs Technologies — back to top">
+      <img src="assets/logo.svg" alt="" width="30" height="30">
+      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html" class="active">Home</a>
-      <a href="services.html">Services</a>
-      <a href="courses.html">Courses</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="qr-code.html">QR Code</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline whatsapp-nav-btn">WhatsApp</a>
-      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+    <div class="wgs-nav-right">
+      <span class="wgs-nav-time mono" data-clock>--:--:-- SAST</span>
+      <button type="button" class="wgs-menu-btn" id="wgs-menu-open" aria-expanded="false" aria-controls="wgs-menu">
+        <span class="wgs-menu-btn-box" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
       </button>
     </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobile-menu">
-  <nav aria-label="Mobile">
-    <a href="index.html" class="active"><span class="mm-num">01</span><i class="fa-solid fa-house"></i><span class="mm-label">Home</span></a>
-    <a href="services.html"><span class="mm-num">02</span><i class="fa-solid fa-briefcase"></i><span class="mm-label">Services</span></a>
-    <a href="courses.html"><span class="mm-num">03</span><i class="fa-solid fa-graduation-cap"></i><span class="mm-label">Courses</span></a>
-    <a href="portfolio.html"><span class="mm-num">04</span><i class="fa-solid fa-images"></i><span class="mm-label">Portfolio</span></a>
-    <a href="about.html"><span class="mm-num">05</span><i class="fa-solid fa-circle-info"></i><span class="mm-label">About</span></a>
-    <a href="faq.html"><span class="mm-num">06</span><i class="fa-solid fa-circle-question"></i><span class="mm-label">FAQ</span></a>
-    <a href="qr-code.html"><span class="mm-num">07</span><i class="fa-solid fa-qrcode"></i><span class="mm-label">QR Code</span></a>
-    <a href="contact.html"><span class="mm-num">08</span><i class="fa-solid fa-envelope"></i><span class="mm-label">Contact</span></a>
-  </nav>
-  <div class="mobile-menu-bottom">
-    <div class="social-row">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-    </div>
-    <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary mobile-menu-cta"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+<nav class="wgs-menu" id="wgs-menu" aria-label="Full site navigation">
+  <div class="wgs-menu-top">
+    <a href="#top" class="wgs-logo">
+      <img src="assets/logo.svg" alt="" width="26" height="26">
+      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
+    </a>
+    <button type="button" class="wgs-menu-close" id="wgs-menu-close">
+      <span aria-hidden="true">&times;</span> Close
+    </button>
   </div>
-</div>
+  <ul class="wgs-menu-list">
+    <li class="wgs-menu-item"><span class="idx mono">01</span><a href="services.html">Services</a><span class="desc">Fingerprint capture, web &amp; app dev, design, printing, software.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">02</span><a href="courses.html">Courses</a><span class="desc">Hands-on Photoshop, Illustrator, Lightroom &amp; Premiere Pro training.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">03</span><a href="portfolio.html">Portfolio</a><span class="desc">A closer look at work we've shipped.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">04</span><a href="about.html">About</a><span class="desc">Who we are and how we work.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">05</span><a href="faq.html">FAQ</a><span class="desc">Quick answers to the questions we hear most.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">06</span><a href="qr-code.html">QR Code</a><span class="desc">Free tool — turn any link into a scannable code.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">07</span><a href="contact.html">Contact</a><span class="desc">Start a conversation on WhatsApp, email or in person.</span></li>
+  </ul>
+  <div class="wgs-menu-bottom">
+    <div class="wgs-menu-bottom-block">
+      <span>WhatsApp &amp; Calls</span>
+      <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Email</span>
+      <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Studio</span>
+      <p>9 Jill Street, Langlaagte North, Johannesburg, 2092</p>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Hours</span>
+      <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
+    </div>
+  </div>
+</nav>
 
-<main>
+<main id="main">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="eyebrow"><span class="dot"></span> Based in Johannesburg, South Africa</div>
-      <h1>Digital, Design &amp; Print Solutions for <span class="accent-text">Growing Businesses</span></h1>
-      <p>From driver fingerprint capture and website builds to brand identity and graphic design training, Web Graphs Technologies is your one-stop technology and creative partner.</p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn btn-primary">Get In Touch</a>
-        <a href="services.html" class="btn btn-outline">Explore Services</a>
+  <!-- ============ HERO ============ -->
+  <section class="hero-studio edge" id="top">
+    <canvas class="hero-grid-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-block">
+        <span>Web Graphs Technologies</span>
+        <strong>Johannesburg, South Africa</strong>
       </div>
-      <div class="hero-tools">
-        <div class="hero-tools-grid">
-          <a href="services.html#fingerprint" class="hero-tool"><span class="icon-tile"><i class="fa-solid fa-fingerprint"></i></span><span>Fingerprint Capture</span></a>
-          <a href="services.html#webdev" class="hero-tool"><span class="icon-tile"><i class="fa-solid fa-code"></i></span><span>Web &amp; App Dev</span></a>
-          <a href="services.html#design" class="hero-tool"><span class="icon-tile"><i class="fa-solid fa-palette"></i></span><span>Graphic Design</span></a>
-          <a href="courses.html" class="hero-tool"><span class="icon-tile"><i class="fa-solid fa-graduation-cap"></i></span><span>Design Courses</span></a>
-          <a href="services.html#printing" class="hero-tool"><span class="icon-tile"><i class="fa-solid fa-print"></i></span><span>Office Printing</span></a>
-          <a href="services.html#software" class="hero-tool"><span class="icon-tile"><i class="fa-solid fa-computer"></i></span><span>Software Installation</span></a>
+      <div class="hero-meta-block align-end">
+        <span>Local time</span>
+        <strong class="mono" data-clock>--:--:-- SAST</strong>
+      </div>
+    </div>
+
+    <h1 class="hero-headline">
+      <span class="line reveal-line"><span><span class="word">WE</span> <span class="word">MAKE</span></span></span>
+      <span class="line reveal-line"><span><span class="word">TECHNOLOGY</span></span></span>
+      <span class="line reveal-line"><span><span class="word accent">feel</span> <span class="word">DESIGNED.</span></span></span>
+    </h1>
+
+    <div class="hero-bottom-row">
+      <p class="hero-lede">A Johannesburg-based technology and design studio — fingerprint &amp; compliance capture, web and app builds, brand identity, training and print, under one roof.</p>
+      <div class="hero-cta-col">
+        <a href="#start" class="btn-magnetic btn-solid" data-magnetic data-cursor="link">
+          <span class="btn-fill"></span>
+          <span>Start a project</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+        <div class="hero-scroll-cue">
+          <span>Scroll</span>
+          <svg width="10" height="14" viewBox="0 0 10 14" fill="none" aria-hidden="true"><path d="M5 0V13M5 13L1 9M5 13L9 9" stroke="currentColor" stroke-width="1.3"/></svg>
         </div>
-      </div>
-      <div class="hero-visual">
-        <div class="showcase-grid">
-          <figure class="showcase-tile"><img src="assets/images/service-fingerprint.jpg" alt="Finger scanning a glowing blue biometric fingerprint reader" loading="lazy"><figcaption>Fingerprint Capture</figcaption></figure>
-          <figure class="showcase-tile"><img src="assets/images/service-development.jpg" alt="Close-up of colorful HTML and CSS code on a screen" loading="lazy"><figcaption>Web &amp; App Dev</figcaption></figure>
-          <figure class="showcase-tile"><img src="assets/images/service-design.jpg" alt="Laptop on a desk displaying a colorful landing page design template" loading="lazy"><figcaption>Graphic Design</figcaption></figure>
-          <figure class="showcase-tile"><img src="assets/images/service-courses.jpg" alt="Two students working on laptops during a design class" loading="lazy"><figcaption>Design Courses</figcaption></figure>
-          <figure class="showcase-tile"><img src="assets/images/service-printing.jpg" alt="Hands loading paper into an office laser printer" loading="lazy"><figcaption>Office Printing</figcaption></figure>
-          <figure class="showcase-tile"><img src="assets/images/service-software-installation.jpg" alt="Man at a desk watching a software installation progress screen" loading="lazy"><figcaption>Software Installation</figcaption></figure>
-        </div>
-      </div>
-      <div class="hero-specs">
-        <div class="spec"><strong>6+</strong><span>Core Services</span></div>
-        <div class="spec"><strong>5</strong><span>Design Courses</span></div>
-        <div class="spec"><strong>R350</strong><span>Fingerprint Capture</span></div>
+        <span class="eyebrow-num mono" id="hero-coord">X 0.00 / Y 0.00</span>
       </div>
     </div>
   </section>
 
-  <!-- OVERVIEW WIDGETS -->
-  <section id="overview">
-    <div class="container">
-      <div class="bento-grid">
+  <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
 
-        <div class="widget widget-brand reveal">
-          <div class="widget-orb"></div>
-          <span class="section-tag">Web Graphs Technologies</span>
-          <h3>Your Digital &amp; Creative Partner</h3>
-          <p>Fingerprint capture, web &amp; app development, design and training — all under one roof in Johannesburg.</p>
-        </div>
+  <!-- ============ CAPABILITIES ============ -->
+  <section class="section section--loud edge" id="capabilities" aria-labelledby="cap-heading">
+    <div class="wrap">
+      <div class="cap-head">
+        <h2 id="cap-heading" class="reveal-line"><span>What we do.</span></h2>
+        <span class="cap-count mono">INDEX 01 — 06</span>
+      </div>
 
-        <div class="widget widget-quote reveal">
-          <span class="section-tag">Quick Quote</span>
-          <h3>Tell us what you need</h3>
-          <form id="quick-quote-form">
-            <div class="qf-row">
-              <input type="text" id="qq-name" placeholder="Your name" required>
-              <select id="qq-service">
-                <option>Uber &amp; Bolt Fingerprint Capture</option>
-                <option>Web &amp; App Development</option>
-                <option>Graphic Design</option>
-                <option>Graphic Design Courses</option>
-                <option>Office Printing</option>
-                <option>Computer Software Installation</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Request on WhatsApp</button>
-          </form>
-        </div>
-
-        <div class="widget widget-contact reveal">
-          <span class="section-tag">Quick Contact</span>
-          <div class="widget-phone">+27 78 734 7867</div>
-          <span class="widget-sub">WhatsApp &amp; Calls</span>
-          <div class="widget-icons">
-            <a href="mailto:webgraphstechnologies@gmail.com" class="widget-icon-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="widget-icon-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="contact.html" class="widget-icon-btn" aria-label="Location"><i class="fa-solid fa-location-dot"></i></a>
-          </div>
-          <a href="contact.html" class="btn btn-outline widget-full-btn">Book Now</a>
-        </div>
-
-        <div class="widget reveal">
-          <div class="widget-head"><h4>Our Services</h4><span class="widget-more">6</span></div>
-          <ul class="widget-list">
-            <li><i class="fa-solid fa-fingerprint"></i> Fingerprint Capture <a href="services.html#fingerprint">View</a></li>
-            <li><i class="fa-solid fa-code"></i> Web &amp; App Dev <a href="services.html#webdev">View</a></li>
-            <li><i class="fa-solid fa-palette"></i> Graphic Design <a href="services.html#design">View</a></li>
-          </ul>
-        </div>
-
-        <div class="widget reveal">
-          <div class="widget-head"><h4>Why Choose Us</h4><i class="fa-solid fa-shield-halved"></i></div>
-          <ul class="feature-list mt-0">
-            <li>
-              <span class="check"><i class="fa-solid fa-check"></i></span>
-              <div><strong>All-in-one</strong><span class="desc">6 services, one team</span></div>
-            </li>
-            <li>
-              <span class="check"><i class="fa-solid fa-check"></i></span>
-              <div><strong>Local &amp; accessible</strong><span class="desc">Langlaagte North, Johannesburg</span></div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="widget reveal">
-          <div class="widget-head"><h4>Quick Links</h4></div>
-          <div class="widget-quicklinks">
-            <a href="courses.html"><i class="fa-solid fa-graduation-cap"></i> Courses</a>
-            <a href="portfolio.html"><i class="fa-solid fa-images"></i> Portfolio</a>
-            <a href="contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
-            <a href="https://wa.me/27787347867" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-          </div>
-        </div>
-
+      <div class="cap-list" id="cap-list">
+        <a class="cap-row" href="services.html#fingerprint" data-thumb="assets/images/service-fingerprint.jpg" data-cursor="view">
+          <span class="cap-num mono">01</span>
+          <span class="cap-main">
+            <h3>Fingerprint Capture</h3>
+            <p>Uber &amp; Bolt driver-partner biometric registration — walk in, no appointment needed.</p>
+            <span class="cap-tags"><span>R350</span><span>Compliance</span></span>
+          </span>
+          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+        <a class="cap-row" href="services.html#webdev" data-thumb="assets/images/service-development.jpg" data-cursor="view">
+          <span class="cap-num mono">02</span>
+          <span class="cap-main">
+            <h3>Web &amp; App Development</h3>
+            <p>Custom websites and applications, built around how your business actually runs.</p>
+            <span class="cap-tags"><span>Websites</span><span>Apps</span></span>
+          </span>
+          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+        <a class="cap-row" href="services.html#design" data-thumb="assets/images/service-design.jpg" data-cursor="view">
+          <span class="cap-num mono">03</span>
+          <span class="cap-main">
+            <h3>Graphic Design</h3>
+            <p>Brand identity, logos and marketing material that hold up at any size.</p>
+            <span class="cap-tags"><span>Brand</span><span>Print &amp; Digital</span></span>
+          </span>
+          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+        <a class="cap-row" href="courses.html" data-thumb="assets/images/service-courses.jpg" data-cursor="view">
+          <span class="cap-num mono">04</span>
+          <span class="cap-main">
+            <h3>Design Courses</h3>
+            <p>Hands-on training in Photoshop, Illustrator, Lightroom and Premiere Pro.</p>
+            <span class="cap-tags"><span>From R2000</span><span>Small groups</span></span>
+          </span>
+          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+        <a class="cap-row" href="services.html#printing" data-thumb="assets/images/service-printing.jpg" data-cursor="view">
+          <span class="cap-num mono">05</span>
+          <span class="cap-main">
+            <h3>Office Printing</h3>
+            <p>Printing, copying and scanning for individuals, students and businesses.</p>
+            <span class="cap-tags"><span>Print</span><span>Scan &amp; Copy</span></span>
+          </span>
+          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+        <a class="cap-row" href="services.html#software" data-thumb="assets/images/service-software-installation.jpg" data-cursor="view">
+          <span class="cap-num mono">06</span>
+          <span class="cap-main">
+            <h3>Software Installation</h3>
+            <p>Professional setup so your devices run exactly how you need them to.</p>
+            <span class="cap-tags"><span>Setup</span><span>Support</span></span>
+          </span>
+          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES OVERVIEW -->
-  <section id="services">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-tag">What We Do</span>
-        <h2 class="section-title">Our Main Services</h2>
-        <p class="section-desc">Practical solutions across mobility, technology and design — built to help you get compliant, get online and get noticed.</p>
+  <!-- floating thumbnail preview (desktop only, follows cursor over capability rows) -->
+  <div class="cap-thumb" id="cap-thumb" aria-hidden="true"><img alt="" loading="lazy"></div>
+
+  <!-- ============ PAUSE ============ -->
+  <section class="section-on-paper pause edge" aria-label="Our approach">
+    <div class="pause-inner">
+      <h2 class="sr-only">Our approach</h2>
+      <p class="statement reveal-line"><span>Every project starts with a conversation, not a template.</span></p>
+      <span class="pause-pulse" aria-hidden="true"></span>
+      <p class="kicker">No two briefs are the same</p>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
+
+  <!-- ============ WORK ============ -->
+  <section class="section section--loud edge" id="work" aria-labelledby="work-heading">
+    <div class="wrap">
+      <div class="work-head">
+        <span class="kicker">Selected work</span>
+        <h2 id="work-heading" class="reveal-line"><span>A few things we've shipped.</span></h2>
       </div>
 
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="card-image"><img src="assets/images/service-fingerprint.jpg" alt="Finger scanning a glowing blue biometric fingerprint reader" loading="lazy" width="1200" height="800"></div>
-          <div class="icon"><i class="fa-solid fa-fingerprint"></i></div>
-          <h3>Uber &amp; Bolt Fingerprint Capture</h3>
-          <p>Fast, hassle-free biometric fingerprint capture for Uber and Bolt driver-partner registration and compliance.</p>
-          <p class="price-line">R350 <span>per capture</span></p>
-          <a href="services.html#fingerprint" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      <article class="work-piece work-01">
+        <div class="work-visual" data-reveal-visual>
+          <img src="assets/images/portfolio-fingerprint-ad.webp" alt="Social campaign artwork explaining Uber and Bolt driver fingerprint registration" loading="lazy" width="1120" height="1400">
         </div>
+        <div class="work-copy">
+          <div class="work-meta"><span class="idx mono">PROJECT 01</span><span class="tag">Graphic Design — Print &amp; Social</span></div>
+          <h3 class="work-title">Driver registration,<br>explained at a glance.</h3>
+          <p class="work-desc">A fingerprint-capture flyer built to answer the only two questions that matter fast: is it legit, and how much. Designed for WhatsApp, print and in-store display.</p>
+          <a href="portfolio.html" class="link-arrow" data-cursor="link">View case <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H3M10 2V9" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        </div>
+      </article>
 
-        <div class="card reveal">
-          <div class="card-image"><img src="assets/images/service-development.jpg" alt="Close-up of colorful HTML and CSS code on a screen" loading="lazy" width="1200" height="800"></div>
-          <div class="icon"><i class="fa-solid fa-code"></i></div>
-          <h3>Web &amp; App Development</h3>
-          <p>Custom websites and mobile/web applications designed to represent your brand and grow your business online.</p>
-          <a href="services.html#webdev" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      <article class="work-piece work-02">
+        <div class="work-copy">
+          <div class="work-meta"><span class="idx mono">PROJECT 02</span><span class="tag">Graphic Design — Digital</span></div>
+          <h3 class="work-title">Brand identity that<br>holds up at any size.</h3>
+          <p class="work-desc">Logos, layouts and landing pages designed to look just as sharp on a phone screen as they do printed on a banner.</p>
+          <a href="services.html#design" class="link-arrow" data-cursor="link">See the service <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H3M10 2V9" stroke="currentColor" stroke-width="1.5"/></svg></a>
         </div>
+        <div class="work-visual" data-reveal-visual>
+          <img src="assets/images/service-design.jpg" alt="Laptop displaying a colourful landing page design template" loading="lazy" width="1200" height="800">
+        </div>
+      </article>
 
-        <div class="card reveal">
-          <div class="card-image"><img src="assets/images/service-design.jpg" alt="Laptop on a desk displaying a colorful landing page design template" loading="lazy" width="1200" height="800"></div>
-          <div class="icon"><i class="fa-solid fa-palette"></i></div>
-          <h3>Graphic Design</h3>
-          <p>Brand identity, logo design and marketing materials that make your business look sharp and professional.</p>
-          <a href="services.html#design" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      <article class="work-piece work-03">
+        <div class="work-visual" data-reveal-visual>
+          <img src="assets/images/service-courses.jpg" alt="Two students working on laptops during a design class" loading="lazy" width="1200" height="800">
         </div>
+        <div class="work-copy">
+          <div class="work-meta"><span class="idx mono">PROJECT 03</span><span class="tag">Graphic Design Courses</span></div>
+          <h3 class="work-title">Hands-on training, not just tutorials.</h3>
+          <p class="work-desc">Small-group sessions in Photoshop, Illustrator, Lightroom and Premiere Pro — built around real briefs, not just software menus.</p>
+          <a href="courses.html" class="link-arrow" data-cursor="link">View courses <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H3M10 2V9" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        </div>
+      </article>
 
-        <div class="card reveal">
-          <div class="card-image"><img src="assets/images/service-courses.jpg" alt="Two students working on laptops during a design class" loading="lazy" width="1200" height="800"></div>
-          <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3>Graphic Design Courses</h3>
-          <p>Hands-on training in Photoshop, Illustrator, Lightroom and Premiere Pro — from R2000.</p>
-          <a href="courses.html" class="card-link">View courses <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-        <div class="card reveal">
-          <div class="card-image"><img src="assets/images/service-printing.jpg" alt="Hands loading paper into an office laser printer" loading="lazy" width="1200" height="800"></div>
-          <div class="icon"><i class="fa-solid fa-print"></i></div>
-          <h3>Office Printing</h3>
-          <p>Reliable printing, copying and scanning services for individuals, students and businesses.</p>
-          <a href="services.html#printing" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-        <div class="card reveal">
-          <div class="card-image"><img src="assets/images/service-software-installation.jpg" alt="Man at a desk watching a software installation progress screen" loading="lazy" width="1200" height="800"></div>
-          <div class="icon"><i class="fa-solid fa-computer"></i></div>
-          <h3>Software Installation</h3>
-          <p>Professional installation and setup of computer software so your devices run exactly how you need them to.</p>
-          <a href="services.html#software" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
+      <div class="work-foot">
+        <a href="portfolio.html" class="btn-magnetic" data-magnetic data-cursor="link">
+          <span class="btn-fill"></span>
+          <span>View full portfolio</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- WHY CHOOSE US -->
-  <section class="bg-alt">
-    <div class="container split">
-      <div class="reveal">
-        <span class="section-tag">Why Choose Us</span>
-        <h2 class="section-title">Reliable Service, Built Around You</h2>
-        <ul class="feature-list">
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>All-in-one convenience</strong>
-              <span class="desc">From fingerprint capture to full brand design, get multiple services handled in one place.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Skills you can use</strong>
-              <span class="desc">Our courses are practical and taught with real-world projects, not just theory.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Local &amp; accessible</strong>
-              <span class="desc">Based in Langlaagte North, Johannesburg — easy to reach and quick to respond on WhatsApp.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Affordable quality</strong>
-              <span class="desc">Professional results without the high agency price tag.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="panel reveal">
-        <div class="steps" style="grid-template-columns:1fr;">
-          <div class="step">
-            <div class="num">01</div>
-            <h4>Tell Us What You Need</h4>
-            <p>Reach out via WhatsApp, email or our contact form and describe your project.</p>
-          </div>
-          <div class="step">
-            <div class="num">02</div>
-            <h4>Get A Quote</h4>
-            <p>We assess your requirements and send you a clear, fair quote.</p>
-          </div>
-          <div class="step">
-            <div class="num">03</div>
-            <h4>We Deliver</h4>
-            <p>Sit back while our team handles the work with quality and care.</p>
-          </div>
-        </div>
+  <!-- ============ STATS ============ -->
+  <section class="stats-strip edge" aria-label="Key numbers">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-cell"><strong>06</strong><span>Capabilities under one roof</span></div>
+        <div class="stat-cell"><strong>R350</strong><span>Fingerprint capture, walk-in</span></div>
+        <div class="stat-cell"><strong>6&#8211;Day</strong><span>Open Monday through Saturday</span></div>
+        <div class="stat-cell"><strong>JHB</strong><span>Langlaagte North, Johannesburg</span></div>
       </div>
     </div>
   </section>
 
-  <!-- COURSES TEASER -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-tag">Learn With Us</span>
-        <h2 class="section-title">Graphic Design Courses</h2>
-        <p class="section-desc">Build in-demand creative skills with hands-on training in the industry's leading Adobe software.</p>
+  <!-- ============ FINAL CTA ============ -->
+  <section class="section section--loud edge cta-final" id="start" aria-labelledby="cta-heading">
+    <div class="wrap">
+      <div class="cta-final-head">
+        <span class="kicker">Start a project</span>
+        <h2 id="cta-heading">Let's build<br>something real.</h2>
+        <p class="cta-final-sub">Tell us what you're working on — we'll get back to you on WhatsApp, usually within the day.</p>
       </div>
-      <div class="grid grid-4">
-        <div class="course-card reveal">
-          <div class="software-icon"><img src="assets/icons/ai.svg" alt="Adobe Illustrator" loading="lazy"></div>
-          <h3>Adobe Illustrator</h3>
-          <p>Master vector graphics, logos and illustrations.</p>
-        </div>
-        <div class="course-card reveal">
-          <div class="software-icon"><img src="assets/icons/ps.svg" alt="Adobe Photoshop" loading="lazy"></div>
-          <h3>Adobe Photoshop</h3>
-          <p>Photo editing, manipulation and digital art.</p>
-        </div>
-        <div class="course-card reveal">
-          <div class="software-icon"><img src="assets/icons/lr.svg" alt="Adobe Lightroom" loading="lazy"></div>
-          <h3>Adobe Lightroom</h3>
-          <p>Photo organization, editing and color grading.</p>
-        </div>
-        <div class="course-card reveal">
-          <div class="software-icon"><img src="assets/icons/pr.svg" alt="Adobe Premiere Pro" loading="lazy"></div>
-          <h3>Premiere Pro</h3>
-          <p>Professional video editing from start to finish.</p>
-        </div>
-      </div>
-      <div class="text-center reveal" style="margin-top:36px;">
-        <a href="courses.html" class="btn btn-primary"><i class="fa-solid fa-graduation-cap"></i> View All Courses</a>
-      </div>
-    </div>
-  </section>
 
-  <!-- FREE CHECKLIST LEAD MAGNET -->
-  <section class="bg-alt">
-    <div class="container split">
-      <div class="reveal">
-        <span class="section-tag">Free Download</span>
-        <h2 class="section-title">Uber &amp; Bolt Registration Checklist</h2>
-        <p style="color:var(--text-muted);margin-bottom:20px;">Get our free one-page checklist covering everything you need for fingerprint capture and driver-partner registration — documents to bring, pricing, and the exact steps to follow.</p>
-        <ul class="feature-list mt-0">
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Document checklist</strong>
-              <span class="desc">Exactly what to bring — no surprises when you arrive.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Pricing &amp; hours</strong>
-              <span class="desc">Fingerprint capture cost, walk-in hours and our address.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-check"></i></span>
-            <div>
-              <strong>Step-by-step guide</strong>
-              <span class="desc">From gathering documents to getting approved on Uber or Bolt.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="panel reveal">
-        <span class="section-tag">Get It Free</span>
-        <h3 style="font-size:1.4rem;margin:10px 0 22px;">Enter your WhatsApp number to download</h3>
-        <form id="checklist-lead-form" novalidate>
-          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-          <div class="form-group">
-            <label for="lead-name">Full Name</label>
-            <input type="text" id="lead-name" name="name" placeholder="Your name" required>
-            <span class="form-error" id="lead-name-error"></span>
-          </div>
-          <div class="form-group">
-            <label for="lead-phone">WhatsApp Number</label>
-            <input type="tel" id="lead-phone" name="phone" placeholder="e.g. 078 734 7867" required>
-            <span class="form-error" id="lead-phone-error"></span>
-          </div>
-          <div class="form-group">
-            <label class="wg-checkbox">
-              <input type="checkbox" id="lead-consent" name="consent" required>
-              <span class="wg-checkbox-box"><i class="fa-solid fa-check"></i></span>
-              <span class="wg-checkbox-label">I agree to be contacted by Web Graphs Technologies about this and related services.</span>
-            </label>
-            <span class="form-error" id="lead-consent-error"></span>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-            <i class="fa-solid fa-file-arrow-down"></i> Get Free Checklist
+      <form class="quick-form" id="quick-start-form" novalidate>
+        <div class="qf-field">
+          <label for="qs-name">Your name</label>
+          <input type="text" id="qs-name" name="name" placeholder="e.g. Thabo" required autocomplete="name">
+        </div>
+        <div class="qf-field">
+          <label for="qs-service">What do you need</label>
+          <select id="qs-service" name="service">
+            <option>Fingerprint Capture</option>
+            <option>Web &amp; App Development</option>
+            <option>Graphic Design</option>
+            <option>Design Courses</option>
+            <option>Office Printing</option>
+            <option>Software Installation</option>
+          </select>
+        </div>
+        <div class="qf-field qf-submit">
+          <button type="submit" class="btn-magnetic btn-solid" data-magnetic data-cursor="link" style="width:100%; justify-content:center;">
+            <span class="btn-fill"></span>
+            <span>Message on WhatsApp</span>
+            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
           </button>
-          <div class="form-success" id="checklist-form-success" hidden>
-            <i class="fa-solid fa-circle-check"></i>
-            <div>
-              <strong>Your download is starting!</strong>
-              <span>We'll also save your number so we can follow up if you need help.</span>
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
+      <p class="form-note" id="quick-start-note"><span class="dot"></span>No spam — this opens a WhatsApp chat with us directly.</p>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section>
-    <div class="container">
-      <div class="cta-band reveal">
-        <h2>Ready to start your project?</h2>
-        <p>Whether it's a fingerprint capture appointment, a new website, or your next design course — we're one message away.</p>
-        <div class="cta-actions">
-          <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
-          <a href="mailto:webgraphstechnologies@gmail.com" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Email Us</a>
+  <footer class="wgs-footer edge">
+    <div class="wrap">
+      <div class="wgs-footer-grid">
+        <div class="wgs-footer-col">
+          <span class="h">Studio</span>
+          <p>Web Graphs Technologies<br>9 Jill Street, Langlaagte North<br>Johannesburg, 2092, South Africa</p>
+          <div class="wgs-footer-social">
+            <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp" class="mono">WA</a>
+            <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram" class="mono">IG</a>
+            <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook" class="mono">FB</a>
+            <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok" class="mono">TT</a>
+          </div>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">Navigate</span>
+          <a href="services.html">Services</a>
+          <a href="courses.html">Courses</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">More</span>
+          <a href="faq.html">FAQ</a>
+          <a href="qr-code.html">QR Code Generator</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">Get in touch</span>
+          <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
+          <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
+          <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
         </div>
       </div>
+      <div class="wgs-footer-bottom">
+        <span class="wgs-footer-mark"><span class="dot" aria-hidden="true"></span> Web Graphs Technologies &copy; <span id="wgs-year">2026</span></span>
+        <span>Designed &amp; built in Johannesburg</span>
+      </div>
     </div>
-  </section>
+  </footer>
 
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-statement reveal">
+<div class="easter-note" id="easter-note" role="status" aria-live="polite">YOU FOUND IT.<br>DESIGNED &amp; BUILT BY WEB GRAPHS TECHNOLOGIES.</div>
 
-      <p>Digital, design and print solutions for individuals and businesses in Johannesburg and beyond.</p>
-
-      <a href="contact.html" class="btn btn-primary">Start a Project</a>
-
-    </div>
-
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="logo"><img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img"></a>
-        <div class="social-row">
-          <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="qr-code.html">QR Code</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html#fingerprint">Fingerprint Capture</a></li>
-          <li><a href="services.html#webdev">Web &amp; App Dev</a></li>
-          <li><a href="services.html#design">Graphic Design</a></li>
-          <li><a href="services.html#printing">Office Printing</a></li>
-          <li><a href="services.html#software">Software Installation</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <ul>
-          <li><a href="https://wa.me/27787347867" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +27 78 734 7867</a></li>
-          <li><a href="mailto:webgraphstechnologies@gmail.com"><i class="fa-solid fa-envelope"></i> webgraphstechnologies@gmail.com</a></li>
-          <li><i class="fa-solid fa-location-dot"></i> 9 Jill Street, Langlaagte North, Johannesburg, 2092, South Africa</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="year"></span> Web Graphs Technologies. All rights reserved.</span>
-      <span>Designed &amp; built by Web Graphs Technologies</span>
-    </div>
-  </div>
-</footer>
-
-<a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-
-<script src="js/script.js"></script>
+<script src="js/studio.js"></script>
 </body>
 </html>
