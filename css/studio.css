@@ -100,7 +100,7 @@
 .wgs img { max-width: 100%; display: block; }
 .wgs a { color: inherit; text-decoration: none; }
 .wgs ul { list-style: none; padding: 0; margin: 0; }
-.wgs button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 .wgs svg { display: block; }
 
 .wgs ::selection { background: var(--signal); color: var(--on-signal); }
@@ -1056,3 +1056,56 @@ button.work-visual { display: block; width: 100%; padding: 0; border: none; font
   .faq-nav::-webkit-scrollbar { display: none; }
   .faq-nav a { white-space: nowrap; flex-shrink: 0; }
 }
+
+/* ---------- 11p · QR code tool ---------- */
+.qr-studio { display: grid; grid-template-columns: 7fr 5fr; gap: var(--sp-8); align-items: start; }
+@media (max-width: 900px) { .qr-studio { grid-template-columns: 1fr; } }
+
+.qr-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  color: var(--mute);
+  font: 600 13px/1 var(--font-mono);
+  transition: border-color var(--dur-2) var(--ease-soft), color var(--dur-2) var(--ease-soft), background-color var(--dur-2) var(--ease-soft);
+}
+.qr-chip:hover { border-color: var(--signal); color: var(--fg); background: color-mix(in srgb, var(--signal) 10%, transparent); }
+.qr-quickfill { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3); margin: calc(var(--sp-2) * -1) 0 var(--sp-6); }
+.qr-quickfill-label { font: 600 13px/1 var(--font-mono); color: var(--mute); }
+
+.qr-color-field {
+  display: flex; align-items: center; gap: var(--sp-3);
+  min-height: 48px; padding: 0 var(--sp-4);
+  background: var(--ink-2); border: 1px solid var(--line-strong); border-radius: var(--radius);
+}
+.qr-color-field input[type="color"] {
+  width: 32px; height: 32px; min-height: 0;
+  padding: 0; margin: 0; border: 1px solid var(--line-strong); border-radius: 8px;
+  background: none; cursor: pointer; flex-shrink: 0;
+}
+.qr-color-field span { color: var(--mute); font-size: var(--fs-label); }
+
+.qr-tool-preview { display: flex; flex-direction: column; align-items: center; gap: var(--sp-5); position: sticky; top: calc(var(--masthead-h) + var(--sp-6)); }
+.qr-preview-box {
+  width: 100%; max-width: 340px; aspect-ratio: 1 / 1;
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--sp-5);
+  position: relative;
+}
+.qr-preview-box canvas { max-width: 100%; max-height: 100%; display: block; }
+.qr-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--sp-3);
+  color: #111111; opacity: .32; text-align: center; padding: var(--sp-5);
+}
+.qr-placeholder .glyph { width: 36px; height: 36px; border: 2px solid currentColor; border-radius: 6px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; padding: 5px; }
+.qr-placeholder .glyph span { background: currentColor; border-radius: 1px; }
+.qr-placeholder .glyph span:nth-child(3) { background: none; }
+.qr-placeholder p { font: 600 var(--fs-label)/1.4 var(--font-sans); max-width: 220px; }
+.qr-download-btn { width: 100%; max-width: 340px; justify-content: center; }
+.qr-download-btn:disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+.qr-tool-note { color: var(--mute); font-size: var(--fs-nano); text-align: center; max-width: 340px; }
