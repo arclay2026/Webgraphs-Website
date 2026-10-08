@@ -963,3 +963,34 @@ button.work-visual { display: block; width: 100%; padding: 0; border: none; font
 .about-gallery .work-visual { aspect-ratio: 1 / 1; }
 .about-gallery figcaption { margin-top: var(--sp-3); font: 600 var(--fs-label)/1 var(--font-sans); color: var(--mute); }
 @media (max-width: 640px) { .about-gallery { grid-template-columns: 1fr; } }
+
+/* ---------- 11l · FAQ accordion ---------- */
+.faq-cat { margin-bottom: var(--sp-9); }
+.faq-cat:last-of-type { margin-bottom: 0; }
+.faq-cat-head { display: flex; align-items: baseline; gap: var(--sp-3); margin-bottom: var(--sp-2); }
+.faq-cat-head .idx { color: var(--mute); }
+.faq-cat-head h2 { font-size: var(--fs-h4); }
+
+.faq-row { border-top: 1px solid var(--line); }
+.faq-row:last-child { border-bottom: 1px solid var(--line); }
+.faq-q-btn {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-5);
+  padding: var(--sp-5) 0;
+  text-align: left;
+  font: 700 var(--fs-lede)/1.4 var(--font-sans);
+}
+.faq-q-plus { position: relative; flex-shrink: 0; width: 18px; height: 18px; }
+.faq-q-plus::before, .faq-q-plus::after { content: ""; position: absolute; top: 50%; left: 50%; background: var(--fg); transition: transform var(--dur-2) var(--ease-expo), background-color var(--dur-2) var(--ease-soft); }
+.faq-q-plus::before { width: 14px; height: 2px; transform: translate(-50%, -50%); }
+.faq-q-plus::after { width: 2px; height: 14px; transform: translate(-50%, -50%); }
+.faq-row.open .faq-q-plus::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+.faq-row.open .faq-q-plus::before { background: var(--signal-ink); }
+.faq-row:hover .faq-q-btn { color: var(--signal-ink); }
+
+.faq-a-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur-3) var(--ease-expo); }
+.faq-a-panel > div { overflow: hidden; }
+.faq-row.open .faq-a-panel { grid-template-rows: 1fr; }
+.faq-a-inner { padding-bottom: var(--sp-5); max-width: 68ch; color: var(--mute); font-size: var(--fs-body); line-height: 1.6; }
+.faq-a-inner a { color: var(--signal-ink); border-bottom: 1px solid color-mix(in srgb, var(--signal-ink) 45%, transparent); }
+.faq-a-inner a:hover { border-color: var(--signal-ink); }

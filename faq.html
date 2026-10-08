@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,310 +7,261 @@
 <meta name="description" content="Answers to common questions about Web Graphs Technologies' fingerprint capture, web &amp; app development, graphic design, courses, printing and software installation services in Johannesburg.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/studio.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
-<body>
+<body class="wgs">
 
-<div class="wg-preloader" id="wg-preloader" role="presentation" aria-hidden="true">
-  <div class="wg-preloader-glow"></div>
-  <div class="wg-preloader-logo">
-    <img src="assets/logo.svg" alt="" class="logo-img">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="wgs-cursor" id="wgs-cursor-dot" aria-hidden="true"></div>
+<div class="wgs-cursor-ring" id="wgs-cursor-ring" aria-hidden="true"><span></span></div>
+
+<div class="wgs-progress-bar" id="top-progress" aria-hidden="true"></div>
+
+<div class="wgs-thread" aria-hidden="true">
+  <span class="wgs-thread-label">SCROLL</span>
+  <div class="wgs-thread-track">
+    <div class="wgs-thread-fill" id="thread-fill"></div>
+    <div class="wgs-thread-dot" id="thread-dot"></div>
   </div>
-  <div class="wg-preloader-bar"><span></span></div>
+  <span class="wgs-thread-label mono" id="thread-pct">00%</span>
 </div>
 
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img">
+<header class="wgs-nav" id="wgs-nav">
+  <div class="wgs-nav-inner">
+    <a href="index.html" class="wgs-logo" id="wgs-logo-mark" aria-label="Web Graphs Technologies — home">
+      <img src="assets/logo.svg" alt="" width="30" height="30">
+      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="courses.html">Courses</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About</a>
-      <a href="faq.html" class="active">FAQ</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline whatsapp-nav-btn">WhatsApp</a>
-      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+    <div class="wgs-nav-right">
+      <span class="wgs-nav-time mono" data-clock>--:--:-- SAST</span>
+      <button type="button" class="wgs-menu-btn" id="wgs-menu-open" aria-expanded="false" aria-controls="wgs-menu">
+        <span class="wgs-menu-btn-box" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
       </button>
     </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobile-menu">
-  <nav aria-label="Mobile">
-    <a href="index.html"><span class="mm-num">01</span><i class="fa-solid fa-house"></i><span class="mm-label">Home</span></a>
-    <a href="services.html"><span class="mm-num">02</span><i class="fa-solid fa-briefcase"></i><span class="mm-label">Services</span></a>
-    <a href="courses.html"><span class="mm-num">03</span><i class="fa-solid fa-graduation-cap"></i><span class="mm-label">Courses</span></a>
-    <a href="portfolio.html"><span class="mm-num">04</span><i class="fa-solid fa-images"></i><span class="mm-label">Portfolio</span></a>
-    <a href="about.html"><span class="mm-num">05</span><i class="fa-solid fa-circle-info"></i><span class="mm-label">About</span></a>
-    <a href="faq.html" class="active"><span class="mm-num">06</span><i class="fa-solid fa-circle-question"></i><span class="mm-label">FAQ</span></a>
-    <a href="contact.html"><span class="mm-num">07</span><i class="fa-solid fa-envelope"></i><span class="mm-label">Contact</span></a>
-  </nav>
-  <div class="mobile-menu-bottom">
-    <div class="social-row">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-    </div>
-    <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary mobile-menu-cta"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+<nav class="wgs-menu" id="wgs-menu" aria-label="Full site navigation">
+  <div class="wgs-menu-top">
+    <a href="index.html" class="wgs-logo">
+      <img src="assets/logo.svg" alt="" width="26" height="26">
+      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
+    </a>
+    <button type="button" class="wgs-menu-close" id="wgs-menu-close">
+      <span aria-hidden="true">&times;</span> Close
+    </button>
   </div>
-</div>
+  <ul class="wgs-menu-list">
+    <li class="wgs-menu-item"><span class="idx mono">01</span><a href="index.html">Home</a><span class="desc">Start here — an overview of the studio.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">02</span><a href="services.html">Services</a><span class="desc">Fingerprint capture, web &amp; app dev, design, printing, software.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">03</span><a href="courses.html">Courses</a><span class="desc">Hands-on Photoshop, Illustrator, Lightroom &amp; Premiere Pro training.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">04</span><a href="portfolio.html">Portfolio</a><span class="desc">A closer look at work we've shipped.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">05</span><a href="about.html">About</a><span class="desc">Who we are and how we work.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">06</span><a href="qr-code.html">QR Code</a><span class="desc">Free tool — turn any link into a scannable code.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">07</span><a href="contact.html">Contact</a><span class="desc">Start a conversation on WhatsApp, email or in person.</span></li>
+  </ul>
+  <div class="wgs-menu-bottom">
+    <div class="wgs-menu-bottom-block">
+      <span>WhatsApp &amp; Calls</span>
+      <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Email</span>
+      <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Studio</span>
+      <p>9 Jill Street, Langlaagte North, Johannesburg, 2092</p>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Hours</span>
+      <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
+    </div>
+  </div>
+</nav>
 
-<main>
+<main id="main">
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumb">Home <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <span class="accent-text">FAQ</span></div>
-      <h1>Frequently Asked Questions</h1>
-      <p>Quick answers to the questions we hear most. Still stuck? Message us on WhatsApp and we'll help you out.</p>
+  <!-- ============ PAGE INTRO ============ -->
+  <section class="page-intro edge">
+    <div class="wrap">
+      <span class="kicker">FAQ</span>
+      <h1 class="reveal-line"><span>Frequently asked questions.</span></h1>
+      <p class="lede">Quick answers to the questions we hear most. Still stuck? Message us on WhatsApp and we'll help you out.</p>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="faq-wrap">
+  <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
 
-        <div class="faq-category reveal">
-          <h2 class="faq-category-title"><i class="fa-solid fa-circle-info"></i> General</h2>
+  <!-- ============ FAQ ACCORDION ============ -->
+  <section class="section edge">
+    <div class="wrap" style="max-width: 880px;">
 
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>What services does Web Graphs Technologies offer?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>We offer Uber &amp; Bolt fingerprint capture, web &amp; app development, graphic design, graphic design courses, office printing, and computer software installation — all under one roof in Johannesburg.</p></div></div>
-          </div>
+      <div class="faq-cat">
+        <div class="faq-cat-head"><span class="idx mono">01</span><h2>General</h2></div>
 
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>Where are you located?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>9 Jill Street, Langlaagte North, Johannesburg, 2092, South Africa.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>What are your working hours?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Monday – Friday: 8:00 – 17:00, and Saturday: 8:00 – 13:00.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>How can I get in touch?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>The fastest way is WhatsApp at +27 78 734 7867. You can also email webgraphstechnologies@gmail.com or use the form on our <a href="contact.html">Contact page</a>.</p></div></div>
-          </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>What services does Web Graphs Technologies offer?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">We offer Uber &amp; Bolt fingerprint capture, web &amp; app development, graphic design, graphic design courses, office printing, and computer software installation — all under one roof in Johannesburg.</p></div></div>
         </div>
-
-        <div class="faq-category reveal">
-          <h2 class="faq-category-title"><i class="fa-solid fa-fingerprint"></i> Fingerprint Capture</h2>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>How much does fingerprint capture cost?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>R350 per capture for Uber and Bolt driver-partner registration.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>What documents do I need to bring?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Your South African ID or passport, and proof of residence. If you already have a driver's license or PrDP, bring that too — it helps speed up your registration.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>Do I need to book an appointment?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>No — you can walk in with your documents and we'll guide you through the entire process, no long queues.</p></div></div>
-          </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>Where are you located?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">9 Jill Street, Langlaagte North, Johannesburg, 2092, South Africa.</p></div></div>
         </div>
-
-        <div class="faq-category reveal">
-          <h2 class="faq-category-title"><i class="fa-solid fa-code"></i> Web &amp; App Development</h2>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>What kind of websites or apps do you build?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Everything from simple portfolio and business websites to e-commerce stores, booking systems, and custom web or mobile apps.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>Do you offer ongoing maintenance?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Yes — we offer maintenance for sites and apps we build, so things keep running smoothly after launch.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>How much does a website cost?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>It depends on the size and features you need. Message us with your requirements and we'll give you a quote.</p></div></div>
-          </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>What are your working hours?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Monday – Friday: 8:00 – 17:00, and Saturday: 8:00 – 13:00.</p></div></div>
         </div>
-
-        <div class="faq-category reveal">
-          <h2 class="faq-category-title"><i class="fa-solid fa-palette"></i> Graphic Design</h2>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>What design services do you offer?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Brand identity, logo design, and marketing materials — including social media ad designs, like the examples in our <a href="portfolio.html">Portfolio</a>.</p></div></div>
-          </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>How can I get in touch?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">The fastest way is WhatsApp at +27 78 734 7867. You can also email webgraphstechnologies@gmail.com or use the form on our <a href="contact.html">Contact page</a>.</p></div></div>
         </div>
+      </div>
 
-        <div class="faq-category reveal">
-          <h2 class="faq-category-title"><i class="fa-solid fa-graduation-cap"></i> Design Courses</h2>
+      <div class="faq-cat">
+        <div class="faq-cat-head"><span class="idx mono">02</span><h2>Fingerprint Capture</h2></div>
 
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>What software do you teach?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Photoshop, Illustrator, Lightroom and Premiere Pro — individually or bundled together.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>How long do the courses take?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Course duration depends on the combination you choose, from 1 month up to 4 months. See the full breakdown on our <a href="courses.html">Courses page</a>.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>How much do the courses cost?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Prices range from R2000 to R7500 depending on the software bundle — see our <a href="courses.html">Courses page</a> for the full price list.</p></div></div>
-          </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>How much does fingerprint capture cost?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">R350 per capture for Uber and Bolt driver-partner registration.</p></div></div>
         </div>
-
-        <div class="faq-category reveal">
-          <h2 class="faq-category-title"><i class="fa-solid fa-print"></i> Printing &amp; Software Installation</h2>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>Can I get documents printed or copied?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Yes — message us with what you need printed or copied and we'll sort you out.</p></div></div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false">
-              <span>Can you help install software on my computer?</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Yes — get in touch with what you need installed and we'll assist.</p></div></div>
-          </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>What documents do I need to bring?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Your South African ID or passport, and proof of residence. If you already have a driver's license or PrDP, bring that too — it helps speed up your registration.</p></div></div>
         </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>Do I need to book an appointment?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">No — you can walk in with your documents and we'll guide you through the entire process, no long queues.</p></div></div>
+        </div>
+      </div>
 
+      <div class="faq-cat">
+        <div class="faq-cat-head"><span class="idx mono">03</span><h2>Web &amp; App Development</h2></div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>What kind of websites or apps do you build?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Everything from simple portfolio and business websites to e-commerce stores, booking systems, and custom web or mobile apps.</p></div></div>
+        </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>Do you offer ongoing maintenance?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Yes — we offer maintenance for sites and apps we build, so things keep running smoothly after launch.</p></div></div>
+        </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>How much does a website cost?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">It depends on the size and features you need. Message us with your requirements and we'll give you a quote.</p></div></div>
+        </div>
+      </div>
+
+      <div class="faq-cat">
+        <div class="faq-cat-head"><span class="idx mono">04</span><h2>Graphic Design</h2></div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>What design services do you offer?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Brand identity, logo design, and marketing materials — including social media ad designs, like the examples in our <a href="portfolio.html">Portfolio</a>.</p></div></div>
+        </div>
+      </div>
+
+      <div class="faq-cat">
+        <div class="faq-cat-head"><span class="idx mono">05</span><h2>Design Courses</h2></div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>What software do you teach?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Photoshop, Illustrator, Lightroom and Premiere Pro — individually or bundled together.</p></div></div>
+        </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>How long do the courses take?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Course duration depends on the combination you choose, from 1 month up to 4 months. See the full breakdown on our <a href="courses.html">Courses page</a>.</p></div></div>
+        </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>How much do the courses cost?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Prices range from R2000 to R7500 depending on the software bundle — see our <a href="courses.html">Courses page</a> for the full price list.</p></div></div>
+        </div>
+      </div>
+
+      <div class="faq-cat">
+        <div class="faq-cat-head"><span class="idx mono">06</span><h2>Printing &amp; Software Installation</h2></div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>Can I get documents printed or copied?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Yes — message us with what you need printed or copied and we'll sort you out.</p></div></div>
+        </div>
+        <div class="faq-row">
+          <button type="button" class="faq-q-btn" aria-expanded="false"><span>Can you help install software on my computer?</span><span class="faq-q-plus" aria-hidden="true"></span></button>
+          <div class="faq-a-panel"><div><p class="faq-a-inner">Yes — get in touch with what you need installed and we'll assist.</p></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CTA ============ -->
+  <section class="section section--loud edge">
+    <div class="wrap cta-center">
+      <span class="kicker">Still have questions?</span>
+      <h2>Let's talk.</h2>
+      <p>Can't find the answer you're looking for? Send us a message and we'll get back to you.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-magnetic btn-solid" data-magnetic data-cursor="link">
+          <span class="btn-fill"></span><span>Contact us</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+        <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn-magnetic" data-magnetic data-cursor="link">
+          <span class="btn-fill"></span><span>WhatsApp</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="cta-band reveal">
-        <h2>Still have questions?</h2>
-        <p>Can't find the answer you're looking for? Send us a message and we'll get back to you.</p>
-        <div class="cta-actions">
-          <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
-          <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  <footer class="wgs-footer edge">
+    <div class="wrap">
+      <div class="wgs-footer-grid">
+        <div class="wgs-footer-col">
+          <span class="h">Studio</span>
+          <p>Web Graphs Technologies<br>9 Jill Street, Langlaagte North<br>Johannesburg, 2092, South Africa</p>
+          <div class="wgs-footer-social">
+            <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp" class="mono">WA</a>
+            <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram" class="mono">IG</a>
+            <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook" class="mono">FB</a>
+            <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok" class="mono">TT</a>
+          </div>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">Navigate</span>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="courses.html">Courses</a>
+          <a href="portfolio.html">Portfolio</a>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">More</span>
+          <a href="about.html">About</a>
+          <a href="qr-code.html">QR Code Generator</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">Get in touch</span>
+          <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
+          <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
+          <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
         </div>
       </div>
+      <div class="wgs-footer-bottom">
+        <span class="wgs-footer-mark"><span class="dot" aria-hidden="true"></span> Web Graphs Technologies &copy; <span id="wgs-year">2026</span></span>
+        <span>Designed &amp; built in Johannesburg</span>
+      </div>
     </div>
-  </section>
+  </footer>
 
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-statement reveal">
+<div class="easter-note" id="easter-note" role="status" aria-live="polite">YOU FOUND IT.<br>DESIGNED &amp; BUILT BY WEB GRAPHS TECHNOLOGIES.</div>
 
-      <p>Digital, design and print solutions for individuals and businesses in Johannesburg and beyond.</p>
-
-      <a href="contact.html" class="btn btn-primary">Start a Project</a>
-
-    </div>
-
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="logo"><img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img"></a>
-        <div class="social-row">
-          <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html#fingerprint">Fingerprint Capture</a></li>
-          <li><a href="services.html#webdev">Web &amp; App Dev</a></li>
-          <li><a href="services.html#design">Graphic Design</a></li>
-          <li><a href="services.html#printing">Office Printing</a></li>
-          <li><a href="services.html#software">Software Installation</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <ul>
-          <li><a href="https://wa.me/27787347867" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +27 78 734 7867</a></li>
-          <li><a href="mailto:webgraphstechnologies@gmail.com"><i class="fa-solid fa-envelope"></i> webgraphstechnologies@gmail.com</a></li>
-          <li><i class="fa-solid fa-location-dot"></i> 9 Jill Street, Langlaagte North, Johannesburg, 2092, South Africa</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="year"></span> Web Graphs Technologies. All rights reserved.</span>
-      <span>Designed &amp; built by Web Graphs Technologies</span>
-    </div>
-  </div>
-</footer>
-
-<a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-
-<script src="js/script.js"></script>
+<script src="js/studio.js"></script>
 </body>
 </html>

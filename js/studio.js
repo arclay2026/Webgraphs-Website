@@ -515,6 +515,22 @@
   }
 
   /* ---------------------------------------------------------------
+     13 · FAQ accordion
+     --------------------------------------------------------------- */
+  function initFaqAccordion() {
+    const rows = document.querySelectorAll('.faq-row');
+    if (!rows.length) return;
+    rows.forEach((row) => {
+      const btn = row.querySelector('.faq-q-btn');
+      btn.addEventListener('click', () => {
+        const isOpen = row.classList.contains('open');
+        row.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------
      Boot
      --------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
@@ -531,6 +547,7 @@
     initStudioTabs();
     initBundleCalculator();
     initLightbox();
+    initFaqAccordion();
 
     const yearEl = document.getElementById('wgs-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
