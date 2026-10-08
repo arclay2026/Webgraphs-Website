@@ -50,6 +50,104 @@
   }
 
   /* ---------------------------------------------------------------
+     00b · Custom select — progressive enhancement over every <select>
+     --------------------------------------------------------------- */
+  function initCustomSelects() {
+    document.querySelectorAll('select').forEach((select) => {
+      if (select.dataset.wgsEnhanced) return;
+      select.dataset.wgsEnhanced = 'true';
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'wgs-select';
+      select.parentNode.insertBefore(wrapper, select);
+      wrapper.appendChild(select);
+      select.classList.add('wgs-select-native');
+      select.tabIndex = -1;
+
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'wgs-select-trigger';
+      trigger.setAttribute('aria-haspopup', 'listbox');
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.innerHTML = '<span class="val"></span><svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      wrapper.appendChild(trigger);
+
+      const listbox = document.createElement('ul');
+      listbox.className = 'wgs-select-list';
+      listbox.setAttribute('role', 'listbox');
+      listbox.hidden = true;
+      wrapper.appendChild(listbox);
+
+      const valueEl = trigger.querySelector('.val');
+      const optionEls = Array.from(select.options).map((opt, i) => {
+        const li = document.createElement('li');
+        li.className = 'wgs-select-option';
+        li.setAttribute('role', 'option');
+        li.dataset.index = String(i);
+        li.textContent = opt.textContent;
+        listbox.appendChild(li);
+        return li;
+      });
+
+      function syncFromSelect() {
+        const opt = select.options[select.selectedIndex];
+        valueEl.textContent = opt ? opt.textContent : '';
+        optionEls.forEach((li, i) => li.classList.toggle('is-selected', i === select.selectedIndex));
+      }
+      syncFromSelect();
+
+      function closeList() {
+        listbox.hidden = true;
+        wrapper.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', onOutsideClick);
+      }
+      function onOutsideClick(e) {
+        if (!wrapper.contains(e.target)) closeList();
+      }
+      function openList() {
+        listbox.hidden = false;
+        wrapper.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+        const active = listbox.querySelector('.is-selected') || optionEls[0];
+        active?.scrollIntoView({ block: 'nearest' });
+        document.addEventListener('click', onOutsideClick);
+      }
+
+      trigger.addEventListener('click', () => {
+        if (listbox.hidden) openList(); else closeList();
+      });
+
+      listbox.addEventListener('click', (e) => {
+        const li = e.target.closest('.wgs-select-option');
+        if (!li) return;
+        select.selectedIndex = Number(li.dataset.index);
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        syncFromSelect();
+        closeList();
+        trigger.focus();
+      });
+
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (listbox.hidden) { openList(); return; }
+          const dir = e.key === 'ArrowDown' ? 1 : -1;
+          const next = Math.min(Math.max(select.selectedIndex + dir, 0), optionEls.length - 1);
+          select.selectedIndex = next;
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+          syncFromSelect();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (listbox.hidden) openList(); else closeList();
+        } else if (e.key === 'Escape') {
+          closeList();
+        }
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------
      01 · Clock — Africa/Johannesburg, real time, no fabrication
      --------------------------------------------------------------- */
   function initClock() {
@@ -748,6 +846,7 @@
      --------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
     initReveal();
+    initCustomSelects();
     initClock();
     initNav();
     initThread();

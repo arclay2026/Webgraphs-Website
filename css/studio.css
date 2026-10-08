@@ -756,6 +756,16 @@ button.work-visual { display: block; width: 100%; padding: 0; border: none; font
 .qf-field select { cursor: pointer; }
 .qf-field option { background: var(--ink); color: var(--fg); }
 
+/* quick-form selects use the custom dropdown too, but match the surrounding underline inputs instead of the generic boxed trigger */
+.qf-field .wgs-select-trigger {
+  background: transparent; border: none; border-bottom: 1px solid var(--line-strong);
+  border-radius: 0; min-height: 0; padding: var(--sp-3) 0;
+  font: 600 var(--fs-h4)/1.3 var(--font-sans);
+}
+.qf-field .wgs-select-trigger:focus-visible,
+.qf-field .wgs-select.open .wgs-select-trigger { border-color: var(--signal); box-shadow: none; }
+.qf-field .wgs-select-list { font-size: var(--fs-body); }
+
 @media (max-width: 760px) {
   .qf-field, .qf-field.qf-submit { grid-column: span 12; }
 }
@@ -883,6 +893,7 @@ button.work-visual { display: block; width: 100%; padding: 0; border: none; font
 
 /* ---------- 11e · Split panel (two-column closing CTA) ---------- */
 .split-panel { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); align-items: center; }
+.split-panel > * { min-width: 0; }
 .split-panel h2 { font-size: var(--fs-h2); max-width: 12ch; margin-bottom: var(--sp-6); }
 .split-panel .panel-box { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-7); }
 .split-panel .panel-box h3 { font-size: var(--fs-h3); margin-bottom: var(--sp-3); }
@@ -1109,3 +1120,67 @@ button.work-visual { display: block; width: 100%; padding: 0; border: none; font
 .qr-download-btn { width: 100%; max-width: 340px; justify-content: center; }
 .qr-download-btn:disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
 .qr-tool-note { color: var(--mute); font-size: var(--fs-nano); text-align: center; max-width: 340px; }
+
+/* ---------- 11q · Custom select (progressive enhancement over <select>) ---------- */
+.wgs-select { position: relative; }
+.wgs-select-native { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; min-width: 0; min-height: 0; padding: 0; margin: 0; border: none; background: none; overflow: hidden; }
+
+.wgs-select-trigger {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  width: 100%; min-height: 48px;
+  padding: 12px 16px;
+  background: var(--ink-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--fg);
+  font: 500 16px/1.4 var(--font-sans);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--dur-2) var(--ease-soft), box-shadow var(--dur-2) var(--ease-soft);
+}
+.wgs-select-trigger .val { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wgs-select-trigger svg { color: var(--signal-ink); flex-shrink: 0; transition: transform var(--dur-2) var(--ease-soft); }
+.wgs-select-trigger:hover { border-color: color-mix(in srgb, var(--signal) 45%, var(--line-strong)); }
+.wgs-select-trigger:focus-visible { outline: none; border-color: var(--signal); box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 16%, transparent); }
+.wgs-select.open .wgs-select-trigger { border-color: var(--signal); box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 16%, transparent); }
+.wgs-select.open .wgs-select-trigger svg { transform: rotate(180deg); }
+
+.wgs-select-list {
+  position: absolute; left: 0; right: 0; top: calc(100% + 8px);
+  margin: 0; padding: 6px;
+  list-style: none;
+  background: color-mix(in srgb, var(--ink-2) 96%, transparent);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 48px -16px rgba(0,0,0,.6);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 60;
+  opacity: 0; transform: translateY(-6px) scale(.98);
+  pointer-events: none;
+  transition: opacity var(--dur-1) var(--ease-soft), transform var(--dur-1) var(--ease-soft);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--signal) 50%, var(--ink-2)) transparent;
+}
+.wgs-select.open .wgs-select-list { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.wgs-select-list::-webkit-scrollbar { width: 6px; }
+.wgs-select-list::-webkit-scrollbar-track { background: transparent; }
+.wgs-select-list::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--signal) 50%, var(--ink-2)); border-radius: 999px; }
+
+.wgs-select-option {
+  padding: 11px 14px;
+  border-radius: calc(var(--radius) - 2px);
+  font: 500 var(--fs-label)/1.4 var(--font-sans);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease-soft), color var(--dur-1) var(--ease-soft);
+}
+.wgs-select-option:hover, .wgs-select-option.is-active { background: color-mix(in srgb, var(--signal) 14%, var(--ink-2)); }
+.wgs-select-option.is-selected { background: var(--signal); color: var(--on-signal); font-weight: 700; }
+.wgs-select-option.is-selected:hover, .wgs-select-option.is-selected.is-active { background: var(--signal); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wgs-select-list, .wgs-select-trigger svg { transition: none; }
+}
