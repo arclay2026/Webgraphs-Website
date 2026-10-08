@@ -530,6 +530,37 @@ body.menu-open { overflow: hidden; }
   .wg-select-list, .wg-select-trigger i { transition: none; }
 }
 
+/* ---------- Custom checkbox ---------- */
+.wg-checkbox { display: flex; align-items: flex-start; gap: var(--s3); cursor: pointer; }
+.wg-checkbox input {
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  width: 1px; height: 1px;
+  min-width: 0; min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  opacity: 0;
+  pointer-events: none;
+}
+.wg-checkbox-box {
+  flex-shrink: 0; width: 22px; height: 22px; margin-top: 2px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  background: var(--plate);
+  display: flex; align-items: center; justify-content: center;
+  color: transparent;
+  font-size: 11px;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.wg-checkbox:hover .wg-checkbox-box { border-color: color-mix(in srgb, var(--signal) 45%, var(--rule-strong)); }
+.wg-checkbox input:checked + .wg-checkbox-box { background: var(--signal); border-color: var(--signal); color: #08170d; }
+.wg-checkbox input:focus-visible + .wg-checkbox-box { outline: none; border-color: var(--signal-ink); box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 16%, transparent); }
+.wg-checkbox-label { color: var(--mute); font-size: var(--fs-small); line-height: 1.5; }
+.form-group.has-error .wg-checkbox-box { border-color: #e05a5a; }
+
 /* ---------- 07 · Icon tiles — colored rounded-square badges ---------- */
 .icon-tile {
   width: 48px; height: 48px;
