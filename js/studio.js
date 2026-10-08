@@ -465,6 +465,56 @@
   }
 
   /* ---------------------------------------------------------------
+     12 · Lightbox — click any [data-lightbox] image to view full size
+     --------------------------------------------------------------- */
+  function initLightbox() {
+    const triggers = Array.from(document.querySelectorAll('[data-lightbox]'));
+    if (!triggers.length) return;
+
+    const box = document.createElement('div');
+    box.className = 'wgs-lightbox';
+    box.innerHTML = `
+      <button type="button" class="wgs-lightbox-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <figure>
+        <img alt="">
+        <figcaption></figcaption>
+      </figure>
+    `;
+    document.body.appendChild(box);
+    const img = box.querySelector('img');
+    const caption = box.querySelector('figcaption');
+    const closeBtn = box.querySelector('.wgs-lightbox-close');
+    let lastFocused = null;
+
+    const close = () => {
+      box.classList.remove('open');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    };
+    const open = (trigger) => {
+      lastFocused = trigger;
+      const src = trigger.getAttribute('data-lightbox') || trigger.querySelector('img')?.src;
+      const cap = trigger.getAttribute('data-caption') || trigger.querySelector('img')?.alt || '';
+      img.src = src;
+      img.alt = cap;
+      caption.textContent = cap;
+      box.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        open(trigger);
+      });
+    });
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', (e) => { if (e.target === box) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
+  }
+
+  /* ---------------------------------------------------------------
      Boot
      --------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
@@ -480,6 +530,7 @@
     initEasterEgg();
     initStudioTabs();
     initBundleCalculator();
+    initLightbox();
 
     const yearEl = document.getElementById('wgs-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
