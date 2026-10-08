@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us | Web Graphs Technologies</title>
-<meta name="description" content="Learn more about Web Graphs Technologies, a Johannesburg-based company offering fingerprint capture, web & app development, graphic design, design courses and more.">
+<title>Free QR Code Generator | Web Graphs Technologies</title>
+<meta name="description" content="Create a custom QR code for free — turn any link, WhatsApp number, email or text into a scannable QR code and download it as a PNG, instantly in your browser.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
@@ -31,9 +31,9 @@
       <a href="services.html">Services</a>
       <a href="courses.html">Courses</a>
       <a href="portfolio.html">Portfolio</a>
-      <a href="about.html" class="active">About</a>
+      <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
-      <a href="qr-code.html">QR Code</a>
+      <a href="qr-code.html" class="active">QR Code</a>
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-cta">
@@ -50,9 +50,9 @@
     <a href="services.html"><span class="mm-num">02</span><i class="fa-solid fa-briefcase"></i><span class="mm-label">Services</span></a>
     <a href="courses.html"><span class="mm-num">03</span><i class="fa-solid fa-graduation-cap"></i><span class="mm-label">Courses</span></a>
     <a href="portfolio.html"><span class="mm-num">04</span><i class="fa-solid fa-images"></i><span class="mm-label">Portfolio</span></a>
-    <a href="about.html" class="active"><span class="mm-num">05</span><i class="fa-solid fa-circle-info"></i><span class="mm-label">About</span></a>
+    <a href="about.html"><span class="mm-num">05</span><i class="fa-solid fa-circle-info"></i><span class="mm-label">About</span></a>
     <a href="faq.html"><span class="mm-num">06</span><i class="fa-solid fa-circle-question"></i><span class="mm-label">FAQ</span></a>
-    <a href="qr-code.html"><span class="mm-num">07</span><i class="fa-solid fa-qrcode"></i><span class="mm-label">QR Code</span></a>
+    <a href="qr-code.html" class="active"><span class="mm-num">07</span><i class="fa-solid fa-qrcode"></i><span class="mm-label">QR Code</span></a>
     <a href="contact.html"><span class="mm-num">08</span><i class="fa-solid fa-envelope"></i><span class="mm-label">Contact</span></a>
   </nav>
   <div class="mobile-menu-bottom">
@@ -71,46 +71,81 @@
 
   <section class="page-hero">
     <div class="container">
-      <div class="breadcrumb">Home <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <span class="accent-text">About</span></div>
-      <h1>About Web Graphs Technologies</h1>
-      <p>A Johannesburg-based company bridging the gap between everyday tech needs and creative excellence.</p>
+      <div class="breadcrumb">Home <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <span class="accent-text">QR Code Generator</span></div>
+      <h1>Free QR Code Generator</h1>
+      <p>Turn a link, WhatsApp number, email address or any text into a scannable QR code — created right in your browser and ready to download as a PNG, in seconds.</p>
     </div>
   </section>
 
   <section>
-    <div class="container split">
-      <div class="reveal">
-        <span class="section-tag">Our Story</span>
-        <h2 class="section-title">Practical Solutions, Creative Results</h2>
-        <p style="color:var(--text-muted);margin-bottom:20px;">Web Graphs Technologies was built to solve a simple problem: people and businesses often need to run between different providers for services that should be easy to find in one place — from getting fingerprinted for a driving platform, to printing a document, to building a brand from the ground up.</p>
-        <p style="color:var(--text-muted);">Based in Langlaagte North, Johannesburg, we combine technical services with creative design and training, giving individuals and businesses a reliable partner for both the practical and the creative sides of getting things done.</p>
-      </div>
-      <div class="panel reveal">
-        <span class="section-tag">Our Mission</span>
-        <h3 style="font-size:1.4rem;margin:10px 0 18px;">Making tech &amp; design accessible to everyone</h3>
-        <ul class="feature-list mt-0">
-          <li>
-            <span class="check"><i class="fa-solid fa-bullseye"></i></span>
-            <div>
-              <strong>Accessibility</strong>
-              <span class="desc">Quality services and skills training, without the runaround.</span>
+    <div class="container">
+      <div class="qr-tool panel reveal">
+
+        <div class="qr-tool-form">
+          <div class="form-group">
+            <label for="qr-content">Content <span class="form-optional">(link, WhatsApp number, email, or any text)</span></label>
+            <textarea id="qr-content" placeholder="e.g. https://wa.me/27787347867 or https://yourwebsite.com" maxlength="800"></textarea>
+            <span class="form-error" id="qr-content-error"></span>
+          </div>
+
+          <div class="qr-quickfill">
+            <span class="qr-quickfill-label">Quick fill:</span>
+            <button type="button" class="qr-chip" data-fill="https://wa.me/27787347867"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+            <button type="button" class="qr-chip" data-fill="mailto:webgraphstechnologies@gmail.com"><i class="fa-solid fa-envelope"></i> Email</button>
+            <button type="button" class="qr-chip" data-fill="tel:+27787347867"><i class="fa-solid fa-phone"></i> Phone Call</button>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="qr-size">Size</label>
+              <select id="qr-size">
+                <option value="200">Small (200px)</option>
+                <option value="300" selected>Medium (300px)</option>
+                <option value="400">Large (400px)</option>
+                <option value="500">Extra Large (500px)</option>
+              </select>
             </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-handshake"></i></span>
-            <div>
-              <strong>Trust</strong>
-              <span class="desc">Honest pricing and clear communication on every job.</span>
+            <div class="form-group">
+              <label for="qr-ecl">Error Correction</label>
+              <select id="qr-ecl">
+                <option value="L">Low</option>
+                <option value="M" selected>Medium (recommended)</option>
+                <option value="Q">Quartile</option>
+                <option value="H">High (best for print)</option>
+              </select>
             </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-lightbulb"></i></span>
-            <div>
-              <strong>Growth</strong>
-              <span class="desc">Helping clients and students grow their businesses and skills.</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="qr-fg">Foreground Color</label>
+              <div class="qr-color-field">
+                <input type="color" id="qr-fg" value="#111111">
+                <span>Dots &amp; squares</span>
+              </div>
             </div>
-          </li>
-        </ul>
+            <div class="form-group">
+              <label for="qr-bg">Background Color</label>
+              <div class="qr-color-field">
+                <input type="color" id="qr-bg" value="#ffffff">
+                <span>Page background</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qr-tool-preview">
+          <div class="qr-preview-box" id="qr-preview-box">
+            <canvas id="qr-canvas" hidden></canvas>
+            <div class="qr-placeholder" id="qr-placeholder">
+              <i class="fa-solid fa-qrcode"></i>
+              <span>Enter content to generate your QR code</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary qr-download-btn" id="qr-download" disabled><i class="fa-solid fa-download"></i> Download PNG</button>
+          <p class="qr-tool-note">Generated entirely in your browser — nothing you type here is sent to our servers.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -118,52 +153,23 @@
   <section class="bg-alt">
     <div class="container">
       <div class="section-head reveal">
-        <span class="section-tag">What Sets Us Apart</span>
-        <h2 class="section-title">Our Values</h2>
+        <span class="section-tag">Handy For</span>
+        <h2 class="section-title">What You Can Use It For</h2>
+        <p class="section-desc">A QR code is the fastest way to turn something printed into something clickable. A few ideas to get you started.</p>
       </div>
       <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="icon"><i class="fa-solid fa-bolt"></i></div>
-          <h3>Efficiency</h3>
-          <p>We respect your time — quick turnarounds without cutting corners on quality.</p>
+        <div class="widget reveal">
+          <div class="widget-head"><h4>Business Cards &amp; Flyers</h4><i class="fa-solid fa-id-card"></i></div>
+          <p>Link straight to your WhatsApp number, website or portfolio so people can reach you with a single scan.</p>
         </div>
-        <div class="card reveal">
-          <div class="icon"><i class="fa-solid fa-star"></i></div>
-          <h3>Quality</h3>
-          <p>Every project, big or small, gets the same attention to detail.</p>
+        <div class="widget reveal">
+          <div class="widget-head"><h4>Posters &amp; Price Lists</h4><i class="fa-solid fa-print"></i></div>
+          <p>Add a scannable code to printed material pointing to your menu, booking link or latest pricing.</p>
         </div>
-        <div class="card reveal">
-          <div class="icon"><i class="fa-solid fa-people-group"></i></div>
-          <h3>Community</h3>
-          <p>Proudly local, and invested in helping our community grow digitally and creatively.</p>
+        <div class="widget reveal">
+          <div class="widget-head"><h4>Social &amp; Reviews</h4><i class="fa-solid fa-star"></i></div>
+          <p>Make it effortless for customers to follow your socials or leave a review after visiting.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-tag">Our Work</span>
-        <h2 class="section-title">A Glimpse of Our Design Work</h2>
-        <p class="section-desc">A few social media ad designs we've created for our own brand.</p>
-      </div>
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="card-image contain" style="aspect-ratio: 1 / 1;"><img src="assets/images/portfolio-services-collage.webp" alt="Social media ad collage showcasing Web Graphs Technologies' four core services: graphic design, web development, Uber fingerprint capture and office printing" loading="lazy"></div>
-          <h3>Services Collage Ad</h3>
-        </div>
-        <div class="card reveal">
-          <div class="card-image contain" style="aspect-ratio: 4 / 5;"><img src="assets/images/portfolio-fingerprint-ad.webp" alt="Uber and Bolt fingerprint capture promotional ad design" loading="lazy"></div>
-          <h3>Fingerprint Capture Ad</h3>
-        </div>
-        <div class="card reveal">
-          <div class="card-image contain" style="aspect-ratio: 1031 / 1400;"><img src="assets/images/portfolio-price-list.webp" alt="Web Graphs Technologies price list design" loading="lazy"></div>
-          <h3>Price List Design</h3>
-        </div>
-      </div>
-      <div class="text-center reveal" style="margin-top:36px;">
-        <a href="portfolio.html" class="btn btn-primary">View Full Portfolio</a>
       </div>
     </div>
   </section>
@@ -171,10 +177,10 @@
   <section>
     <div class="container">
       <div class="cta-band reveal">
-        <h2>Let's work together</h2>
-        <p>Get in touch to discuss your project, service or course enrollment.</p>
+        <h2>Need it designed into something bigger?</h2>
+        <p>We can design your QR code straight onto a business card, flyer or poster as part of our graphic design service.</p>
         <div class="cta-actions">
-          <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
+          <a href="services.html#design" class="btn btn-primary"><i class="fa-solid fa-palette"></i> See Design Services</a>
           <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
         </div>
       </div>
@@ -245,6 +251,7 @@
 
 <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
+<script src="js/vendor/qrcode.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

@@ -677,6 +677,105 @@ function initPortfolio() {
   });
 }
 
+function initQrGenerator() {
+  const contentEl = document.getElementById('qr-content');
+  if (!contentEl || typeof qrcode !== 'function') return;
+
+  const sizeEl = document.getElementById('qr-size');
+  const eclEl = document.getElementById('qr-ecl');
+  const fgEl = document.getElementById('qr-fg');
+  const bgEl = document.getElementById('qr-bg');
+  const canvas = document.getElementById('qr-canvas');
+  const placeholder = document.getElementById('qr-placeholder');
+  const downloadBtn = document.getElementById('qr-download');
+  const errorEl = document.getElementById('qr-content-error');
+  const ctx = canvas.getContext('2d');
+
+  const QUIET_ZONE = 4;
+  let debounceTimer = null;
+
+  function render() {
+    const text = contentEl.value.trim();
+    errorEl.textContent = '';
+
+    if (!text) {
+      canvas.hidden = true;
+      placeholder.hidden = false;
+      downloadBtn.disabled = true;
+      return;
+    }
+
+    let qr;
+    try {
+      qr = qrcode(0, eclEl.value || 'M');
+      qr.addData(text);
+      qr.make();
+    } catch (err) {
+      canvas.hidden = true;
+      placeholder.hidden = true;
+      downloadBtn.disabled = true;
+      errorEl.textContent = "That's too much content for a QR code — try something shorter, or a lower error correction level.";
+      return;
+    }
+
+    const moduleCount = qr.getModuleCount();
+    const totalModules = moduleCount + QUIET_ZONE * 2;
+    const targetSize = parseInt(sizeEl.value, 10) || 300;
+    const scale = Math.max(1, Math.round(targetSize / totalModules));
+    const pixelSize = scale * totalModules;
+
+    canvas.width = pixelSize;
+    canvas.height = pixelSize;
+
+    const fg = fgEl.value || '#111111';
+    const bg = bgEl.value || '#ffffff';
+
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, pixelSize, pixelSize);
+    ctx.fillStyle = fg;
+
+    for (let row = 0; row < moduleCount; row += 1) {
+      for (let col = 0; col < moduleCount; col += 1) {
+        if (qr.isDark(row, col)) {
+          ctx.fillRect((col + QUIET_ZONE) * scale, (row + QUIET_ZONE) * scale, scale, scale);
+        }
+      }
+    }
+
+    canvas.hidden = false;
+    placeholder.hidden = true;
+    downloadBtn.disabled = false;
+  }
+
+  function scheduleRender() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(render, 150);
+  }
+
+  contentEl.addEventListener('input', scheduleRender);
+  [sizeEl, eclEl, fgEl, bgEl].forEach((el) => {
+    if (el) el.addEventListener('change', render);
+  });
+
+  document.querySelectorAll('.qr-chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      contentEl.value = chip.dataset.fill || '';
+      contentEl.focus();
+      render();
+    });
+  });
+
+  downloadBtn.addEventListener('click', () => {
+    if (downloadBtn.disabled) return;
+    const link = document.createElement('a');
+    link.download = 'web-graphs-qr-code.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+
+  render();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(
@@ -699,6 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomSelects();
   initFingerprintPopup();
   initPortfolio();
+  initQrGenerator();
   initServicesFilter();
   initTabs();
   initFaqAccordion();

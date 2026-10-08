@@ -744,6 +744,66 @@ body.menu-open { overflow: hidden; }
 .price-calc-amount strong { display: block; font: 800 3rem/1 var(--f-display-hud); color: var(--signal-ink); text-shadow: 0 0 16px color-mix(in srgb, var(--signal) 45%, transparent); }
 .price-calc-amount span { color: var(--mute); font-size: var(--fs-small); }
 
+/* QR code generator */
+.qr-tool { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--s8); align-items: start; }
+@media (max-width: 860px) { .qr-tool { grid-template-columns: 1fr; } }
+
+.qr-quickfill { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s2); margin: -4px 0 var(--s6); }
+.qr-quickfill-label { font: 600 13px/1 var(--f-sans); color: var(--mute); margin-right: 2px; }
+.qr-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--rule-strong);
+  background: var(--plate-2);
+  color: var(--mute);
+  font: 600 13px/1 var(--f-sans);
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background-color .2s;
+}
+.qr-chip:hover { border-color: color-mix(in srgb, var(--signal) 45%, var(--rule-strong)); color: var(--fg); }
+.qr-chip i { color: var(--signal-ink); }
+
+.qr-color-field {
+  display: flex; align-items: center; gap: var(--s3);
+  min-height: var(--touch);
+  padding: 0 var(--s4);
+  background: var(--plate);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+}
+.qr-color-field input[type="color"] {
+  width: 34px; height: 34px; min-height: 0;
+  padding: 0; margin: 0; border: 1px solid var(--rule-strong); border-radius: 9px;
+  background: none; cursor: pointer; flex-shrink: 0;
+}
+.qr-color-field span { color: var(--mute); font-size: var(--fs-small); }
+
+.qr-tool-preview { display: flex; flex-direction: column; align-items: center; gap: var(--s5); }
+@media (min-width: 861px) { .qr-tool-preview { position: sticky; top: calc(var(--masthead-h) + var(--s6)); } }
+
+.qr-preview-box {
+  width: 100%; max-width: 340px;
+  aspect-ratio: 1 / 1;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--rule-strong);
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--s5);
+  position: relative;
+}
+.qr-preview-box canvas { max-width: 100%; max-height: 100%; display: block; border-radius: 4px; }
+.qr-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s3);
+  color: #111111; opacity: .3; text-align: center; padding: var(--s5);
+}
+.qr-placeholder i { font-size: 2.2rem; }
+.qr-placeholder span { font: 600 var(--fs-small)/1.4 var(--f-sans); max-width: 220px; }
+.qr-download-btn { width: 100%; max-width: 340px; justify-content: center; }
+.qr-download-btn:disabled { opacity: .45; cursor: not-allowed; }
+.qr-tool-note { color: var(--mute); font-size: var(--fs-label); text-align: center; max-width: 340px; }
+
 /* Price table */
 .price-table { padding: var(--s3) var(--s5); }
 .price-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); padding: var(--s5) var(--s2); border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
