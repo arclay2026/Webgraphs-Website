@@ -1,139 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us | Web Graphs Technologies</title>
+<title>About | Web Graphs Technologies</title>
 <meta name="description" content="Learn more about Web Graphs Technologies, a Johannesburg-based company offering fingerprint capture, web & app development, graphic design, design courses and more.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/studio.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
-<body>
+<body class="wgs">
 
-<div class="wg-preloader" id="wg-preloader" role="presentation" aria-hidden="true">
-  <div class="wg-preloader-glow"></div>
-  <div class="wg-preloader-logo">
-    <img src="assets/logo.svg" alt="" class="logo-img">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="wgs-cursor" id="wgs-cursor-dot" aria-hidden="true"></div>
+<div class="wgs-cursor-ring" id="wgs-cursor-ring" aria-hidden="true"><span></span></div>
+
+<div class="wgs-progress-bar" id="top-progress" aria-hidden="true"></div>
+
+<div class="wgs-thread" aria-hidden="true">
+  <span class="wgs-thread-label">SCROLL</span>
+  <div class="wgs-thread-track">
+    <div class="wgs-thread-fill" id="thread-fill"></div>
+    <div class="wgs-thread-dot" id="thread-dot"></div>
   </div>
-  <div class="wg-preloader-bar"><span></span></div>
+  <span class="wgs-thread-label mono" id="thread-pct">00%</span>
 </div>
 
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img">
+<header class="wgs-nav" id="wgs-nav">
+  <div class="wgs-nav-inner">
+    <a href="index.html" class="wgs-logo" id="wgs-logo-mark" aria-label="Web Graphs Technologies — home">
+      <img src="assets/logo.svg" alt="" width="30" height="30">
+      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="courses.html">Courses</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html" class="active">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="qr-code.html">QR Code</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline whatsapp-nav-btn">WhatsApp</a>
-      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+    <div class="wgs-nav-right">
+      <span class="wgs-nav-time mono" data-clock>--:--:-- SAST</span>
+      <button type="button" class="wgs-menu-btn" id="wgs-menu-open" aria-expanded="false" aria-controls="wgs-menu">
+        <span class="wgs-menu-btn-box" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
       </button>
     </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobile-menu">
-  <nav aria-label="Mobile">
-    <a href="index.html"><span class="mm-num">01</span><i class="fa-solid fa-house"></i><span class="mm-label">Home</span></a>
-    <a href="services.html"><span class="mm-num">02</span><i class="fa-solid fa-briefcase"></i><span class="mm-label">Services</span></a>
-    <a href="courses.html"><span class="mm-num">03</span><i class="fa-solid fa-graduation-cap"></i><span class="mm-label">Courses</span></a>
-    <a href="portfolio.html"><span class="mm-num">04</span><i class="fa-solid fa-images"></i><span class="mm-label">Portfolio</span></a>
-    <a href="about.html" class="active"><span class="mm-num">05</span><i class="fa-solid fa-circle-info"></i><span class="mm-label">About</span></a>
-    <a href="faq.html"><span class="mm-num">06</span><i class="fa-solid fa-circle-question"></i><span class="mm-label">FAQ</span></a>
-    <a href="qr-code.html"><span class="mm-num">07</span><i class="fa-solid fa-qrcode"></i><span class="mm-label">QR Code</span></a>
-    <a href="contact.html"><span class="mm-num">08</span><i class="fa-solid fa-envelope"></i><span class="mm-label">Contact</span></a>
-  </nav>
-  <div class="mobile-menu-bottom">
-    <div class="social-row">
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-    </div>
-    <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-primary mobile-menu-cta"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+<nav class="wgs-menu" id="wgs-menu" aria-label="Full site navigation">
+  <div class="wgs-menu-top">
+    <a href="index.html" class="wgs-logo">
+      <img src="assets/logo.svg" alt="" width="26" height="26">
+      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
+    </a>
+    <button type="button" class="wgs-menu-close" id="wgs-menu-close">
+      <span aria-hidden="true">&times;</span> Close
+    </button>
   </div>
-</div>
+  <ul class="wgs-menu-list">
+    <li class="wgs-menu-item"><span class="idx mono">01</span><a href="index.html">Home</a><span class="desc">Start here — an overview of the studio.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">02</span><a href="services.html">Services</a><span class="desc">Fingerprint capture, web &amp; app dev, design, printing, software.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">03</span><a href="courses.html">Courses</a><span class="desc">Hands-on Photoshop, Illustrator, Lightroom &amp; Premiere Pro training.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">04</span><a href="portfolio.html">Portfolio</a><span class="desc">A closer look at work we've shipped.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">05</span><a href="faq.html">FAQ</a><span class="desc">Quick answers to the questions we hear most.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">06</span><a href="qr-code.html">QR Code</a><span class="desc">Free tool — turn any link into a scannable code.</span></li>
+    <li class="wgs-menu-item"><span class="idx mono">07</span><a href="contact.html">Contact</a><span class="desc">Start a conversation on WhatsApp, email or in person.</span></li>
+  </ul>
+  <div class="wgs-menu-bottom">
+    <div class="wgs-menu-bottom-block">
+      <span>WhatsApp &amp; Calls</span>
+      <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Email</span>
+      <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Studio</span>
+      <p>9 Jill Street, Langlaagte North, Johannesburg, 2092</p>
+    </div>
+    <div class="wgs-menu-bottom-block">
+      <span>Hours</span>
+      <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
+    </div>
+  </div>
+</nav>
 
-<main>
+<main id="main">
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumb">Home <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> <span class="accent-text">About</span></div>
-      <h1>About Web Graphs Technologies</h1>
-      <p>A Johannesburg-based company bridging the gap between everyday tech needs and creative excellence.</p>
+  <!-- ============ PAGE INTRO ============ -->
+  <section class="page-intro edge">
+    <div class="wrap">
+      <span class="kicker">About</span>
+      <h1 class="reveal-line"><span>Practical solutions, creative results.</span></h1>
+      <p class="lede">Web Graphs Technologies was built to solve a simple problem: people and businesses often need to run between different providers for services that should be easy to find in one place — from getting fingerprinted for a driving platform, to printing a document, to building a brand from the ground up.</p>
     </div>
   </section>
 
-  <section>
-    <div class="container split">
-      <div class="reveal">
-        <span class="section-tag">Our Story</span>
-        <h2 class="section-title">Practical Solutions, Creative Results</h2>
-        <p style="color:var(--text-muted);margin-bottom:20px;">Web Graphs Technologies was built to solve a simple problem: people and businesses often need to run between different providers for services that should be easy to find in one place — from getting fingerprinted for a driving platform, to printing a document, to building a brand from the ground up.</p>
-        <p style="color:var(--text-muted);">Based in Langlaagte North, Johannesburg, we combine technical services with creative design and training, giving individuals and businesses a reliable partner for both the practical and the creative sides of getting things done.</p>
+  <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
+
+  <!-- ============ STORY / MISSION ============ -->
+  <section class="section edge">
+    <div class="wrap split-panel">
+      <div>
+        <span class="kicker">Our story</span>
+        <h2 style="font-size: var(--fs-h3); margin: var(--sp-4) 0 var(--sp-5);">Based in Langlaagte North, Johannesburg.</h2>
+        <p style="color: var(--mute); max-width: 52ch; font-size: var(--fs-body); line-height: 1.6;">We combine technical services with creative design and training, giving individuals and businesses a reliable partner for both the practical and the creative sides of getting things done.</p>
       </div>
-      <div class="panel reveal">
-        <span class="section-tag">Our Mission</span>
-        <h3 style="font-size:1.4rem;margin:10px 0 18px;">Making tech &amp; design accessible to everyone</h3>
-        <ul class="feature-list mt-0">
-          <li>
-            <span class="check"><i class="fa-solid fa-bullseye"></i></span>
-            <div>
-              <strong>Accessibility</strong>
-              <span class="desc">Quality services and skills training, without the runaround.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-handshake"></i></span>
-            <div>
-              <strong>Trust</strong>
-              <span class="desc">Honest pricing and clear communication on every job.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><i class="fa-solid fa-lightbulb"></i></span>
-            <div>
-              <strong>Growth</strong>
-              <span class="desc">Helping clients and students grow their businesses and skills.</span>
-            </div>
-          </li>
+      <div class="panel-box">
+        <span class="kicker">Our mission</span>
+        <h3>Making tech &amp; design accessible to everyone.</h3>
+        <ul class="feature-list-plain" style="margin-top: var(--sp-6);">
+          <li><strong>Accessibility</strong><span>Quality services and skills training, without the runaround.</span></li>
+          <li><strong>Trust</strong><span>Honest pricing and clear communication on every job.</span></li>
+          <li><strong>Growth</strong><span>Helping clients and students grow their businesses and skills.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="bg-alt">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-tag">What Sets Us Apart</span>
-        <h2 class="section-title">Our Values</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+  <!-- ============ VALUES ============ -->
+  <section class="section--tight edge">
+    <div class="wrap">
+      <span class="kicker">What sets us apart</span>
+      <h2 style="font-size: var(--fs-h3); margin: var(--sp-4) 0 var(--sp-7);">Our values.</h2>
+      <div class="values-grid">
+        <div class="value-cell">
+          <span class="idx mono">01</span>
           <h3>Efficiency</h3>
           <p>We respect your time — quick turnarounds without cutting corners on quality.</p>
         </div>
-        <div class="card reveal">
-          <div class="icon"><i class="fa-solid fa-star"></i></div>
+        <div class="value-cell">
+          <span class="idx mono">02</span>
           <h3>Quality</h3>
           <p>Every project, big or small, gets the same attention to detail.</p>
         </div>
-        <div class="card reveal">
-          <div class="icon"><i class="fa-solid fa-people-group"></i></div>
+        <div class="value-cell">
+          <span class="idx mono">03</span>
           <h3>Community</h3>
           <p>Proudly local, and invested in helping our community grow digitally and creatively.</p>
         </div>
@@ -141,110 +143,95 @@
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-tag">Our Work</span>
-        <h2 class="section-title">A Glimpse of Our Design Work</h2>
-        <p class="section-desc">A few social media ad designs we've created for our own brand.</p>
+  <!-- ============ DESIGN WORK TEASER ============ -->
+  <section class="section edge">
+    <div class="wrap">
+      <span class="kicker">Our work</span>
+      <h2 style="font-size: var(--fs-h3); margin: var(--sp-4) 0 var(--sp-2);">A glimpse of our design work.</h2>
+      <p style="color: var(--mute); max-width: 52ch; margin-bottom: var(--sp-7);">A couple of social media ad designs we've created for our own brand.</p>
+
+      <div class="about-gallery">
+        <figure>
+          <button type="button" class="work-visual" data-reveal-visual data-lightbox="assets/images/portfolio-services-collage.webp" data-caption="Services Collage Ad" data-cursor="view" aria-label="View full image: Services Collage Ad">
+            <img src="assets/images/portfolio-services-collage.webp" alt="Social media ad collage showcasing Web Graphs Technologies' core services" loading="lazy" width="1400" height="1400">
+          </button>
+          <figcaption>Services Collage Ad</figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="work-visual" data-reveal-visual data-lightbox="assets/images/portfolio-fingerprint-ad.webp" data-caption="Fingerprint Capture Ad" data-cursor="view" aria-label="View full image: Fingerprint Capture Ad">
+            <img src="assets/images/portfolio-fingerprint-ad.webp" alt="Uber and Bolt fingerprint capture promotional ad design" loading="lazy" width="1120" height="1400">
+          </button>
+          <figcaption>Fingerprint Capture Ad</figcaption>
+        </figure>
       </div>
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="card-image contain" style="aspect-ratio: 1 / 1;"><img src="assets/images/portfolio-services-collage.webp" alt="Social media ad collage showcasing Web Graphs Technologies' four core services: graphic design, web development, Uber fingerprint capture and office printing" loading="lazy"></div>
-          <h3>Services Collage Ad</h3>
-        </div>
-        <div class="card reveal">
-          <div class="card-image contain" style="aspect-ratio: 4 / 5;"><img src="assets/images/portfolio-fingerprint-ad.webp" alt="Uber and Bolt fingerprint capture promotional ad design" loading="lazy"></div>
-          <h3>Fingerprint Capture Ad</h3>
-        </div>
-        <div class="card reveal">
-          <div class="card-image contain" style="aspect-ratio: 1031 / 1400;"><img src="assets/images/portfolio-price-list.webp" alt="Web Graphs Technologies price list design" loading="lazy"></div>
-          <h3>Price List Design</h3>
-        </div>
-      </div>
-      <div class="text-center reveal" style="margin-top:36px;">
-        <a href="portfolio.html" class="btn btn-primary">View Full Portfolio</a>
+
+      <p style="margin-top: var(--sp-7);"><a href="portfolio.html" class="link-arrow" data-cursor="link">View full portfolio <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H3M10 2V9" stroke="currentColor" stroke-width="1.5"/></svg></a></p>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CTA ============ -->
+  <section class="section section--loud edge">
+    <div class="wrap cta-center">
+      <span class="kicker">Get in touch</span>
+      <h2>Let's work together.</h2>
+      <p>Get in touch to discuss your project, service or course enrollment.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-magnetic btn-solid" data-magnetic data-cursor="link">
+          <span class="btn-fill"></span><span>Contact us</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+        <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn-magnetic" data-magnetic data-cursor="link">
+          <span class="btn-fill"></span><span>WhatsApp</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="cta-band reveal">
-        <h2>Let's work together</h2>
-        <p>Get in touch to discuss your project, service or course enrollment.</p>
-        <div class="cta-actions">
-          <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
-          <a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  <footer class="wgs-footer edge">
+    <div class="wrap">
+      <div class="wgs-footer-grid">
+        <div class="wgs-footer-col">
+          <span class="h">Studio</span>
+          <p>Web Graphs Technologies<br>9 Jill Street, Langlaagte North<br>Johannesburg, 2092, South Africa</p>
+          <div class="wgs-footer-social">
+            <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp" class="mono">WA</a>
+            <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram" class="mono">IG</a>
+            <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook" class="mono">FB</a>
+            <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok" class="mono">TT</a>
+          </div>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">Navigate</span>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="courses.html">Courses</a>
+          <a href="portfolio.html">Portfolio</a>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">More</span>
+          <a href="faq.html">FAQ</a>
+          <a href="qr-code.html">QR Code Generator</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="wgs-footer-col">
+          <span class="h">Get in touch</span>
+          <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
+          <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
+          <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
         </div>
       </div>
+      <div class="wgs-footer-bottom">
+        <span class="wgs-footer-mark"><span class="dot" aria-hidden="true"></span> Web Graphs Technologies &copy; <span id="wgs-year">2026</span></span>
+        <span>Designed &amp; built in Johannesburg</span>
+      </div>
     </div>
-  </section>
+  </footer>
 
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-statement reveal">
+<div class="easter-note" id="easter-note" role="status" aria-live="polite">YOU FOUND IT.<br>DESIGNED &amp; BUILT BY WEB GRAPHS TECHNOLOGIES.</div>
 
-      <p>Digital, design and print solutions for individuals and businesses in Johannesburg and beyond.</p>
-
-      <a href="contact.html" class="btn btn-primary">Start a Project</a>
-
-    </div>
-
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="logo"><img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-img"></a>
-        <div class="social-row">
-          <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="mailto:webgraphstechnologies@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="qr-code.html">QR Code</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html#fingerprint">Fingerprint Capture</a></li>
-          <li><a href="services.html#webdev">Web &amp; App Dev</a></li>
-          <li><a href="services.html#design">Graphic Design</a></li>
-          <li><a href="services.html#printing">Office Printing</a></li>
-          <li><a href="services.html#software">Software Installation</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <ul>
-          <li><a href="https://wa.me/27787347867" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +27 78 734 7867</a></li>
-          <li><a href="mailto:webgraphstechnologies@gmail.com"><i class="fa-solid fa-envelope"></i> webgraphstechnologies@gmail.com</a></li>
-          <li><i class="fa-solid fa-location-dot"></i> 9 Jill Street, Langlaagte North, Johannesburg, 2092, South Africa</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="year"></span> Web Graphs Technologies. All rights reserved.</span>
-      <span>Designed &amp; built by Web Graphs Technologies</span>
-    </div>
-  </div>
-</footer>
-
-<a href="https://wa.me/27787347867" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-
-<script src="js/script.js"></script>
+<script src="js/studio.js"></script>
 </body>
 </html>
