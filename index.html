@@ -1,364 +1,288 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="archive-doc">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script>(function(){var d=document.documentElement;try{var t=localStorage.getItem("wgs_theme");if(t==="dark")d.setAttribute("data-theme","dark");}catch(e){}})();</script>
 <title>Web Graphs Technologies — Technology &amp; Design Studio, Johannesburg</title>
 <meta name="description" content="Web Graphs Technologies is a Johannesburg-based technology and design studio — fingerprint &amp; compliance capture, web and app builds, brand identity, design training and print, under one roof.">
+<meta name="theme-color" content="#f4f3ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/studio.css">
-<script>document.documentElement.classList.replace('no-js','js');</script>
+<link rel="stylesheet" href="css/archive.css">
 </head>
-<body class="wgs">
+<body class="archive" data-page="home">
+<a class="skip" href="#main">Skip to content</a>
 
-<a href="#main" class="skip-link">Skip to content</a>
-
-<!-- custom cursor (desktop only; JS adds has-fine-pointer to <body> to activate) -->
-<div class="wgs-cursor" id="wgs-cursor-dot" aria-hidden="true"></div>
-<div class="wgs-cursor-ring" id="wgs-cursor-ring" aria-hidden="true"><span></span></div>
-
-<!-- mobile scroll progress -->
-<div class="wgs-progress-bar" id="top-progress" aria-hidden="true"></div>
-
-<!-- desktop scroll thread — the recurring visual motif -->
-<div class="wgs-thread" aria-hidden="true">
-  <span class="wgs-thread-label">SCROLL</span>
-  <div class="wgs-thread-track">
-    <div class="wgs-thread-fill" id="thread-fill"></div>
-    <div class="wgs-thread-dot" id="thread-dot"></div>
-  </div>
-  <span class="wgs-thread-label mono" id="thread-pct">00%</span>
-</div>
-
-<header class="wgs-nav" id="wgs-nav">
-  <div class="wgs-nav-inner">
-    <a href="#top" class="wgs-logo" id="wgs-logo-mark" aria-label="Web Graphs Technologies — back to top">
-      <img src="assets/logo.svg" alt="" width="30" height="30">
-      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
-    </a>
-    <div class="wgs-nav-right">
-      <span class="wgs-nav-time mono" data-clock>--:--:-- SAST</span>
-      <button type="button" class="wgs-menu-btn" id="wgs-menu-open" aria-expanded="false" aria-controls="wgs-menu">
-        <span class="wgs-menu-btn-box" aria-hidden="true"><span></span><span></span><span></span></span>
-        Menu
-      </button>
-    </div>
+<header class="masthead">
+  <a href="#top" class="brand" aria-label="Web Graphs Technologies — back to top">
+    <img src="assets/logo-ink.svg" alt="Web Graphs Technologies" class="logo-light" width="26" height="18">
+    <img src="assets/logo.svg" alt="Web Graphs Technologies" class="logo-dark" width="26" height="18">
+    <span class="brand-word">Web Graphs<span>Technologies</span></span>
+  </a>
+  <p class="masthead-note label">Johannesburg technology &amp; design studio — six capabilities, one roof</p>
+  <div class="util">
+    <button class="util-btn icon-only" data-open-index aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h11"/></svg></button>
+    <button class="util-btn icon-only theme-btn" data-theme-toggle aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="i-moon"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="i-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
   </div>
 </header>
 
-<nav class="wgs-menu" id="wgs-menu" aria-label="Full site navigation">
-  <div class="wgs-menu-top">
-    <a href="#top" class="wgs-logo">
-      <img src="assets/logo.svg" alt="" width="26" height="26">
-      <span class="wgs-logo-text"><b>Web Graphs</b><span>Technologies</span></span>
-    </a>
-    <button type="button" class="wgs-menu-close" id="wgs-menu-close">
-      <span aria-hidden="true">&times;</span> Close
-    </button>
-  </div>
-  <ul class="wgs-menu-list">
-    <li class="wgs-menu-item"><span class="idx mono">01</span><a href="services.html">Services</a><span class="desc">Fingerprint capture, web &amp; app dev, design, printing, software.</span></li>
-    <li class="wgs-menu-item"><span class="idx mono">02</span><a href="courses.html">Courses</a><span class="desc">Hands-on Photoshop, Illustrator, Lightroom &amp; Premiere Pro training.</span></li>
-    <li class="wgs-menu-item"><span class="idx mono">03</span><a href="portfolio.html">Portfolio</a><span class="desc">A closer look at work we've shipped.</span></li>
-    <li class="wgs-menu-item"><span class="idx mono">04</span><a href="about.html">About</a><span class="desc">Who we are and how we work.</span></li>
-    <li class="wgs-menu-item"><span class="idx mono">05</span><a href="faq.html">FAQ</a><span class="desc">Quick answers to the questions we hear most.</span></li>
-    <li class="wgs-menu-item"><span class="idx mono">06</span><a href="qr-code.html">QR Code</a><span class="desc">Free tool — turn any link into a scannable code.</span></li>
-    <li class="wgs-menu-item"><span class="idx mono">07</span><a href="contact.html">Contact</a><span class="desc">Start a conversation on WhatsApp, email or in person.</span></li>
-  </ul>
-  <div class="wgs-menu-bottom">
-    <div class="wgs-menu-bottom-block">
-      <span>WhatsApp &amp; Calls</span>
-      <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
-    </div>
-    <div class="wgs-menu-bottom-block">
-      <span>Email</span>
-      <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
-    </div>
-    <div class="wgs-menu-bottom-block">
-      <span>Studio</span>
-      <p>9 Jill Street, Langlaagte North, Johannesburg, 2092</p>
-    </div>
-    <div class="wgs-menu-bottom-block">
-      <span>Hours</span>
-      <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
-    </div>
-  </div>
-</nav>
-
 <main id="main">
 
-  <!-- ============ HERO ============ -->
-  <section class="hero-studio edge" id="top">
-    <canvas class="hero-grid-canvas" id="hero-canvas" aria-hidden="true"></canvas>
-
-    <div class="hero-meta-row">
-      <div class="hero-meta-block">
-        <span>Web Graphs Technologies</span>
-        <strong>Johannesburg, South Africa</strong>
-      </div>
-      <div class="hero-meta-block align-end">
-        <span>Local time</span>
-        <strong class="mono" data-clock>--:--:-- SAST</strong>
+  <!-- ============ INTRO ============ -->
+  <section class="intro" aria-labelledby="intro-title">
+    <div class="intro-text">
+      <p class="label">Est. Johannesburg — technology &amp; design studio</p>
+      <h1 class="intro-title" id="intro-title">We make <em class="s signal-text">technology</em><br>feel designed.</h1>
+      <p class="lede">Fingerprint &amp; compliance capture, web and app builds, brand identity, training and print — all under one roof.</p>
+      <a class="cta-box" href="#start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg><span class="ph">Tell us what you need</span><span class="go">Start a project</span></a>
+      <div class="stats" aria-label="Studio at a glance">
+        <a href="services.html"><b>06</b><span class="label">Capabilities</span></a>
+        <a href="services.html#fingerprint"><b>R350</b><span class="label">Starting at</span></a>
+        <a href="contact.html"><b>6-Day</b><span class="label">Open weekly</span></a>
       </div>
     </div>
-
-    <h1 class="hero-headline">
-      <span class="line reveal-line"><span><span class="word">WE</span> <span class="word">MAKE</span></span></span>
-      <span class="line reveal-line"><span><span class="word">TECHNOLOGY</span></span></span>
-      <span class="line reveal-line"><span><span class="word accent">feel</span> <span class="word">DESIGNED.</span></span></span>
-    </h1>
-
-    <div class="hero-bottom-row">
-      <p class="hero-lede">A Johannesburg-based technology and design studio — fingerprint &amp; compliance capture, web and app builds, brand identity, training and print, under one roof.</p>
-      <div class="hero-cta-col">
-        <a href="#start" class="btn-magnetic btn-solid" data-magnetic data-cursor="link">
-          <span class="btn-fill"></span>
-          <span>Start a project</span>
-          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
-        </a>
-        <div class="hero-scroll-cue">
-          <span>Scroll</span>
-          <svg width="10" height="14" viewBox="0 0 10 14" fill="none" aria-hidden="true"><path d="M5 0V13M5 13L1 9M5 13L9 9" stroke="currentColor" stroke-width="1.3"/></svg>
+    <div class="intro-wall">
+      <div class="wall" aria-hidden="true">
+        <div class="wall-col" style="--dur:52s">
+          <div class="wall-tile"><img src="assets/images/service-fingerprint.jpg" alt="" loading="lazy"></div>
+          <div class="wall-type green-t"><b>Fingerprint<br>Capture</b><span class="label">R350 · Walk-in</span></div>
+          <div class="wall-tile"><img src="assets/images/portfolio-fingerprint-ad.webp" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/service-fingerprint.jpg" alt="" loading="lazy"></div>
+          <div class="wall-type green-t"><b>Fingerprint<br>Capture</b><span class="label">R350 · Walk-in</span></div>
+          <div class="wall-tile"><img src="assets/images/portfolio-fingerprint-ad.webp" alt="" loading="lazy"></div>
         </div>
-        <span class="eyebrow-num mono" id="hero-coord">X 0.00 / Y 0.00</span>
+        <div class="wall-col" style="--dur:64s">
+          <div class="wall-tile"><img src="assets/images/service-development.jpg" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/service-design.jpg" alt="" loading="lazy"></div>
+          <div class="wall-type"><b>Web · App<br>Brand</b><span class="label">Built to order</span></div>
+          <div class="wall-tile"><img src="assets/images/service-development.jpg" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/service-design.jpg" alt="" loading="lazy"></div>
+          <div class="wall-type"><b>Web · App<br>Brand</b><span class="label">Built to order</span></div>
+        </div>
+        <div class="wall-col" style="--dur:58s">
+          <div class="wall-tile"><img src="assets/images/service-courses.jpg" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/service-printing.jpg" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/portfolio-services-collage.webp" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/service-courses.jpg" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/service-printing.jpg" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/portfolio-services-collage.webp" alt="" loading="lazy"></div>
+        </div>
+        <div class="wall-col" style="--dur:70s">
+          <div class="wall-tile"><img src="assets/images/service-software-installation.jpg" alt="" loading="lazy"></div>
+          <div class="wall-type green-t"><b>Software<br>Install</b><span class="label">Setup · Support</span></div>
+          <div class="wall-tile"><img src="assets/images/service-design.jpg" alt="" loading="lazy"></div>
+          <div class="wall-tile"><img src="assets/images/service-software-installation.jpg" alt="" loading="lazy"></div>
+          <div class="wall-type green-t"><b>Software<br>Install</b><span class="label">Setup · Support</span></div>
+          <div class="wall-tile"><img src="assets/images/service-design.jpg" alt="" loading="lazy"></div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
-
-  <!-- ============ CAPABILITIES ============ -->
-  <section class="section section--loud edge" id="capabilities" aria-labelledby="cap-heading">
-    <div class="wrap">
-      <div class="cap-head">
-        <h2 id="cap-heading" class="reveal-line"><span>What we do.</span></h2>
-        <span class="cap-count mono">INDEX 01 — 06</span>
-      </div>
-
-      <div class="cap-list" id="cap-list">
-        <a class="cap-row" href="services.html#fingerprint" data-thumb="assets/images/service-fingerprint.jpg" data-cursor="view">
-          <span class="cap-num mono">01</span>
-          <span class="cap-main">
-            <h3>Fingerprint Capture</h3>
-            <p>Uber &amp; Bolt driver-partner biometric registration — walk in, no appointment needed.</p>
-            <span class="cap-tags"><span>R350</span><span>Compliance</span></span>
-          </span>
-          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
-        </a>
-        <a class="cap-row" href="services.html#webdev" data-thumb="assets/images/service-development.jpg" data-cursor="view">
-          <span class="cap-num mono">02</span>
-          <span class="cap-main">
-            <h3>Web &amp; App Development</h3>
-            <p>Custom websites and applications, built around how your business actually runs.</p>
-            <span class="cap-tags"><span>Websites</span><span>Apps</span></span>
-          </span>
-          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
-        </a>
-        <a class="cap-row" href="services.html#design" data-thumb="assets/images/service-design.jpg" data-cursor="view">
-          <span class="cap-num mono">03</span>
-          <span class="cap-main">
-            <h3>Graphic Design</h3>
-            <p>Brand identity, logos and marketing material that hold up at any size.</p>
-            <span class="cap-tags"><span>Brand</span><span>Print &amp; Digital</span></span>
-          </span>
-          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
-        </a>
-        <a class="cap-row" href="courses.html" data-thumb="assets/images/service-courses.jpg" data-cursor="view">
-          <span class="cap-num mono">04</span>
-          <span class="cap-main">
-            <h3>Design Courses</h3>
-            <p>Hands-on training in Photoshop, Illustrator, Lightroom and Premiere Pro.</p>
-            <span class="cap-tags"><span>From R2000</span><span>Small groups</span></span>
-          </span>
-          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
-        </a>
-        <a class="cap-row" href="services.html#printing" data-thumb="assets/images/service-printing.jpg" data-cursor="view">
-          <span class="cap-num mono">05</span>
-          <span class="cap-main">
-            <h3>Office Printing</h3>
-            <p>Printing, copying and scanning for individuals, students and businesses.</p>
-            <span class="cap-tags"><span>Print</span><span>Scan &amp; Copy</span></span>
-          </span>
-          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
-        </a>
-        <a class="cap-row" href="services.html#software" data-thumb="assets/images/service-software-installation.jpg" data-cursor="view">
-          <span class="cap-num mono">06</span>
-          <span class="cap-main">
-            <h3>Software Installation</h3>
-            <p>Professional setup so your devices run exactly how you need them to.</p>
-            <span class="cap-tags"><span>Setup</span><span>Support</span></span>
-          </span>
-          <span class="cap-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.5"/></svg></span>
-        </a>
+      <span class="wall-caption label">Plates in motion — hover to pause</span>
+      <div class="seal" aria-hidden="true">
+        <svg class="seal-ring" viewBox="0 0 156 156"><defs><path id="ring" d="M78,78 m-64,0 a64,64 0 1,1 128,0 a64,64 0 1,1 -128,0"/></defs><text><textPath href="#ring">WEB GRAPHS TECHNOLOGIES ✦ JOHANNESBURG ✦ </textPath></text></svg>
+        <div class="seal-core"><img src="assets/favicon.svg" alt=""></div>
       </div>
     </div>
   </section>
 
-  <!-- floating thumbnail preview (desktop only, follows cursor over capability rows) -->
-  <div class="cap-thumb" id="cap-thumb" aria-hidden="true"><img alt="" loading="lazy"></div>
-
-  <!-- ============ PAUSE ============ -->
-  <section class="section-on-paper pause edge" aria-label="Our approach">
-    <div class="pause-inner">
-      <h2 class="sr-only">Our approach</h2>
-      <p class="statement reveal-line"><span>Every project starts with a conversation, not a template.</span></p>
-      <span class="pause-pulse" aria-hidden="true"></span>
-      <p class="kicker">No two briefs are the same</p>
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="star">✦</span>Fingerprint Capture</span>
+      <span class="ticker-item"><span class="star">✦</span>Web &amp; App Development</span>
+      <span class="ticker-item"><span class="star">✦</span>Graphic Design</span>
+      <span class="ticker-item"><span class="star">✦</span>Design Courses</span>
+      <span class="ticker-item"><span class="star">✦</span>Office Printing</span>
+      <span class="ticker-item"><span class="star">✦</span>Software Installation</span>
+      <span class="ticker-item"><span class="star">✦</span>Johannesburg, South Africa</span>
+      <span class="ticker-item"><span class="star">✦</span>Fingerprint Capture</span>
+      <span class="ticker-item"><span class="star">✦</span>Web &amp; App Development</span>
+      <span class="ticker-item"><span class="star">✦</span>Graphic Design</span>
+      <span class="ticker-item"><span class="star">✦</span>Design Courses</span>
+      <span class="ticker-item"><span class="star">✦</span>Office Printing</span>
+      <span class="ticker-item"><span class="star">✦</span>Software Installation</span>
+      <span class="ticker-item"><span class="star">✦</span>Johannesburg, South Africa</span>
     </div>
-  </section>
+  </div>
 
-  <div class="seam" aria-hidden="true"><span class="seam-grow"></span></div>
-
-  <!-- ============ WORK ============ -->
-  <section class="section section--loud edge" id="work" aria-labelledby="work-heading">
-    <div class="wrap">
-      <div class="work-head">
-        <span class="kicker">Selected work</span>
-        <h2 id="work-heading" class="reveal-line"><span>A few things we've shipped.</span></h2>
+  <!-- ============ § 01 FEATURED ============ -->
+  <section class="section" aria-labelledby="h-sel">
+    <div class="folio"><span class="label label-ink">§ 01</span><span class="label">Editor's selection</span><span class="rule"></span><span class="label">Featured work</span></div>
+    <div class="sect-head"><h2 class="display" id="h-sel" data-reveal>Chosen <em class="s">for the</em> front page.</h2><div class="sect-aside"><p class="lede" data-reveal>Three projects picked by the studio. Open any plate for the full story, or jump straight to the service behind it.</p></div></div>
+    <div class="spread">
+      <div class="plate p1">
+        <a class="plate-view" href="portfolio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+        <div class="plate-media"><span class="crops"></span><img src="assets/images/portfolio-fingerprint-ad.webp" alt="Social campaign artwork explaining Uber and Bolt driver fingerprint registration" loading="lazy" width="1120" height="1400"></div>
+        <div class="plate-meta">
+          <span class="plate-no mono">No. 01</span>
+          <span class="plate-title"><a href="portfolio.html">Driver registration, explained at a glance.</a></span>
+          <span class="plate-sub"><span class="plate-cat">Graphic Design — Print &amp; Social</span></span>
+        </div>
       </div>
-
-      <article class="work-piece work-01">
-        <div class="work-visual" data-reveal-visual>
-          <img src="assets/images/portfolio-fingerprint-ad.webp" alt="Social campaign artwork explaining Uber and Bolt driver fingerprint registration" loading="lazy" width="1120" height="1400">
+      <div class="plate p2">
+        <a class="plate-view" href="services.html#design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+        <div class="plate-media"><span class="crops"></span><img src="assets/images/service-design.jpg" alt="Laptop displaying a colourful landing page design template" loading="lazy" width="1200" height="800"></div>
+        <div class="plate-meta">
+          <span class="plate-no mono">No. 02</span>
+          <span class="plate-title"><a href="services.html#design">Brand identity that holds up at any size.</a></span>
+          <span class="plate-sub"><span class="plate-cat">Graphic Design — Digital</span></span>
         </div>
-        <div class="work-copy">
-          <div class="work-meta"><span class="idx mono">PROJECT 01</span><span class="tag">Graphic Design — Print &amp; Social</span></div>
-          <h3 class="work-title">Driver registration,<br>explained at a glance.</h3>
-          <p class="work-desc">A fingerprint-capture flyer built to answer the only two questions that matter fast: is it legit, and how much. Designed for WhatsApp, print and in-store display.</p>
-          <a href="portfolio.html" class="link-arrow" data-cursor="link">View case <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H3M10 2V9" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+      <div class="plate p3">
+        <a class="plate-view" href="courses.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+        <div class="plate-media"><span class="crops"></span><img src="assets/images/service-courses.jpg" alt="Two students working on laptops during a design class" loading="lazy" width="1200" height="800"></div>
+        <div class="plate-meta">
+          <span class="plate-no mono">No. 03</span>
+          <span class="plate-title"><a href="courses.html">Hands-on training, not just tutorials.</a></span>
+          <span class="plate-sub"><span class="plate-cat">Design Courses</span></span>
         </div>
-      </article>
-
-      <article class="work-piece work-02">
-        <div class="work-copy">
-          <div class="work-meta"><span class="idx mono">PROJECT 02</span><span class="tag">Graphic Design — Digital</span></div>
-          <h3 class="work-title">Brand identity that<br>holds up at any size.</h3>
-          <p class="work-desc">Logos, layouts and landing pages designed to look just as sharp on a phone screen as they do printed on a banner.</p>
-          <a href="services.html#design" class="link-arrow" data-cursor="link">See the service <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H3M10 2V9" stroke="currentColor" stroke-width="1.5"/></svg></a>
-        </div>
-        <div class="work-visual" data-reveal-visual>
-          <img src="assets/images/service-design.jpg" alt="Laptop displaying a colourful landing page design template" loading="lazy" width="1200" height="800">
-        </div>
-      </article>
-
-      <article class="work-piece work-03">
-        <div class="work-visual" data-reveal-visual>
-          <img src="assets/images/service-courses.jpg" alt="Two students working on laptops during a design class" loading="lazy" width="1200" height="800">
-        </div>
-        <div class="work-copy">
-          <div class="work-meta"><span class="idx mono">PROJECT 03</span><span class="tag">Graphic Design Courses</span></div>
-          <h3 class="work-title">Hands-on training, not just tutorials.</h3>
-          <p class="work-desc">Small-group sessions in Photoshop, Illustrator, Lightroom and Premiere Pro — built around real briefs, not just software menus.</p>
-          <a href="courses.html" class="link-arrow" data-cursor="link">View courses <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H3M10 2V9" stroke="currentColor" stroke-width="1.5"/></svg></a>
-        </div>
-      </article>
-
-      <div class="work-foot">
-        <a href="portfolio.html" class="btn-magnetic" data-magnetic data-cursor="link">
-          <span class="btn-fill"></span>
-          <span>View full portfolio</span>
-          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
-        </a>
+      </div>
+      <div class="caption">
+        <span class="big-no" aria-hidden="true">03</span>
+        <span class="label">Picked by<br>the studio</span>
       </div>
     </div>
   </section>
 
-  <!-- ============ STATS ============ -->
-  <section class="stats-strip edge" aria-label="Key numbers">
-    <div class="wrap">
-      <div class="stats-grid">
-        <div class="stat-cell"><strong>06</strong><span>Capabilities under one roof</span></div>
-        <div class="stat-cell"><strong>R350</strong><span>Fingerprint capture, walk-in</span></div>
-        <div class="stat-cell"><strong>6&#8211;Day</strong><span>Open Monday through Saturday</span></div>
-        <div class="stat-cell"><strong>JHB</strong><span>Langlaagte North, Johannesburg</span></div>
+  <!-- ============ § 02 CATEGORIES ============ -->
+  <section class="section" aria-labelledby="h-cat">
+    <div class="folio"><span class="label label-ink">§ 02</span><span class="label">Index of capabilities</span><span class="rule"></span><span class="label">Browse by service</span></div>
+    <h2 class="sr-only" id="h-cat">Capabilities</h2>
+    <ul class="cat-list" style="margin-top:var(--s6)">
+      <li><a href="services.html#fingerprint"><span class="no">01</span><span class="name">Fingerprint Capture</span><span class="c">R350</span></a></li>
+      <li><a href="services.html#webdev"><span class="no">02</span><span class="name">Web &amp; App Development</span><span class="c">Websites &amp; Apps</span></a></li>
+      <li><a href="services.html#design"><span class="no">03</span><span class="name">Graphic Design</span><span class="c">Brand &amp; Print</span></a></li>
+      <li><a href="courses.html"><span class="no">04</span><span class="name">Design Courses</span><span class="c">From R2000</span></a></li>
+      <li><a href="services.html#printing"><span class="no">05</span><span class="name">Office Printing</span><span class="c">Print &amp; Scan</span></a></li>
+      <li><a href="services.html#software"><span class="no">06</span><span class="name">Software Installation</span><span class="c">Setup &amp; Support</span></a></li>
+    </ul>
+  </section>
+
+  <!-- ============ § 03 RECENT WORK ============ -->
+  <section class="section" aria-labelledby="h-new">
+    <div class="folio"><span class="label label-ink">§ 03</span><span class="label">Recent work</span><span class="rule"></span><span class="label">Across the studio</span></div>
+    <div class="sect-head"><h2 class="h2" id="h-new" data-reveal>Lately <em class="s">at the</em> studio</h2>
+      <div class="sect-aside"><div class="shelf-ctrl"><button data-shelf="prev" aria-label="Scroll back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M21 12H4M10 5l-7 7 7 7"/></svg></button><button data-shelf="next" aria-label="Scroll forward"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 12h17M14 5l7 7-7 7"/></svg></button></div></div>
+    </div>
+    <div class="shelf" id="shelf" tabindex="0" aria-label="Recent work">
+      <div class="plate">
+        <a class="plate-view" href="services.html#fingerprint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+        <div class="plate-media"><span class="crops"></span><img src="assets/images/service-fingerprint.jpg" alt="Fingerprint capture desk" loading="lazy" width="1200" height="800"></div>
+        <div class="plate-meta"><span class="plate-no mono">No. 04</span><span class="plate-title"><a href="services.html#fingerprint">Fingerprint capture, walk-in</a></span><span class="plate-sub"><span class="plate-cat">Compliance · R350</span></span></div>
+      </div>
+      <div class="plate">
+        <a class="plate-view" href="services.html#webdev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+        <div class="plate-media"><span class="crops"></span><img src="assets/images/service-development.jpg" alt="Web and app development workspace" loading="lazy" width="1200" height="800"></div>
+        <div class="plate-meta"><span class="plate-no mono">No. 05</span><span class="plate-title"><a href="services.html#webdev">Web &amp; app development</a></span><span class="plate-sub"><span class="plate-cat">Websites &amp; apps</span></span></div>
+      </div>
+      <div class="plate">
+        <a class="plate-view" href="portfolio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+        <div class="plate-media"><span class="crops"></span><img src="assets/images/portfolio-services-collage.webp" alt="Collage of studio service artwork" loading="lazy" width="1200" height="800"></div>
+        <div class="plate-meta"><span class="plate-no mono">No. 06</span><span class="plate-title"><a href="portfolio.html">A look at our service lineup</a></span><span class="plate-sub"><span class="plate-cat">Studio collage</span></span></div>
+      </div>
+      <div class="plate">
+        <a class="plate-view" href="services.html#printing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+        <div class="plate-media"><span class="crops"></span><img src="assets/images/service-printing.jpg" alt="Office printing and scanning" loading="lazy" width="1200" height="800"></div>
+        <div class="plate-meta"><span class="plate-no mono">No. 07</span><span class="plate-title"><a href="services.html#printing">Office printing &amp; scanning</a></span><span class="plate-sub"><span class="plate-cat">Print &amp; copy</span></span></div>
+      </div>
+      <div class="plate">
+        <a class="plate-view" href="services.html#software"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+        <div class="plate-media"><span class="crops"></span><img src="assets/images/service-software-installation.jpg" alt="Software installation on a laptop" loading="lazy" width="1200" height="800"></div>
+        <div class="plate-meta"><span class="plate-no mono">No. 08</span><span class="plate-title"><a href="services.html#software">Software installation</a></span><span class="plate-sub"><span class="plate-cat">Setup &amp; support</span></span></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ FINAL CTA ============ -->
-  <section class="section section--loud edge cta-final" id="start" aria-labelledby="cta-heading">
-    <div class="wrap">
-      <div class="cta-final-head">
-        <span class="kicker">Start a project</span>
-        <h2 id="cta-heading">Let's build<br>something real.</h2>
-        <p class="cta-final-sub">Tell us what you're working on — we'll get back to you on WhatsApp, usually within the day.</p>
+  <!-- ============ § 04 SPECIMEN ============ -->
+  <section class="specimen" aria-labelledby="h-spec">
+    <div class="folio"><span class="label label-ink">§ 04</span><span class="label">Specimen — capabilities</span><span class="rule"></span><span class="label">6 services · one studio</span></div>
+    <div class="sect-head"><h2 class="display" id="h-spec" data-reveal>Capabilities, <em class="s signal-text">drawn</em> on a grid.</h2><div class="sect-aside"><p class="lede" data-reveal>Six things we do well, every day. Hover or tab through the grid, then open the full service.</p><a class="btn" href="services.html" style="border-color:currentColor;color:var(--paper)">See all services <span class="arrow">→</span></a></div></div>
+    <div class="spec-grid">
+      <div class="spec-focus" id="spec-focus" aria-hidden="true">
+        <div class="row"><span class="label no"></span><a class="go" href="#">View service →</a></div>
+        <div class="glyph"></div>
+        <div class="row"><span class="h3 nm" style="color:var(--paper)"></span></div>
       </div>
-
-      <form class="quick-form" id="quick-start-form" novalidate>
-        <div class="qf-field">
-          <label for="qs-name">Your name</label>
-          <input type="text" id="qs-name" name="name" placeholder="e.g. Thabo" required autocomplete="name">
-        </div>
-        <div class="qf-field">
-          <label for="qs-service">What do you need</label>
-          <select id="qs-service" name="service">
-            <option>Fingerprint Capture</option>
-            <option>Web &amp; App Development</option>
-            <option>Graphic Design</option>
-            <option>Design Courses</option>
-            <option>Office Printing</option>
-            <option>Software Installation</option>
-          </select>
-        </div>
-        <div class="qf-field qf-submit">
-          <button type="submit" class="btn-magnetic btn-solid" data-magnetic data-cursor="link" style="width:100%; justify-content:center;">
-            <span class="btn-fill"></span>
-            <span>Message on WhatsApp</span>
-            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.6"/></svg>
-          </button>
-        </div>
-      </form>
-      <p class="form-note" id="quick-start-note"><span class="dot"></span>No spam — this opens a WhatsApp chat with us directly.</p>
+      <div class="spec-cells">
+        <button type="button" data-name="Fingerprint Capture" data-href="services.html#fingerprint"><span class="n">01</span><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 11a3 3 0 0 1 3 3v1a9 9 0 0 1-1 4"/><path d="M8 18a9 9 0 0 1-1-4v-1a5 5 0 0 1 10 0"/><path d="M12 3a9 9 0 0 0-9 9v1a13 13 0 0 0 1 5"/><path d="M12 3a9 9 0 0 1 9 9v1c0 1 0 2-.3 3"/><path d="M15.5 21a13 13 0 0 0 1-4.5"/></svg></span></button>
+        <button type="button" data-name="Web &amp; App Development" data-href="services.html#webdev"><span class="n">02</span><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg></span></button>
+        <button type="button" data-name="Graphic Design" data-href="services.html#design"><span class="n">03</span><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l3.6-1 11-11a2 2 0 0 0-3-3l-11 11-1 3.6 1 .4z"/><path d="M14 6l3 3"/></svg></span></button>
+        <button type="button" data-name="Design Courses" data-href="courses.html"><span class="n">04</span><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V17c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"/></svg></span></button>
+        <button type="button" data-name="Office Printing" data-href="services.html#printing"><span class="n">05</span><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="1"/><path d="M6 17v4h12v-4"/></svg></span></button>
+        <button type="button" data-name="Software Installation" data-href="services.html#software"><span class="n">06</span><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><rect x="7" y="7" width="10" height="10" rx="1"/></svg></span></button>
+      </div>
     </div>
   </section>
 
-  <footer class="wgs-footer edge">
-    <div class="wrap">
-      <div class="wgs-footer-grid">
-        <div class="wgs-footer-col">
-          <span class="h">Studio</span>
-          <p>Web Graphs Technologies<br>9 Jill Street, Langlaagte North<br>Johannesburg, 2092, South Africa</p>
-          <div class="wgs-footer-social">
-            <a href="https://wa.me/27787347867" target="_blank" rel="noopener" aria-label="WhatsApp" class="mono">WA</a>
-            <a href="https://www.instagram.com/webgraphs.technologies/" target="_blank" rel="noopener" aria-label="Instagram" class="mono">IG</a>
-            <a href="https://www.facebook.com/profile.php?id=61593004196481" target="_blank" rel="noopener" aria-label="Facebook" class="mono">FB</a>
-            <a href="https://www.tiktok.com/@webgraphs.technologies" target="_blank" rel="noopener" aria-label="TikTok" class="mono">TT</a>
-          </div>
+  <!-- ============ § 05 STUDIO ============ -->
+  <section class="section" aria-labelledby="h-studio">
+    <div class="folio"><span class="label label-ink">§ 05</span><span class="label">From the studio</span><span class="rule"></span><span class="label">How we work</span></div>
+    <h2 class="sr-only" id="h-studio">From the studio</h2>
+    <div class="studio" style="margin-top:var(--s6)" id="start">
+      <blockquote data-reveal>Every project starts with <b>a conversation,</b> not a template.</blockquote>
+      <div class="creator" data-reveal>
+        <div class="creator-top"><div class="mark"><img src="assets/favicon.svg" alt=""></div><div><p class="label">Studio</p><p class="h3">Web Graphs Technologies</p><p class="muted" style="font-size:14px">Independent technology &amp; design studio</p></div></div>
+        <div class="creator-stats">
+          <div><b>06</b><span class="label">Capabilities under one roof</span></div>
+          <div><b>R350</b><span class="label">Fingerprint capture, walk-in</span></div>
+          <div><b>6-Day</b><span class="label">Open Monday–Saturday</span></div>
         </div>
-        <div class="wgs-footer-col">
-          <span class="h">Navigate</span>
-          <a href="services.html">Services</a>
-          <a href="courses.html">Courses</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="about.html">About</a>
-        </div>
-        <div class="wgs-footer-col">
-          <span class="h">More</span>
-          <a href="faq.html">FAQ</a>
-          <a href="qr-code.html">QR Code Generator</a>
-          <a href="contact.html">Contact</a>
-        </div>
-        <div class="wgs-footer-col">
-          <span class="h">Get in touch</span>
-          <a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a>
-          <a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a>
-          <p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p>
-        </div>
-      </div>
-      <div class="wgs-footer-bottom">
-        <span class="wgs-footer-mark"><span class="dot" aria-hidden="true"></span> Web Graphs Technologies &copy; <span id="wgs-year">2026</span></span>
-        <span>Designed &amp; built in Johannesburg</span>
+        <div class="creator-cta"><a class="btn btn-signal" href="https://wa.me/27787347867?text=Hi%20Web%20Graphs%2C%20I%27d%20like%20to%20start%20a%20project." target="_blank" rel="noopener">Message us on WhatsApp <span class="arrow">→</span></a><a class="btn" href="portfolio.html">Browse work</a></div>
       </div>
     </div>
-  </footer>
-
+  </section>
 </main>
 
-<div class="easter-note" id="easter-note" role="status" aria-live="polite">YOU FOUND IT.<br>DESIGNED &amp; BUILT BY WEB GRAPHS TECHNOLOGIES.</div>
+<footer class="colophon">
+  <div class="folio"><span class="label label-ink">§ Colophon</span><span class="label">Web Graphs Technologies</span><span class="rule"></span><span class="label">Johannesburg — <span data-year></span></span></div>
+  <div class="colophon-grid">
+    <div><p class="h3">A Johannesburg studio for fingerprint capture, web &amp; app builds, brand identity, training and print.</p><p class="muted" style="margin-top:12px">Open Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p></div>
+    <nav aria-label="Navigate"><p class="label">Navigate</p><a href="services.html">Services</a><a href="courses.html">Courses</a><a href="portfolio.html">Portfolio</a><a href="about.html">About</a></nav>
+    <div><p class="label">Contact</p><a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a><a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a><p class="muted">9 Jill Street, Langlaagte North, Johannesburg</p></div>
+    <div><p class="label">More</p><a href="faq.html">FAQ</a><a href="qr-code.html">QR Code Generator</a><a href="contact.html">Contact</a></div>
+  </div>
+  <p class="word" aria-hidden="true">Web Graphs<span class="dot">.</span></p>
+  <div class="colophon-base"><span class="label">© <span data-year></span> Web Graphs Technologies. All rights reserved.</span><span class="label">Set in Manrope, Instrument Serif &amp; JetBrains Mono</span></div>
+</footer>
 
-<script src="js/studio.js"></script>
+<nav class="dock" aria-label="Primary">
+  <button class="dock-item" data-open-index><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h11"/></svg><span>Index</span></button>
+  <a class="dock-item" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17"/><path d="M3.5 9h17M9 20.5V9"/></svg><span>Services</span></a>
+  <a class="dock-item" href="courses.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V17c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"/></svg><span>Courses</span></a>
+  <a class="dock-item" href="portfolio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 16l5-5 4 4 5-6 4 5"/></svg><span>Portfolio</span></a>
+  <a class="dock-item" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>About</span></a>
+  <a class="dock-item" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4V4Z"/></svg><span>Contact</span></a>
+</nav>
+
+<!-- Full-screen index overlay -->
+<div class="overlay" id="ov-index" hidden>
+  <div class="overlay-panel">
+    <div class="container">
+      <div class="overlay-bar">
+        <span class="label">Index — all pages</span>
+        <button class="overlay-close" data-close-index><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Close</button>
+      </div>
+      <ul class="index-list">
+        <li><a href="services.html"><span class="n">01</span><span>Services<span class="desc">Fingerprint capture, web &amp; app dev, design, printing, software.</span></span></a></li>
+        <li><a href="courses.html"><span class="n">02</span><span>Courses<span class="desc">Hands-on Photoshop, Illustrator, Lightroom &amp; Premiere Pro training.</span></span></a></li>
+        <li><a href="portfolio.html"><span class="n">03</span><span>Portfolio<span class="desc">A closer look at work we've shipped.</span></span></a></li>
+        <li><a href="about.html"><span class="n">04</span><span>About<span class="desc">Who we are and how we work.</span></span></a></li>
+        <li><a href="faq.html"><span class="n">05</span><span>FAQ<span class="desc">Quick answers to the questions we hear most.</span></span></a></li>
+        <li><a href="qr-code.html"><span class="n">06</span><span>QR Code<span class="desc">Free tool — turn any link into a scannable code.</span></span></a></li>
+        <li><a href="contact.html"><span class="n">07</span><span>Contact<span class="desc">Start a conversation on WhatsApp, email or in person.</span></span></a></li>
+      </ul>
+      <div class="index-foot">
+        <div><p class="label">WhatsApp &amp; Calls</p><a href="https://wa.me/27787347867" target="_blank" rel="noopener">+27 78 734 7867</a></div>
+        <div><p class="label">Email</p><a href="mailto:webgraphstechnologies@gmail.com">webgraphstechnologies@gmail.com</a></div>
+        <div><p class="label">Studio</p><p>9 Jill Street, Langlaagte North, Johannesburg, 2092</p></div>
+        <div><p class="label">Hours</p><p>Mon–Fri 8:00–17:00 · Sat 8:00–13:00</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/archive-home.js"></script>
 </body>
 </html>
