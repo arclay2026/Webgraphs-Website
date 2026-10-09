@@ -214,21 +214,35 @@ h1, h2, h3, h4 { font-family: var(--font-sans); font-weight: 800; letter-spacing
 
 /* ---------- 04 · Buttons & links ---------- */
 .btn-magnetic {
+  --chamfer: 12px;
   position: relative;
   display: inline-flex; align-items: center; gap: var(--sp-3);
   padding: var(--sp-4) var(--sp-6);
-  border: var(--bw) solid var(--line-strong);
-  border-radius: var(--radius-pill);
+  border: 1.5px solid color-mix(in srgb, var(--signal) 50%, var(--line-strong));
+  clip-path: polygon(
+    var(--chamfer) 0, 100% 0,
+    100% calc(100% - var(--chamfer)), calc(100% - var(--chamfer)) 100%,
+    0 100%, 0 var(--chamfer)
+  );
   font: 700 var(--fs-label)/1 var(--font-sans);
   letter-spacing: .01em;
   color: var(--fg);
-  transition: border-color var(--dur-2) var(--ease-soft), background-color var(--dur-2) var(--ease-soft), color var(--dur-2) var(--ease-soft);
+  transition: border-color var(--dur-2) var(--ease-soft), background-color var(--dur-2) var(--ease-soft), color var(--dur-2) var(--ease-soft), filter var(--dur-2) var(--ease-soft);
   isolation: isolate;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--signal) 28%, transparent));
+}
+.btn-magnetic::before {
+  content: "";
+  position: absolute;
+  top: 7px; left: calc(var(--chamfer) + 5px);
+  width: 4px; height: 4px;
+  background: color-mix(in srgb, var(--signal) 75%, transparent);
+  transition: background-color var(--dur-2) var(--ease-soft);
+  pointer-events: none;
 }
 .btn-magnetic .btn-fill {
   position: absolute; inset: 0;
   background: var(--signal);
-  border-radius: inherit;
   transform: scale(0);
   transform-origin: center;
   transition: transform var(--dur-3) var(--ease-expo);
@@ -237,17 +251,27 @@ h1, h2, h3, h4 { font-family: var(--font-sans); font-weight: 800; letter-spacing
 .btn-magnetic:hover .btn-fill,
 .btn-magnetic:focus-visible .btn-fill { transform: scale(1); }
 .btn-magnetic:hover,
-.btn-magnetic:focus-visible { color: var(--on-signal); border-color: var(--signal); }
+.btn-magnetic:focus-visible {
+  color: var(--on-signal); border-color: var(--signal);
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--signal) 70%, transparent));
+}
+.btn-magnetic:hover::before,
+.btn-magnetic:focus-visible::before { background: var(--on-signal); }
 .btn-magnetic .btn-arrow { transition: transform var(--dur-2) var(--ease-expo); }
 .btn-magnetic:hover .btn-arrow,
 .btn-magnetic:focus-visible .btn-arrow { transform: translate(3px, -3px); }
 
 .btn-magnetic.btn-solid {
   background: var(--signal); color: var(--on-signal); border-color: var(--signal);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--signal) 40%, transparent));
 }
+.btn-magnetic.btn-solid::before { background: color-mix(in srgb, var(--on-signal) 70%, transparent); }
 .btn-magnetic.btn-solid .btn-fill { background: var(--fg); }
 .btn-magnetic.btn-solid:hover,
-.btn-magnetic.btn-solid:focus-visible { color: var(--bg); }
+.btn-magnetic.btn-solid:focus-visible {
+  color: var(--bg);
+  filter: drop-shadow(0 0 22px color-mix(in srgb, var(--signal) 80%, transparent));
+}
 
 .link-arrow {
   display: inline-flex; align-items: center; gap: var(--sp-2);
