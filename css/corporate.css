@@ -4,9 +4,9 @@
    Self-contained design system for the homepage only. Structural
    language: mega-style primary nav, a full-width services
    carousel with prev/next and pause controls, a courses spotlight with a bundle strip, a
-   grid-breaking feature banner, a 2x2 "for your business" block, a
+   grid-breaking feature banner, a "visit the studio" block with a map, a
    social follow row, and a light multi-column footer with a legal bar.
-   Flat, minimal-radius, high-contrast — no gradients, no heavy shadow.
+   Flat, minimal-radius, high-contrast — soft grey bands, light shadows.
    Brand palette: #1e88e5 blue, #111111 and #000000.
    ===================================================================== */
 
@@ -187,7 +187,7 @@ body.corp {
 /* ---------- section heads ---------- */
 .corp .section { padding-block: 56px; }
 .corp .section-head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 640px; }
-.corp .section-head h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 300; letter-spacing: 0; }
+.corp .section-head h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 500; letter-spacing: 0; }
 .corp .section-head p { color: var(--wg-mute); font-size: 16px; }
 .corp .section-foot { margin-top: 32px; }
 
@@ -232,19 +232,26 @@ body.corp {
 .corp .feature-media img { width: 100%; height: 100%; object-fit: cover; }
 .corp .feature-body { padding: 28px; display: grid; gap: 12px; align-content: center; }
 .corp .feature-body .card-tag { font-size: 12.5px; }
-.corp .feature-body h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 300; letter-spacing: 0; line-height: 1.15; }
+.corp .feature-body h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 500; letter-spacing: 0; line-height: 1.15; }
 .corp .feature-body p { color: var(--wg-mute); font-size: 15.5px; max-width: 50ch; }
 @media (min-width: 900px) { .corp .feature-banner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } .corp .feature-body { padding: 40px; } }
 
-/* ---------- 2x2 business grid ---------- */
-.corp .biz-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--wg-line); border: 1px solid var(--wg-line); border-radius: var(--wg-radius-lg); overflow: hidden; }
-.corp .biz-cell { background: var(--wg-card); padding: 24px; display: grid; gap: 10px; align-content: start; position: relative; }
-.corp .biz-cell .badge { position: absolute; top: 20px; right: 20px; font: 300 11px/1 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; background: var(--wg-accent-tint); color: var(--wg-accent); padding: 5px 9px; border-radius: 999px; }
-.corp .biz-cell .ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: var(--wg-radius); background: var(--wg-accent-tint); color: var(--wg-accent); }
-.corp .biz-cell .ic svg { width: 20px; height: 20px; }
-.corp .biz-cell h3 { font-size: 18px; font-weight: 300; margin-top: 6px; }
-.corp .biz-cell p { color: var(--wg-mute); font-size: 14.5px; }
-@media (min-width: 720px) { .corp .biz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* ---------- visit the studio ---------- */
+.corp .visit-grid { display: grid; gap: 32px; align-items: stretch; }
+.corp .visit-info { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.corp .visit-info h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 500; line-height: 1.15; }
+.corp .visit-lede { color: var(--wg-mute); font-size: 16px; line-height: 1.55; max-width: 46ch; }
+.corp .visit-details { display: grid; gap: 16px; margin: 8px 0 4px; width: 100%; }
+.corp .visit-details div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 12px; padding-top: 14px; border-top: 1px solid var(--wg-line); }
+.corp .visit-details dt { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--wg-mute); padding-top: 2px; }
+.corp .visit-details dd { margin: 0; font-size: 16px; line-height: 1.5; color: var(--wg-text); }
+.corp .visit-details a { color: var(--wg-accent); }
+.corp .visit-details a:hover { text-decoration: underline; }
+.corp .visit .hero-ctas { margin-top: 10px; }
+.corp .visit-map { min-height: 320px; border-radius: var(--wg-radius-lg); overflow: hidden; border: 1px solid var(--wg-line); background: var(--wg-bg-alt); }
+.corp .visit-map iframe { display: block; width: 100%; height: 100%; min-height: 320px; border: 0; }
+@media (max-width: 479px) { .corp .visit-details div { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+@media (min-width: 960px) { .corp .visit-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 56px; } .corp .visit-map { min-height: 440px; } }
 
 /* ---------- stats band ---------- */
 .corp .stats-band { background: var(--wg-ink); color: #fff; }
