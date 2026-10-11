@@ -120,6 +120,7 @@
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(current + (dx < 0 ? 1 : -1), true);
       startX = null;
     });
+    track.addEventListener("pointercancel", function () { startX = null; });
 
     if (reduceMotion) {
       carousel.classList.add("is-stopped");

@@ -2,8 +2,8 @@
    WEB GRAPHS — CORPORATE HOMEPAGE
    ---------------------------------------------------------------------
    Self-contained design system for the homepage only. Structural
-   language: thin utility bar, mega-style primary nav, full-width services carousel
-   with prev/next and pause controls, a product-card grid with arrow links, a
+   language: thin utility bar, mega-style primary nav, a full-width services
+   carousel with prev/next and pause controls, a product-card grid with arrow links, a
    grid-breaking feature banner, a 2x2 "for your business" block, a
    social follow row, and a light multi-column footer with a legal bar.
    Flat, minimal-radius, high-contrast — no gradients, no heavy shadow.
@@ -102,50 +102,54 @@ body.corp {
 .corp .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
 /* ---------- services carousel ---------- */
-.corp .svc-carousel { --svc-h: clamp(580px, 42vw, 720px); --svc-interval: 7s; background: var(--wg-bg-alt); position: relative; }
+.corp .svc-carousel { --svc-interval: 7s; --svc-max: 1400px; }
+.corp .svc-stage { background: linear-gradient(115deg, #e9e9e6 0%, #f4f4f1 48%, #ececea 100%); overflow: hidden; }
 .corp .svc-track { display: grid; touch-action: pan-y; }
 .corp .svc-slide {
-  grid-area: 1 / 1; display: grid; grid-template-columns: minmax(0, 1fr);
+  grid-area: 1 / 1; display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center;
+  width: 100%; max-width: var(--svc-max); margin-inline: auto; padding: 28px var(--wg-gutter) 40px;
   opacity: 0; visibility: hidden; transition: opacity .6s var(--wg-ease), visibility 0s linear .6s;
 }
 .corp .svc-slide.is-active { opacity: 1; visibility: visible; transition: opacity .6s var(--wg-ease), visibility 0s; }
-.corp .svc-media { aspect-ratio: 1 / 1; overflow: hidden; background: var(--wg-line); }
-.corp .svc-media img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 42% 50%); transform: scale(1.04); transition: transform 7s linear; }
+.corp .svc-media {
+  order: -1; justify-self: center; width: 100%; max-width: 520px; aspect-ratio: 1 / 1;
+  border-radius: 16px; overflow: hidden; background: var(--wg-line);
+  box-shadow: 0 40px 70px -40px rgba(0, 0, 0, .45), 0 2px 6px rgba(0, 0, 0, .06);
+}
+.corp .svc-media img { -webkit-user-drag: none; user-select: none; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 42% 50%); transform: scale(1.05); transition: transform 7s linear; }
 .corp .svc-slide.is-active .svc-media img { transform: scale(1); }
-.corp .svc-body { display: grid; align-content: center; gap: 18px; padding: 32px var(--wg-gutter) 8px; max-width: 760px; }
-.corp .svc-kicker { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--wg-accent); }
-.corp .svc-kicker b { font-weight: 300; color: var(--wg-text); }
-.corp .svc-title { font-size: clamp(40px, 5.6vw, 88px); line-height: 1; color: var(--wg-text); }
-.corp .svc-desc { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.5; color: var(--wg-mute); max-width: 44ch; }
-.corp .svc-tag { justify-self: start; padding: 6px 12px; border: 1px solid var(--wg-accent-fill); border-radius: 999px; font-size: 14px; color: var(--wg-accent); }
-.corp .svc-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
-.corp .svc-body > * { opacity: 0; transform: translateY(14px); transition: opacity .5s var(--wg-ease), transform .6s var(--wg-ease); }
+.corp .svc-body { display: grid; justify-items: start; gap: 16px; max-width: 580px; }
+.corp .svc-title { font-size: clamp(32px, 3.6vw, 56px); line-height: 1.08; color: var(--wg-text); }
+.corp .svc-desc { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.55; color: var(--wg-text); max-width: 52ch; }
+.corp .svc-body .btn { margin-top: 10px; }
+.corp .svc-body > * { opacity: 0; transform: translateY(12px); transition: opacity .5s var(--wg-ease), transform .6s var(--wg-ease); }
 .corp .svc-slide.is-active .svc-body > * { opacity: 1; transform: none; }
-.corp .svc-slide.is-active .svc-body > :nth-child(2) { transition-delay: .06s; }
-.corp .svc-slide.is-active .svc-body > :nth-child(3) { transition-delay: .12s; }
-.corp .svc-slide.is-active .svc-body > :nth-child(4) { transition-delay: .18s; }
-.corp .svc-slide.is-active .svc-body > :nth-child(5) { transition-delay: .24s; }
+.corp .svc-slide.is-active .svc-body > :nth-child(2) { transition-delay: .07s; }
+.corp .svc-slide.is-active .svc-body > :nth-child(3) { transition-delay: .14s; }
 
-.corp .svc-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 24px; }
+.corp .svc-controls {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  max-width: var(--svc-max); margin-inline: auto; padding: 22px var(--wg-gutter) 26px; background: var(--wg-bg);
+}
 .corp .svc-arrow {
-  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; flex: none;
   border: 1.5px solid var(--wg-text); color: var(--wg-text); transition: background .2s, color .2s;
 }
 .corp .svc-arrow:hover { background: var(--wg-text); color: #fff; }
 .corp .svc-arrow svg { width: 18px; height: 18px; }
-.corp .svc-center { display: flex; align-items: center; gap: 14px; }
+.corp .svc-center { display: flex; align-items: center; gap: 10px; }
 .corp .svc-dots { display: flex; align-items: center; }
-.corp .svc-dot { display: grid; align-items: center; height: 44px; padding: 0 4px; }
-.corp .svc-dot span { position: relative; display: block; width: 22px; height: 3px; border-radius: 3px; background: var(--wg-line); overflow: hidden; transition: width .35s var(--wg-ease), background .2s; }
-.corp .svc-dot:hover span { background: #c9c8c0; }
-.corp .svc-dot[aria-current="true"] span { width: 52px; background: #d6d5cd; }
-.corp .svc-dot span::after { content: ""; position: absolute; inset: 0; background: var(--wg-accent-fill); transform: scaleX(0); transform-origin: left; }
+.corp .svc-dot { display: grid; align-items: center; height: 44px; padding: 0 3px; }
+.corp .svc-dot span { position: relative; display: block; width: 18px; height: 2px; border-radius: 2px; background: #d9d9d5; overflow: hidden; transition: width .35s var(--wg-ease), background .2s; }
+.corp .svc-dot:hover span { background: #b5b5b0; }
+.corp .svc-dot[aria-current="true"] span { width: 30px; height: 3px; background: #cfcfca; }
+.corp .svc-dot span::after { content: ""; position: absolute; inset: 0; background: var(--wg-text); transform: scaleX(0); transform-origin: left; }
 .corp .svc-dot[aria-current="true"] span::after { animation: svc-progress var(--svc-interval) linear forwards; }
 .corp .svc-carousel.is-paused .svc-dot[aria-current="true"] span::after,
 .corp .svc-carousel.is-held .svc-dot[aria-current="true"] span::after { animation-play-state: paused; }
 .corp .svc-carousel.is-stopped .svc-dot[aria-current="true"] span::after { animation: none; transform: scaleX(1); }
 @keyframes svc-progress { to { transform: scaleX(1); } }
-.corp .svc-pause { display: grid; place-items: center; width: 40px; height: 40px; border: 1.5px solid var(--wg-text); border-radius: var(--wg-radius); color: var(--wg-text); }
+.corp .svc-pause { display: grid; place-items: center; width: 34px; height: 34px; border: 1.5px solid var(--wg-text); border-radius: 8px; color: var(--wg-text); }
 .corp .svc-pause:hover { background: var(--wg-text); color: #fff; }
 .corp .svc-pause svg { width: 14px; height: 14px; }
 .corp .svc-pause .i-play { display: none; }
@@ -153,21 +157,14 @@ body.corp {
 .corp .svc-carousel.is-paused .svc-pause .i-pause, .corp .svc-carousel.is-stopped .svc-pause .i-pause { display: none; }
 
 @media (min-width: 1024px) {
-  .corp .svc-slide { grid-template-columns: var(--svc-h) minmax(0, 1fr); min-height: var(--svc-h); }
-  .corp .svc-media { width: var(--svc-h); height: var(--svc-h); }
-  .corp .svc-body { padding: 48px clamp(40px, 6vw, 112px); gap: 22px; }
-}
-@media (max-width: 480px) {
-  .corp .svc-arrow { width: 44px; height: 44px; }
-  .corp .svc-dot span { width: 14px; }
-  .corp .svc-dot[aria-current="true"] span { width: 32px; }
-  .corp .svc-center { gap: 8px; }
+  .corp .svc-slide { grid-template-columns: minmax(0, 1fr) auto; gap: 48px; min-height: 580px; padding-block: 56px; }
+  .corp .svc-media { order: 0; width: clamp(380px, 34vw, 520px); max-width: none; }
 }
 @media (max-width: 380px) {
   .corp .svc-controls { gap: 8px; }
-  .corp .svc-dot { padding: 0 3px; }
-  .corp .svc-dot span { width: 10px; }
-  .corp .svc-dot[aria-current="true"] span { width: 24px; }
+  .corp .svc-arrow { width: 44px; height: 44px; }
+  .corp .svc-dot span { width: 12px; }
+  .corp .svc-dot[aria-current="true"] span { width: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .corp .svc-media img { transform: none !important; transition: none; }
