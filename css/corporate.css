@@ -64,14 +64,15 @@ body.corp {
 
 /* ---------- primary nav ---------- */
 .corp .masthead { border-bottom: 1px solid var(--wg-line); background: var(--wg-bg); position: sticky; top: 0; z-index: 100; }
-.corp .masthead .wrap { display: flex; align-items: center; gap: 28px; min-height: 64px; }
-.corp .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
-.corp .brand img { height: 38px; width: auto; }
+.corp .masthead .wrap { display: flex; align-items: center; gap: 28px; min-height: 54px; }
+@media (max-width: 479px) { .corp .masthead .wrap { gap: 12px; } }
+.corp .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; flex: none; }
+.corp .brand img { height: 32px; width: auto; flex: none; }
 .corp .primary-nav { display: none; }
-.corp .primary-nav a { display: inline-flex; align-items: center; min-height: 64px; padding: 0 14px; font-size: 14px; font-weight: 300; border-bottom: 2px solid transparent; }
+.corp .primary-nav a { display: inline-flex; align-items: center; min-height: 54px; padding: 0 14px; font-size: 14px; font-weight: 300; border-bottom: 2px solid transparent; }
 .corp .primary-nav a:hover { color: var(--wg-accent); border-bottom-color: var(--wg-accent); }
 .corp .nav-cta {
-  display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 14px;
+  display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 14px;
   background: var(--wg-accent-fill); color: var(--wg-on-accent); border-radius: var(--wg-radius-lg);
   font-weight: 300; font-size: 13.5px; white-space: nowrap; transition: background .2s;
 }
