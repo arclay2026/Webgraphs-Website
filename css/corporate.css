@@ -119,9 +119,9 @@ body.corp {
 .corp .svc-media img { -webkit-user-drag: none; user-select: none; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 42% 50%); transform: scale(1.05); transition: transform 7s linear; }
 .corp .svc-slide.is-active .svc-media img { transform: scale(1); }
 .corp .svc-body { display: grid; justify-items: start; gap: 16px; max-width: 580px; }
-.corp .svc-title { font-size: clamp(32px, 3.6vw, 56px); line-height: 1.08; color: var(--wg-text); }
-.corp .svc-desc { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.55; color: var(--wg-text); max-width: 52ch; }
-.corp .svc-body .btn { margin-top: 10px; }
+.corp .svc-title { font-size: clamp(28px, 3vw, 46px); font-weight: 600; line-height: 1.1; color: var(--wg-text); }
+.corp .svc-desc { font-size: clamp(15px, 1.05vw, 16px); line-height: 1.55; color: var(--wg-text); max-width: 52ch; }
+.corp .svc-body .btn { margin-top: 8px; min-height: 38px; padding: 0 18px; font-size: 14px; border-radius: 10px; }
 .corp .svc-body > * { opacity: 0; transform: translateY(12px); transition: opacity .5s var(--wg-ease), transform .6s var(--wg-ease); }
 .corp .svc-slide.is-active .svc-body > * { opacity: 1; transform: none; }
 .corp .svc-slide.is-active .svc-body > :nth-child(2) { transition-delay: .07s; }
