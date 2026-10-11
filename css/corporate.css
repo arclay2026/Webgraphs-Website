@@ -2,7 +2,7 @@
    WEB GRAPHS — CORPORATE HOMEPAGE
    ---------------------------------------------------------------------
    Self-contained design system for the homepage only. Structural
-   language: thin utility bar, mega-style primary nav, a full-width services
+   language: mega-style primary nav, a full-width services
    carousel with prev/next and pause controls, a product-card grid with arrow links, a
    grid-breaking feature banner, a 2x2 "for your business" block, a
    social follow row, and a light multi-column footer with a legal bar.
@@ -52,15 +52,6 @@ body.corp {
 .corp .skip { position: absolute; left: var(--wg-gutter); top: -80px; z-index: 300; background: var(--wg-accent); color: #fff; padding: 12px 18px; border-radius: var(--wg-radius-sm); font-weight: 300; }
 .corp .skip:focus { top: 12px; }
 .corp .sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-/* ---------- utility bar ---------- */
-.corp .util-bar { background: var(--wg-ink); color: #cfcfca; font-size: 13px; }
-.corp .util-bar .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 36px; gap: 16px; flex-wrap: wrap; }
-.corp .util-bar a { padding: 6px 0; }
-.corp .util-bar a:hover { color: #fff; }
-.corp .util-left { display: flex; gap: 20px; align-items: center; }
-.corp .util-right { display: flex; gap: 20px; align-items: center; }
-.corp .util-right .accent { color: #1e88e5; font-weight: 300; }
 
 /* ---------- primary nav ---------- */
 .corp .masthead { border-bottom: 1px solid var(--wg-line); background: var(--wg-bg); position: sticky; top: 0; z-index: 100; }
