@@ -35,8 +35,8 @@
 
   /* Type */
   --font-sans: "Encode Sans Semi Condensed", system-ui, -apple-system, sans-serif;
-  --font-serif: "Instrument Serif", "Times New Roman", serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: var(--font-sans);
+  --font-mono: var(--font-sans);
 
   --fs-nano: 10.5px;
   --fs-micro: 12.5px;
@@ -181,7 +181,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   flex-shrink: 0;
 }
 
-.mono { font-family: var(--font-mono); }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .serif-accent { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
 
 .eyebrow-num {
