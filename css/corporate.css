@@ -3,7 +3,7 @@
    ---------------------------------------------------------------------
    Self-contained design system for the homepage only. Structural
    language: mega-style primary nav, a full-width services
-   carousel with prev/next and pause controls, a product-card grid with arrow links, a
+   carousel with prev/next and pause controls, a courses spotlight with a bundle strip, a
    grid-breaking feature banner, a 2x2 "for your business" block, a
    social follow row, and a light multi-column footer with a legal bar.
    Flat, minimal-radius, high-contrast — no gradients, no heavy shadow.
@@ -190,21 +190,37 @@ body.corp {
 .corp .section-head p { color: var(--wg-mute); font-size: 16px; }
 .corp .section-foot { margin-top: 32px; }
 
-/* ---------- card grid ---------- */
-.corp .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.corp .card {
-  background: var(--wg-card); border: 1px solid var(--wg-line); border-radius: var(--wg-radius-lg); overflow: hidden;
-  display: flex; flex-direction: column; transition: box-shadow .25s var(--wg-ease), transform .25s var(--wg-ease);
-}
-.corp .card:hover { box-shadow: var(--wg-shadow-hover); transform: translateY(-2px); }
-.corp .card-media { aspect-ratio: 16/9; background: var(--wg-bg-alt); overflow: hidden; }
-.corp .card-media img { width: 100%; height: 100%; object-fit: cover; }
-.corp .card-body { padding: 20px; display: grid; gap: 8px; align-content: start; flex: 1; }
 .corp .card-tag { font: 300 12px/1 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--wg-accent); }
-.corp .card-body h3 { font-size: 19px; font-weight: 300; letter-spacing: 0; }
-.corp .card-body p { color: var(--wg-mute); font-size: 14.5px; line-height: 1.5; }
-.corp .card-body .arrow-link { margin-top: 8px; }
-@media (min-width: 720px) { .corp .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ---------- courses spotlight ---------- */
+.corp .course-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.corp .course-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 24px; min-width: 0;
+  background: var(--wg-card); border: 1px solid var(--wg-line); border-radius: var(--wg-radius-lg);
+  transition: box-shadow .25s var(--wg-ease), transform .25s var(--wg-ease), border-color .25s;
+}
+.corp .course-card:hover { box-shadow: var(--wg-shadow-hover); transform: translateY(-2px); border-color: transparent; }
+.corp .course-ic { width: 48px; height: 48px; border-radius: 10px; margin-bottom: 6px; }
+.corp .course-card h3 { font-size: 20px; font-weight: 600; color: var(--wg-text); }
+.corp .course-card p { color: var(--wg-mute); font-size: 14.5px; line-height: 1.5; }
+.corp .course-topics { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 6px; }
+.corp .course-topics li { font-size: 12.5px; padding: 4px 10px; border-radius: 999px; background: var(--wg-bg-alt); color: var(--wg-text); }
+.corp .course-card .arrow-link { margin-top: auto; padding-top: 4px; }
+.corp .bundle-strip {
+  display: grid; gap: 18px; align-items: center; margin-top: 24px; padding: 24px;
+  background: var(--wg-accent-tint); border-radius: var(--wg-radius-lg);
+}
+.corp .bundle-prices { display: flex; gap: 28px; }
+.corp .bundle-prices b { display: block; font-size: 28px; font-weight: 600; color: var(--wg-accent); line-height: 1.1; }
+.corp .bundle-prices span { font-size: 13px; color: var(--wg-mute); }
+.corp .bundle-strip p { color: var(--wg-text); font-size: 15px; max-width: 46ch; }
+.corp .bundle-strip .btn { justify-self: start; }
+@media (min-width: 640px) { .corp .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) {
+  .corp .course-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .corp .bundle-strip { grid-template-columns: auto minmax(0, 1fr) auto; gap: 40px; padding: 24px 32px; }
+  .corp .bundle-strip .btn { justify-self: end; }
+}
 
 /* ---------- feature banner (breaks the grid) ---------- */
 .corp .feature-banner {

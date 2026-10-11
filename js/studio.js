@@ -501,6 +501,17 @@
         panels.forEach((p) => { p.hidden = p.getAttribute('data-tab-panel') !== tab.dataset.tab; });
       });
     });
+
+    // a link like courses.html#bundle-calc opens the tab that holds its target
+    function openTabForHash() {
+      const target = location.hash && document.getElementById(location.hash.slice(1));
+      const panel = target && target.closest('[data-tab-panel]');
+      if (!panel || !panel.hidden) return;
+      const tab = tabs.find((t) => t.dataset.tab === panel.getAttribute('data-tab-panel'));
+      if (tab) { tab.click(); target.scrollIntoView(); }
+    }
+    openTabForHash();
+    window.addEventListener('hashchange', openTabForHash);
   }
 
   /* ---------------------------------------------------------------
