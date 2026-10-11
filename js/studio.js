@@ -374,7 +374,7 @@
           ctx.beginPath();
           ctx.arc(x, y, r, 0, Math.PI * 2);
           ctx.fillStyle = influence > 0.02
-            ? `rgba(78, 185, 111, ${0.14 + influence * 0.55})`
+            ? `rgba(30, 136, 229, ${0.14 + influence * 0.55})`
             : 'rgba(244, 243, 234, 0.10)';
           ctx.fill();
         }

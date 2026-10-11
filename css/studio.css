@@ -29,9 +29,9 @@
   --mute-on-paper: #5c5a4f;
 
   /* Accent — one restrained signal, used with intent */
-  --signal: #4eb96f;
-  --signal-ink: #74d492;
-  --on-signal: #0a1510;
+  --signal: #1e88e5;
+  --signal-ink: #42a5f5;
+  --on-signal: #000000;
 
   /* Type */
   --font-sans: "Encode Sans Semi Condensed", system-ui, -apple-system, sans-serif;
@@ -286,7 +286,7 @@ h5, h6, b, strong, th, legend, select, option { font-weight: 300; }
 .link-arrow:hover, .link-arrow:focus-visible { border-color: var(--signal); color: var(--signal-ink); }
 .link-arrow:hover svg, .link-arrow:focus-visible svg { transform: translate(3px, -3px); }
 .section-on-paper .link-arrow { color: var(--fg-on-paper); border-color: var(--line-on-paper-strong); }
-.section-on-paper .link-arrow:hover { color: #2f8f52; border-color: #2f8f52; }
+.section-on-paper .link-arrow:hover { color: #1565c0; border-color: #1565c0; }
 
 @media (prefers-reduced-motion: reduce) {
   .wgs *, .wgs *::before, .wgs *::after {
@@ -411,10 +411,7 @@ h5, h6, b, strong, th, legend, select, option { font-weight: 300; }
   font: 300 var(--fs-label)/1 var(--font-sans);
   letter-spacing: 0;
 }
-.wgs-logo img { height: 30px; width: auto; }
-.wgs-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
-.wgs-logo-text b { font-weight: 300; }
-.wgs-logo-text span { font: 300 10px/1 var(--font-mono); color: var(--mute); letter-spacing: var(--tr-wide); margin-top: 2px; }
+.wgs-logo img { height: 36px; width: auto; }
 
 .wgs-nav-right { display: flex; align-items: center; gap: var(--sp-6); }
 .wgs-nav-time {
