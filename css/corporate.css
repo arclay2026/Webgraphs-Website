@@ -67,7 +67,7 @@ body.corp {
 .corp .masthead .wrap { display: flex; align-items: center; gap: 28px; min-height: 64px; }
 .corp .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
 .corp .brand img { height: 26px; width: auto; }
-.corp .brand span { font-weight: 300; font-size: 16px; letter-spacing: -.01em; }
+.corp .brand span { font-weight: 300; font-size: 16px; letter-spacing: 0; }
 .corp .primary-nav { display: none; }
 .corp .primary-nav a { display: inline-flex; align-items: center; min-height: 64px; padding: 0 14px; font-size: 14px; font-weight: 300; border-bottom: 2px solid transparent; }
 .corp .primary-nav a:hover { color: var(--wg-green); border-bottom-color: var(--wg-green); }
@@ -104,7 +104,7 @@ body.corp {
 .corp .hero { background: var(--wg-bg-alt); overflow: hidden; }
 .corp .hero .wrap { display: grid; gap: 32px; padding-block: 48px; }
 .corp .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font: 300 13px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--wg-green); margin-bottom: 16px; }
-.corp .hero h1 { font-size: clamp(34px, 7vw, 62px); font-weight: 300; letter-spacing: -.02em; line-height: 1.04; }
+.corp .hero h1 { font-size: clamp(34px, 7vw, 62px); font-weight: 300; letter-spacing: 0; line-height: 1.04; }
 .corp .hero .lede { font-size: clamp(17px, 2.4vw, 20px); color: var(--wg-mute); max-width: 46ch; margin-top: 18px; line-height: 1.5; }
 .corp .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .corp .hero-media { position: relative; border-radius: var(--wg-radius-lg); overflow: hidden; aspect-ratio: 4/3; background: var(--wg-card); box-shadow: var(--wg-shadow); }
@@ -138,7 +138,7 @@ body.corp {
 /* ---------- section heads ---------- */
 .corp .section { padding-block: 56px; }
 .corp .section-head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 640px; }
-.corp .section-head h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 300; letter-spacing: -.015em; }
+.corp .section-head h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 300; letter-spacing: 0; }
 .corp .section-head p { color: var(--wg-mute); font-size: 16px; }
 .corp .section-foot { margin-top: 32px; }
 
@@ -153,7 +153,7 @@ body.corp {
 .corp .card-media img { width: 100%; height: 100%; object-fit: cover; }
 .corp .card-body { padding: 20px; display: grid; gap: 8px; align-content: start; flex: 1; }
 .corp .card-tag { font: 300 12px/1 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--wg-green); }
-.corp .card-body h3 { font-size: 19px; font-weight: 300; letter-spacing: -.01em; }
+.corp .card-body h3 { font-size: 19px; font-weight: 300; letter-spacing: 0; }
 .corp .card-body p { color: var(--wg-mute); font-size: 14.5px; line-height: 1.5; }
 .corp .card-body .arrow-link { margin-top: 8px; }
 @media (min-width: 720px) { .corp .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -166,7 +166,7 @@ body.corp {
 .corp .feature-media img { width: 100%; height: 100%; object-fit: cover; }
 .corp .feature-body { padding: 28px; display: grid; gap: 12px; align-content: center; }
 .corp .feature-body .card-tag { font-size: 12.5px; }
-.corp .feature-body h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 300; letter-spacing: -.015em; line-height: 1.15; }
+.corp .feature-body h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 300; letter-spacing: 0; line-height: 1.15; }
 .corp .feature-body p { color: var(--wg-mute); font-size: 15.5px; max-width: 50ch; }
 @media (min-width: 900px) { .corp .feature-banner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } .corp .feature-body { padding: 40px; } }
 
@@ -183,7 +183,7 @@ body.corp {
 /* ---------- stats band ---------- */
 .corp .stats-band { background: var(--wg-ink); color: #fff; }
 .corp .stats-band .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-block: 40px; }
-.corp .stats-band .stat b { display: block; font-size: clamp(28px, 4vw, 40px); font-weight: 300; letter-spacing: -.02em; color: #8fe0ac; }
+.corp .stats-band .stat b { display: block; font-size: clamp(28px, 4vw, 40px); font-weight: 300; letter-spacing: 0; color: #8fe0ac; }
 .corp .stats-band .stat span { color: #b7b6b0; font-size: 14px; }
 @media (min-width: 720px) { .corp .stats-band .wrap { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
