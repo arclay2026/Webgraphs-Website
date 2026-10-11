@@ -34,7 +34,7 @@
   --on-signal: #0a1510;
 
   /* Type */
-  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-sans: "Encode Sans Semi Condensed", system-ui, -apple-system, sans-serif;
   --font-serif: "Instrument Serif", "Times New Roman", serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
