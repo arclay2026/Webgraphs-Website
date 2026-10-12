@@ -29,7 +29,7 @@
   --wg-radius-lg: 12px;
   --wg-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 1px 1px rgba(0, 0, 0, .04);
   --wg-shadow-hover: 0 8px 24px -8px rgba(0, 0, 0, .18);
-  --f-sans: "Encode Sans Semi Condensed", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-sans: "Google Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --f-serif: var(--f-sans);
   --f-mono: var(--f-sans);
   --wg-max: 1584px;

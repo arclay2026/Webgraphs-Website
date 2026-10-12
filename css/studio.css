@@ -34,7 +34,7 @@
   --on-signal: #000000;
 
   /* Type */
-  --font-sans: "Encode Sans Semi Condensed", system-ui, -apple-system, sans-serif;
+  --font-sans: "Google Sans", system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-sans);
   --font-mono: var(--font-sans);
 
@@ -46,7 +46,7 @@
   --fs-h4: clamp(20px, 18px + .5vw, 24px);
   --fs-h3: clamp(28px, 22px + 2vw, 44px);
   --fs-h2: clamp(40px, 24px + 4.5vw, 84px);
-  --fs-h1: clamp(52px, 20px + 8vw, 128px);
+  --fs-h1: clamp(44px, 20px + 8vw, 128px);
   --fs-display: clamp(58px, 11.3vw, 150px);
 
   --lh-tight: .96;
