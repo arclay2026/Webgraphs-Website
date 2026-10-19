@@ -15,6 +15,7 @@ software installation.
 - `css/style.css` — Site styling (brand colors: `#111111`, `#ffffff`, `#4eb96f`)
 - `js/script.js` — Navigation, scroll reveal animations, contact form
 - `assets/favicon.svg` — Site favicon
+- `mabs-technologies/` — Mabs Technologies online store (client project, see its README)
 
 ## Running locally
 
