@@ -12,7 +12,7 @@ software installation.
 - `courses.html` — Graphic design courses
 - `about.html` — About the company
 - `contact.html` — Contact form, info and map
-- `css/style.css` — Site styling (brand colors: `#111111`, `#ffffff`, `#4eb96f`)
+- `css/brand-palette.css` — Brand colour tokens (Ink `#111111`, WebGraphs Blue `#1E88E5`, Action Blue `#0A6CC2`, graphite neutrals)
 - `js/script.js` — Navigation, scroll reveal animations, contact form
 - `assets/favicon.svg` — Site favicon
 

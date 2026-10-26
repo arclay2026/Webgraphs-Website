@@ -1,0 +1,44 @@
+/* WebGraphs Technologies — brand colour tokens (v1.0)
+   Core colours come straight from assets/logo-master.svg.
+   Blue 500 (#1E88E5) is the logo blue: use it for the logo, large headings
+   and fills. For small blue text, or white text on a blue button, use
+   Blue 600, which passes WCAG AA (5.33:1). */
+:root {
+  /* core */
+  --wg-ink: #111111;
+  --wg-white: #FFFFFF;
+
+  /* blue scale (hue of the logo blue) */
+  --wg-blue-50: #EEF6FF;
+  --wg-blue-100: #D8EAFE;
+  --wg-blue-200: #AFD5FF;
+  --wg-blue-300: #78B9FE;
+  --wg-blue-400: #479CF1;
+  --wg-blue-500: #1E88E5; /* logo */
+  --wg-blue-600: #0A6CC2; /* action: buttons, links */
+  --wg-blue-700: #08579D; /* hover */
+  --wg-blue-800: #0A4178;
+  --wg-blue-900: #082C54; /* midnight navy */
+  --wg-blue-950: #061C36;
+
+  /* graphite neutrals (slight blue bias) */
+  --wg-gray-50: #F7F9FC;
+  --wg-gray-100: #F0F3F7;
+  --wg-gray-200: #E3E7EB;
+  --wg-gray-300: #D0D5DA; /* borders */
+  --wg-gray-400: #A1A6AB;
+  --wg-gray-500: #6B7075;
+  --wg-gray-600: #575C61; /* secondary text */
+  --wg-gray-700: #3F4347;
+  --wg-gray-800: #27292D;
+  --wg-gray-900: #16181B;
+
+  /* highlight: badges and price tags only, never text */
+  --wg-amber: #F5A524;
+
+  /* feedback */
+  --wg-success: #1B7F4C;
+  --wg-warning: #B35C00;
+  --wg-error: #C62828;
+  --wg-info: var(--wg-blue-600);
+}
